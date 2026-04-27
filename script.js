@@ -1,137 +1,194 @@
-/* ============================================================
-   SCRIPT.JS — Roblox Scripter Portfolio
-   What this file does:
-     1. Smooth scroll for nav links
-     2. Scroll-triggered fade-in animations (IntersectionObserver)
-     3. Skill bar fill animation (triggers when skills section is visible)
-     4. Navbar shrink effect on scroll
-============================================================ */
+(function() {
+  'use strict';
 
+  // 1. Typewriter Effect
+  const phrases = ['Roblox Scripter', 'Systems Engineer'];
+  let pIdx = 0, cIdx = 0, deleting = false;
+  const typewriterEl = document.getElementById('typewriter');
 
-/* ============================================================
-   1. SMOOTH SCROLL FOR NAV LINKS
-   Even though CSS has scroll-behavior: smooth, this gives us
-   better control and works across more browsers.
-============================================================ */
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', function (e) {
-    e.preventDefault(); // Stop the default jump-to-anchor
+  function typeWriter() {
+    if (!typewriterEl) return;
+    const currentPhrase = phrases[pIdx];
+    typewriterEl.textContent = deleting ? currentPhrase.substring(0, cIdx - 1) : currentPhrase.substring(0, cIdx + 1);
 
-    const targetId = this.getAttribute('href');    // e.g. "#projects"
-    const targetEl = document.querySelector(targetId);
-
-    if (targetEl) {
-      // Offset for the fixed navbar (80px tall)
-      const navHeight = document.querySelector('.navbar').offsetHeight;
-      const targetTop  = targetEl.getBoundingClientRect().top + window.scrollY - navHeight;
-
-      window.scrollTo({
-        top: targetTop,
-        behavior: 'smooth'
-      });
+    if (!deleting && cIdx < currentPhrase.length) {
+      cIdx++;
+      setTimeout(typeWriter, 110);
+    } else if (deleting && cIdx > 0) {
+      cIdx--;
+      setTimeout(typeWriter, 60);
+    } else if (!deleting && cIdx === currentPhrase.length) {
+      setTimeout(() => { deleting = true; typeWriter(); }, 2200);
+    } else {
+      deleting = false;
+      pIdx = (pIdx + 1) % phrases.length;
+      setTimeout(typeWriter, 400);
     }
+  }
+  setTimeout(typeWriter, 800);
+
+  // 2. Smooth Scroll
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        const navHeight = document.querySelector('.navbar').offsetHeight;
+        const targetTop = targetEl.getBoundingClientRect().top + window.scrollY - navHeight;
+        window.scrollTo({ top: targetTop, behavior: 'smooth' });
+        const navLinks = document.querySelector('.nav-links');
+        if (navLinks && navLinks.classList.contains('open')) {
+          navLinks.classList.remove('open');
+        }
+      }
+    });
   });
-});
 
-
-/* ============================================================
-   2. SCROLL-TRIGGERED FADE-IN ANIMATIONS
-   IntersectionObserver watches every .fade-in element.
-   When one enters the viewport, we add the .visible class
-   which triggers the CSS transition (opacity + translateY).
-============================================================ */
-const fadeElements = document.querySelectorAll('.fade-in');
-
-const fadeObserver = new IntersectionObserver(
-  (entries) => {
+  // 3. Animations
+  const fadeElements = document.querySelectorAll('.fade-in');
+  const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        // Element is in view — make it visible
         entry.target.classList.add('visible');
-
-        // Stop watching it once it's animated in (no need to re-animate)
         fadeObserver.unobserve(entry.target);
       }
     });
-  },
-  {
-    threshold: 0.15,    // Trigger when 15% of the element is visible
-    rootMargin: '0px 0px -40px 0px' // Slightly before the bottom of viewport
+  }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+  fadeElements.forEach(el => fadeObserver.observe(el));
+
+  const skillSection = document.querySelector('#skills');
+  if (skillSection) {
+    const skillObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.skill-fill').forEach(bar => {
+            const targetWidth = bar.style.width;
+            bar.style.width = '0';
+            setTimeout(() => { bar.style.width = targetWidth; }, 100);
+          });
+          skillObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+    skillObserver.observe(skillSection);
   }
-);
 
-// Attach the observer to every .fade-in element on the page
-fadeElements.forEach(el => fadeObserver.observe(el));
+  // 4. Navbar
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    if (navbar) {
+      if (window.scrollY > 60) {
+        navbar.style.padding = '12px 40px';
+      } else {
+        navbar.style.padding = '';
+      }
+    }
+  });
 
+  // 5. Hover Video Previews
+  window.addEventListener('DOMContentLoaded', () => {
+    const heroContent = document.querySelector('.hero-content');
+    if (heroContent) {
+      setTimeout(() => { heroContent.classList.add('visible'); }, 200);
+    }
 
-/* ============================================================
-   3. SKILL BAR FILL ANIMATION
-   The .skill-fill bars start at width: 0 in CSS.
-   We use a separate IntersectionObserver to watch the skills
-   section, and when it's visible we set the width to the
-   value declared in the inline style attribute.
-============================================================ */
-const skillSection = document.querySelector('#skills');
-
-const skillObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        // Find all skill fill bars and animate them
-        document.querySelectorAll('.skill-fill').forEach(bar => {
-          // The target width is stored in the element's style attribute
-          // e.g. style="width: 80%" — we read it and apply it
-          const targetWidth = bar.style.width;
-
-          // Temporarily remove so we can re-apply and trigger transition
-          bar.style.width = '0';
-
-          // Small delay so the transition runs after the reset
-          setTimeout(() => {
-            bar.style.width = targetWidth;
-          }, 100);
+    const cards = document.querySelectorAll('.card');
+    cards.forEach(card => {
+      const video = card.querySelector('video');
+      if (video) {
+        card.addEventListener('mouseenter', () => {
+          video.play().catch(() => {});
         });
-
-        // Only animate once
-        skillObserver.unobserve(entry.target);
+        card.addEventListener('mouseleave', () => {
+          video.pause();
+          video.currentTime = 0;
+        });
       }
     });
-  },
-  { threshold: 0.3 }
-);
 
-if (skillSection) {
-  skillObserver.observe(skillSection);
-}
+    // 6. Project Page Logic
+    const projectTitle = document.getElementById('projectTitle');
+    const projectVideo = document.getElementById('projectVideo');
+    const projectDesc = document.getElementById('projectDesc');
+    const projectMeta = document.getElementById('projectMeta');
 
+    if (projectTitle && projectVideo) {
+      const params = new URLSearchParams(window.location.search);
+      const projId = params.get('id') || 'coin';
 
-/* ============================================================
-   4. NAVBAR SHRINK ON SCROLL
-   When the user scrolls down more than 60px, we add a class
-   to the navbar that tightens the padding (defined in CSS).
-============================================================ */
-const navbar = document.querySelector('.navbar');
+      const projects = {
+        coin: {
+          title: 'Coin Throwing System',
+          video: 'videos/CoinTrow.mp4',
+          desc: 'Full game system — players buy throwable coins with Robux, throw them at others to deal damage, and earn daily rewards based on spending. Includes config module, server logic, shop UI, physics projectiles, effects handler, and remote architecture.',
+          tags: ['Full Game', 'Roblox Lua', 'Server-Auth']
+        },
+        tipping: {
+          title: 'Tipping / Donation System',
+          video: 'videos/tipping.mp4',
+          desc: 'Gamepass ID input, automatic price fetching from Roblox\'s API, and a full in-game purchase flow — built clean and reusable.',
+          tags: ['Economy', 'Gamepass', 'API']
+        },
+        daily: {
+          title: 'Daily Rewards System',
+          video: 'videos/daily-rewards.mp4',
+          desc: 'Streak tracking with persistent DataStore saving and a polished UI that shows current streak, next reward, and claim buttons.',
+          tags: ['Progression', 'DataStore', 'UI']
+        },
+        sprint: {
+          title: 'Sprint / Dash System',
+          video: 'videos/sprint.mp4',
+          desc: 'Smooth sprint and dash mechanics with configurable cooldowns, stamina bars, and responsive movement feel.',
+          tags: ['Movement', 'Physics', 'UX']
+        },
+        staff: {
+          title: 'Staff / Player Display System',
+          video: 'videos/staff-display.mp4',
+          desc: 'Live panel showing player avatars and group rank detection — great for admin dashboards or server-info boards.',
+          tags: ['Systems', 'UI', 'Admin']
+        },
+        combat: {
+          title: 'Combat System',
+          video: 'videos/combat.mp4',
+          desc: 'M1 combo chains, server-side hit detection, and damage handling — built with latency in mind for a fair experience.',
+          tags: ['Gameplay', 'Hit Detection', 'Latency']
+        },
+        ui: {
+          title: 'UI Systems',
+          video: 'videos/ui-systems.mp4',
+          desc: 'Reusable button components, animated navigation menus, and clean input handling — all written for easy plug-and-play use.',
+          tags: ['Systems', 'UI', 'Components']
+        }
+      };
 
-window.addEventListener('scroll', () => {
-  if (window.scrollY > 60) {
-    navbar.style.padding = '12px 40px';   // Shrink vertically
-  } else {
-    navbar.style.padding = '';            // Reset to CSS default
+      const project = projects[projId] || projects.coin;
+      
+      // Ensure projectVideo is loaded
+      projectVideo.src = project.video;
+      projectVideo.load();
+      
+      projectTitle.textContent = project.title;
+      projectDesc.textContent = project.desc;
+
+      if (projectMeta) {
+        projectMeta.innerHTML = '';
+        project.tags.forEach(tag => {
+          const chip = document.createElement('span');
+          chip.className = 'chip';
+          chip.textContent = tag;
+          projectMeta.appendChild(chip);
+        });
+      }
+    }
+  });
+
+  // 7. Mobile Menu
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
   }
-});
-
-
-/* ============================================================
-   5. HERO SECTION — INITIAL LOAD ANIMATION
-   The hero content has .fade-in but the IntersectionObserver
-   might not trigger it since it's already in view on load.
-   We manually add .visible after a short delay.
-============================================================ */
-window.addEventListener('DOMContentLoaded', () => {
-  const heroContent = document.querySelector('.hero-content');
-  if (heroContent) {
-    setTimeout(() => {
-      heroContent.classList.add('visible');
-    }, 200); // 200ms delay for a nice entrance feel
-  }
-});
+})();

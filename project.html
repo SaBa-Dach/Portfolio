@@ -1,192 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Project Demo</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
-
-  <style>
-    /* ---- Same CSS variables as the main site so it matches ---- */
-    :root {
-      --bg:         #0d0d0f;
-      --surface:    #18181c;
-      --border:     #2a2a30;
-      --accent:     #e8ff57;
-      --accent-dim: rgba(232, 255, 87, 0.12);
-      --text:       #e8e8ec;
-      --text-muted: #7a7a8a;
-      --font-heading: 'Syne', sans-serif;
-      --font-body:    'Fira Code', monospace;
-    }
-
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: var(--font-body);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-    }
-
-    /* ---- Back button at the top ---- */
-    .back-btn {
-      position: fixed;
-      top: 24px;
-      left: 24px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      font-family: var(--font-body);
-      font-size: 13px;
-      color: var(--text-muted);
-      text-decoration: none;
-      padding: 8px 16px;
-      border: 1px solid var(--border);
-      border-radius: 8px;
-      background: var(--surface);
-      transition: color 0.2s, border-color 0.2s;
-    }
-
-    .back-btn:hover {
-      color: var(--accent);
-      border-color: var(--accent);
-    }
-
-    /* ---- Main content wrapper ---- */
-    .wrapper {
-      width: 100%;
-      max-width: 900px;
-      text-align: center;
-    }
-
-    /* Small label above title */
-    .label {
-      display: inline-block;
-      font-size: 12px;
-      color: var(--accent);
-      letter-spacing: 2px;
-      padding: 4px 12px;
-      border: 1px solid var(--accent-dim);
-      border-radius: 100px;
-      margin-bottom: 20px;
-    }
-
-    /* Project title — filled in by JS */
-    .project-title {
-      font-family: var(--font-heading);
-      font-size: clamp(28px, 5vw, 52px);
-      font-weight: 800;
-      letter-spacing: -1px;
-      margin-bottom: 40px;
-    }
-
-    /* ---- Video player container ---- */
-    .video-wrap {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-      width: 100%;
-    }
-
-    video {
-      width: 100%;
-      display: block;
-      max-height: 70vh;         /* Don't let it get too tall */
-      object-fit: contain;      /* Keeps aspect ratio */
-      background: #000;
-    }
-
-    /* ---- Shown when video file is missing ---- */
-    .no-video {
-      padding: 80px 20px;
-      color: var(--text-muted);
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .no-video .icon {
-      font-size: 40px;
-      margin-bottom: 16px;
-    }
-
-    .no-video code {
-      color: var(--accent);
-      background: var(--accent-dim);
-      padding: 2px 8px;
-      border-radius: 4px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Project Demo — inbo</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <nav class="navbar scrolled">
+    <a href="index.html" class="nav-logo">inbo<span class="accent">.</span></a>
+    <a href="index.html" class="btn btn-outline" style="padding: 10px 18px; font-size: 13px;">← Back</a>
+  </nav>
 
-  <!-- Back arrow to close this tab or go back -->
-  <a class="back-btn" onclick="window.close()" href="javascript:history.back()">
-    ← Back
-  </a>
-
-  <div class="wrapper">
-    <span class="label">// project demo</span>
-
-    <!-- Title is set dynamically from the URL ?title= parameter -->
-    <h1 class="project-title" id="title">Loading...</h1>
-
-    <div class="video-wrap" id="videoWrap">
-      <!-- Video element is inserted by JS below -->
-    </div>
-  </div>
-
-  <script>
-    // ============================================================
-    // Read the URL parameters to know which project/video to show
-    // URL format: project.html?title=Combat+System&video=combat.mp4
-    // ============================================================
-    const params  = new URLSearchParams(window.location.search);
-    const title   = params.get('title') || 'Project Demo';
-    const video   = params.get('video') || '';
-
-    // Set the page title and heading
-    document.title     = title + ' — inbo_scripts';
-    document.getElementById('title').textContent = title;
-
-    const wrap = document.getElementById('videoWrap');
-
-    if (video) {
-      // Build the video player and point it at the videos/ folder
-      wrap.innerHTML = `
-        <video controls autoplay muted playsinline>
-          <source src="videos/${video}" type="video/mp4" />
-          Your browser doesn't support HTML5 video.
-        </video>
-      `;
-
-      // If the video fails to load (file missing), show the helper message
-      const videoEl = wrap.querySelector('video');
-      videoEl.addEventListener('error', showMissing);
-    } else {
-      showMissing();
-    }
-
-    // ---- Helper: show a "video not found" message ----
-    function showMissing() {
-      wrap.innerHTML = `
-        <div class="no-video">
-          <div class="icon">🎬</div>
-          <p>Video coming soon.</p>
-          <p>Place your recording at <code>videos/${video || 'filename.mp4'}</code></p>
+  <main class="section">
+    <div class="container">
+      <div class="project-header fade-in">
+        <a href="index.html" class="back-link">← Back to Projects</a>
+        <span class="hero-label">// project demo</span>
+        <h1 class="project-title" id="projectTitle">Loading...</h1>
+        <div class="project-meta" id="projectMeta"></div>
+        <div class="project-video">
+          <video id="projectVideo" controls autoplay muted playsinline>
+            <p>Your browser does not support HTML5 video.</p>
+          </video>
         </div>
-      `;
-    }
-  </script>
+        <div class="project-description">
+          <p id="projectDesc">Loading description...</p>
+        </div>
+      </div>
+    </div>
+  </main>
 
+  <footer class="footer">
+    <p>Built with ❤️ & Lua &nbsp;·&nbsp; © 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

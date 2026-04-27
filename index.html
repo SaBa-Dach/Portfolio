@@ -1,197 +1,234 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>inbo — Roblox Scripter</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-  <nav class="navbar">
-    <div class="nav-logo">inbo<span class="accent">.</span></div>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#skills">Skills</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="nav-logo">inbo<span class="accent">.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+    </button>
   </nav>
 
-  <section class="hero" id="home">
+  <header class="hero">
     <div class="hero-grid"></div>
-    <div class="hero-content fade-in">
+    <div class="container hero-content fade-in">
       <span class="hero-label">// hello, world</span>
-      <h1 class="hero-title">
-        Roblox<br />
-        <span class="accent">Scripter</span>
-      </h1>
+      <h1 class="hero-title"><span id="typewriter"></span><span class="accent blink">|</span></h1>
       <p class="hero-sub">I build clean, scalable gameplay systems</p>
-      <a href="#projects" class="btn btn-primary">View Projects</a>
-    </div>
-  </section>
-
-  <section class="section" id="about">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-num">01</span>
-        <h2>About Me</h2>
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">View Projects</a>
+        <a href="#contact" class="btn btn-outline">Get in Touch</a>
       </div>
-      <div class="about-body fade-in">
-        <div class="avatar"><span>IB</span></div>
-        <div class="about-text">
-          <p>
-            Hi, I'm <strong>inbo</strong> — a Roblox scripter focused on building <strong>clean, efficient, and scalable systems</strong>.
-            I mainly work on gameplay systems and core mechanics, handling everything from
-            server logic to complete game features.
-          </p>
-          <div class="stat-chips">
-            <div class="chip">🎮 Gameplay Systems</div>
-            <div class="chip">⚙️ Core Mechanics</div>
-            <div class="chip">🔗 Server Logic</div>
+    </div>
+  </header>
+
+  <main>
+    <section id="about" class="section">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-num">01</span>
+          <h2>About Me</h2>
+        </div>
+        <div class="about-body fade-in">
+          <div class="avatar">IB</div>
+          <div class="about-text">
+            <p>Hi, I'm <strong>inbo</strong> — a Roblox scripter focused on building clean, efficient, and scalable systems. I mainly work on gameplay systems and core mechanics, handling everything from server logic to complete game features.</p>
+            <div class="stat-chips">
+              <span class="chip">🎮 Gameplay Systems</span>
+              <span class="chip">⚙️ Core Mechanics</span>
+              <span class="chip">🔗 Server Logic</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section class="section section-alt" id="projects">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-num">02</span>
-        <h2>Projects</h2>
-      </div>
-      <div class="projects-grid">
-
-        <a class="card fade-in card-featured" href="project.html?title=Coin+Throwing+System&video=CoinTrow.mp4" target="_blank">
-          <div class="card-icon">🪙</div>
-          <h3 class="card-title">Coin Throwing System</h3>
-          <p class="card-desc">Full game system — players buy throwable coins with Robux, throw them at others to deal damage, and earn daily rewards based on spending. Includes config module, server logic, shop UI, physics projectiles, effects handler, and remote architecture.</p>
-          <div class="card-footer">
-            <span class="card-tag">Full Game</span>
-            <span class="card-watch">▶ Watch demo</span>
-          </div>
-        </a>
-
-        <a class="card fade-in" href="project.html?title=Tipping+%2F+Donation+System&video=tipping.mp4" target="_blank">
-          <div class="card-icon">💰</div>
-          <h3 class="card-title">Tipping / Donation System</h3>
-          <p class="card-desc">Gamepass ID input, automatic price fetching from Roblox's API, and a full in-game purchase flow — built clean and reusable.</p>
-          <div class="card-footer">
-            <span class="card-tag">Economy</span>
-            <span class="card-watch">▶ Watch demo</span>
-          </div>
-        </a>
-
-        <a class="card fade-in" href="project.html?title=Daily+Rewards+System&video=daily-rewards.mp4" target="_blank">
-          <div class="card-icon">📅</div>
-          <h3 class="card-title">Daily Rewards System</h3>
-          <p class="card-desc">Streak tracking with persistent DataStore saving and a polished UI that shows current streak, next reward, and claim buttons.</p>
-          <div class="card-footer">
-            <span class="card-tag">Progression</span>
-            <span class="card-watch">▶ Watch demo</span>
-          </div>
-        </a>
-
-        <a class="card fade-in" href="project.html?title=Staff+%2F+Player+Display+System&video=staff-display.mp4" target="_blank">
-          <div class="card-icon">👥</div>
-          <h3 class="card-title">Staff / Player Display System</h3>
-          <p class="card-desc">Live panel showing player avatars and group rank detection — great for admin dashboards or server-info boards.</p>
-          <div class="card-footer">
-            <span class="card-tag">Systems</span>
-            <span class="card-watch">▶ Watch demo</span>
-          </div>
-        </a>
-
-        <a class="card fade-in" href="project.html?title=Combat+System&video=combat.mp4" target="_blank">
-          <div class="card-icon">⚔️</div>
-          <h3 class="card-title">Combat System</h3>
-          <p class="card-desc">M1 combo chains, server-side hit detection, and damage handling — built with latency in mind for a fair experience.</p>
-          <div class="card-footer">
-            <span class="card-tag">Gameplay</span>
-            <span class="card-watch">▶ Watch demo</span>
-          </div>
-        </a>
-
-        <a class="card fade-in" href="project.html?title=Sprint+%2F+Dash+System&video=sprint.mp4" target="_blank">
-          <div class="card-icon">💨</div>
-          <h3 class="card-title">Sprint / Dash System</h3>
-          <p class="card-desc">Smooth sprint and dash mechanics with configurable cooldowns, stamina bars, and responsive movement feel.</p>
-          <div class="card-footer">
-            <span class="card-tag">Movement</span>
-            <span class="card-watch">▶ Watch demo</span>
-          </div>
-        </a>
-
-        <a class="card fade-in" href="project.html?title=UI+Systems&video=ui-systems.mp4" target="_blank">
-          <div class="card-icon">🖱️</div>
-          <h3 class="card-title">UI Systems</h3>
-          <p class="card-desc">Reusable button components, animated navigation menus, and clean input handling — all written for easy plug-and-play use.</p>
-          <div class="card-footer">
-            <span class="card-tag">Systems</span>
-            <span class="card-watch">▶ Watch demo</span>
-          </div>
-        </a>
-
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="skills">
-    <div class="container">
-      <div class="section-header fade-in">
-        <span class="section-num">03</span>
-        <h2>Skills</h2>
-      </div>
-      <div class="skills-grid fade-in">
-        <div class="skill-card">
-          <div class="skill-icon">🌙</div>
-          <p>Roblox Lua</p>
-          <div class="skill-bar"><div class="skill-fill" style="width: 80%"></div></div>
+    <section id="projects" class="section section-alt">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-num">02</span>
+          <h2>Projects</h2>
         </div>
-        <div class="skill-card">
-          <div class="skill-icon">⚙️</div>
-          <p>Game Systems</p>
-          <div class="skill-bar"><div class="skill-fill" style="width: 75%"></div></div>
-        </div>
-        <div class="skill-card">
-          <div class="skill-icon">🔗</div>
-          <p>Client/Server Logic</p>
-          <div class="skill-bar"><div class="skill-fill" style="width: 65%"></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-alt" id="contact">
-    <div class="container contact-container fade-in">
-      <div class="section-header">
-        <span class="section-num">04</span>
-        <h2>Contact</h2>
-      </div>
-      <p class="contact-sub">Interested in working together? Reach out and let's build something.</p>
-      <div class="contact-info">
-        <div class="contact-item">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-            <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.002.022.015.043.03.056a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03z"/>
-          </svg>
-          <span>inbo_scripts</span>
+        <div class="projects-grid">
+          <a href="project.html?id=coin" class="card card-featured fade-in">
+            <div class="card-video">
+              <video src="videos/CoinTrow.mp4" muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-icon">🪙</span>
+                <span class="card-tag">Full Game</span>
+              </div>
+              <h3 class="card-title">Coin Throwing System</h3>
+              <p class="card-desc">Full game system — players buy throwable coins with Robux, throw them at others to deal damage, and earn daily rewards based on spending. Includes config module, server logic, shop UI, physics projectiles, effects handler, and remote architecture.</p>
+              <div class="card-footer">
+                <span class="card-watch">▶ Watch demo</span>
+              </div>
+            </div>
+          </a>
+          <a href="project.html?id=tipping" class="card fade-in">
+            <div class="card-video">
+              <video src="videos/tipping.mp4" muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-icon">💰</span>
+                <span class="card-tag">Economy</span>
+              </div>
+              <h3 class="card-title">Tipping / Donation System</h3>
+              <p class="card-desc">Gamepass ID input, automatic price fetching from Roblox's API, and a full in-game purchase flow — built clean and reusable.</p>
+              <div class="card-footer">
+                <span class="card-watch">▶ Watch demo</span>
+              </div>
+            </div>
+          </a>
+          <a href="project.html?id=daily" class="card fade-in">
+            <div class="card-video">
+              <video src="videos/daily-rewards.mp4" muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-icon">📅</span>
+                <span class="card-tag">Progression</span>
+              </div>
+              <h3 class="card-title">Daily Rewards System</h3>
+              <p class="card-desc">Streak tracking with persistent DataStore saving and a polished UI that shows current streak, next reward, and claim buttons.</p>
+              <div class="card-footer">
+                <span class="card-watch">▶ Watch demo</span>
+              </div>
+            </div>
+          </a>
+          <a href="project.html?id=staff" class="card fade-in">
+            <div class="card-video">
+              <video src="videos/staff-display.mp4" muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-icon">👥</span>
+                <span class="card-tag">Systems</span>
+              </div>
+              <h3 class="card-title">Staff / Player Display System</h3>
+              <p class="card-desc">Live panel showing player avatars and group rank detection — great for admin dashboards or server-info boards.</p>
+              <div class="card-footer">
+                <span class="card-watch">▶ Watch demo</span>
+              </div>
+            </div>
+          </a>
+          <a href="project.html?id=combat" class="card fade-in">
+            <div class="card-video">
+              <video src="videos/combat.mp4" muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-icon">⚔️</span>
+                <span class="card-tag">Gameplay</span>
+              </div>
+              <h3 class="card-title">Combat System</h3>
+              <p class="card-desc">M1 combo chains, server-side hit detection, and damage handling — built with latency in mind for a fair experience.</p>
+              <div class="card-footer">
+                <span class="card-watch">▶ Watch demo</span>
+              </div>
+            </div>
+          </a>
+          <a href="project.html?id=sprint" class="card fade-in">
+            <div class="card-video">
+              <video src="videos/sprint.mp4" muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-icon">💨</span>
+                <span class="card-tag">Movement</span>
+              </div>
+              <h3 class="card-title">Sprint / Dash System</h3>
+              <p class="card-desc">Smooth sprint and dash mechanics with configurable cooldowns, stamina bars, and responsive movement feel.</p>
+              <div class="card-footer">
+                <span class="card-watch">▶ Watch demo</span>
+              </div>
+            </div>
+          </a>
+          <a href="project.html?id=ui" class="card fade-in">
+            <div class="card-video">
+              <video src="videos/ui-systems.mp4" muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-icon">🖱️</span>
+                <span class="card-tag">Systems</span>
+              </div>
+              <h3 class="card-title">UI Systems</h3>
+              <p class="card-desc">Reusable button components, animated navigation menus, and clean input handling — all written for easy plug-and-play use.</p>
+              <div class="card-footer">
+                <span class="card-watch">▶ Watch demo</span>
+              </div>
+            </div>
+          </a>
         </div>
       </div>
-      <a href="https://discord.com/users/1481990642174263462" target="_blank" class="btn btn-primary hire-btn">
-        Hire Me
-      </a>
-    </div>
-  </section>
+    </section>
+
+    <section id="skills" class="section">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-num">03</span>
+          <h2>Skills</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-card fade-in">
+            <div class="skill-icon">🌙</div>
+            <h3 class="skill-name">Roblox Lua</h3>
+            <div class="skill-bar"><div class="skill-fill" style="width: 92%"></div></div>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon">⚙️</div>
+            <h3 class="skill-name">Game Systems</h3>
+            <div class="skill-bar"><div class="skill-fill" style="width: 88%"></div></div>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon">🔗</div>
+            <h3 class="skill-name">Client/Server Logic</h3>
+            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section section-alt">
+      <div class="container">
+        <div class="contact-container fade-in">
+          <div class="section-header center">
+            <span class="section-num">04</span>
+            <h2>Contact</h2>
+          </div>
+          <p class="contact-sub">Interested in working together? Reach out and let's build something.</p>
+          <div class="contact-info">
+            <div class="contact-item">
+              <span>💬</span>
+              <span>inbo_scripts</span>
+            </div>
+          </div>
+          <a href="https://discord.com/users/1481990642174263462" target="_blank" class="btn btn-primary hire-btn">Hire Me</a>
+        </div>
+      </div>
+    </section>
+  </main>
 
   <footer class="footer">
-    <p>Built with ❤️ &amp; Lua &nbsp;·&nbsp; <span class="accent">© 2025</span></p>
+    <p>Built with ❤️ & Lua &nbsp;·&nbsp; © 2025</p>
   </footer>
 
   <script src="script.js"></script>
-
 </body>
 </html>
