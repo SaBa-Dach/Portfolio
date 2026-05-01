@@ -178,6 +178,7 @@ img, video { max-width: 100%; display: block; }
 .projects-grid .card:nth-child(5) { transition-delay: 0.33s; }
 .projects-grid .card:nth-child(6) { transition-delay: 0.40s; }
 .projects-grid .card:nth-child(7) { transition-delay: 0.47s; }
+.projects-grid .card:nth-child(8) { transition-delay: 0.54s; }
 .skills-grid .skill-card:nth-child(1) { transition-delay: 0.05s; }
 .skills-grid .skill-card:nth-child(2) { transition-delay: 0.12s; }
 .skills-grid .skill-card:nth-child(3) { transition-delay: 0.19s; }

@@ -1,7 +1,6 @@
 (function() {
   'use strict';
 
-  // 1. Typewriter Effect
   const phrases = ['Roblox Scripter', 'Systems Engineer'];
   let pIdx = 0, cIdx = 0, deleting = false;
   const typewriterEl = document.getElementById('typewriter');
@@ -27,7 +26,6 @@
   }
   setTimeout(typeWriter, 800);
 
-  // 2. Smooth Scroll
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', function(e) {
       e.preventDefault();
@@ -45,7 +43,6 @@
     });
   });
 
-  // 3. Animations
   const fadeElements = document.querySelectorAll('.fade-in');
   const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -74,7 +71,6 @@
     skillObserver.observe(skillSection);
   }
 
-  // 4. Navbar
   const navbar = document.querySelector('.navbar');
   window.addEventListener('scroll', () => {
     if (navbar) {
@@ -86,7 +82,6 @@
     }
   });
 
-  // 5. Hover Video Previews
   window.addEventListener('DOMContentLoaded', () => {
     const heroContent = document.querySelector('.hero-content');
     if (heroContent) {
@@ -107,7 +102,6 @@
       }
     });
 
-    // 6. Project Page Logic
     const projectTitle = document.getElementById('projectTitle');
     const projectVideo = document.getElementById('projectVideo');
     const projectDesc = document.getElementById('projectDesc');
@@ -118,6 +112,12 @@
       const projId = params.get('id') || 'coin';
 
       const projects = {
+        slapping: {
+          title: 'Slapping / Ragdoll System',
+          video: 'videos/slapping.mp4',
+          desc: 'Advanced physics-based ragdoll using BallSocketConstraints for realistic limb movement. Features server-authoritative hit detection, dynamic knockback scaling, reach validation, and multi-target detection. Includes network ownership handling and a synced get-up mechanic.',
+          tags: ['Combat', 'Physics', 'Server-Auth']
+        },
         coin: {
           title: 'Coin Throwing System',
           video: 'videos/CoinTrow.mp4',
@@ -162,9 +162,8 @@
         }
       };
 
-      const project = projects[projId] || projects.coin;
+      const project = projects[projId] || projects.slapping;
       
-      // Ensure projectVideo is loaded
       projectVideo.src = project.video;
       projectVideo.load();
       
@@ -183,7 +182,6 @@
     }
   });
 
-  // 7. Mobile Menu
   const menuToggle = document.getElementById('menuToggle');
   const navLinks = document.getElementById('navLinks');
   if (menuToggle && navLinks) {
