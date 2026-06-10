@@ -114,7 +114,12 @@
       const projects = {
         trivia: {
           title: 'Multiplayer Trivia System',
-          video: 'videos/Full Game.mp4',
+          videos: [
+            'videos/TriviaGame1.mp4',
+            'videos/TriviaGame2.mp4',
+            'videos/TriviaGame3.mp4',
+            'videos/TriviaGame4.mp4'
+          ],
           desc: 'A multiplayer Roblox trivia game built around quick decision-making, progression, and replayability.\n\nPlayers join tables and compete against others in a series of "Higher or Lower?" style questions across multiple categories including gaming, sports, music, social media, geography, and more. Each round challenges players to choose between two options before the timer expires. Wrong answers cost lives, while correct answers reward coins, XP, and streak bonuses.\n\n### Systems Developed\n• Multiplayer table matchmaking\n• Round management system\n• Question and answer framework\n• Server-authoritative answer validation\n• Lives and elimination system\n• Coin and XP rewards\n• Answer streak bonuses\n• Daily rewards\n• Data saving and player progression\n• Global leaderboards\n• Cosmetic rewards integration\n• 1v1 duel support\n• Modular and scalable architecture\n\n### Technical Highlights\n• Server-authoritative gameplay logic\n• Modular codebase designed for future expansion\n• Secure remote communication\n• Multi-table support allowing multiple matches simultaneously\n• Optimized client-server architecture\n• Persistent player data and statistics\n\n### My Contribution\nI was responsible for the complete scripting and gameplay systems implementation, including matchmaking, game flow, progression systems, rewards, data persistence, and overall architecture.\n\nTechnologies: Roblox Studio, Luau, ProfileService, DataStore Systems, Remote Events & Remote Functions',
           tags: ['Full Game', 'Multiplayer', 'ProfileService']
         },
@@ -170,11 +175,54 @@
 
       const project = projects[projId] || projects.trivia;
       
-      projectVideo.src = project.video;
+      // Handle single video vs multiple videos
+      const videoList = project.videos || [project.video];
+      let currentVideoIndex = 0;
+      
+      projectVideo.src = videoList[0];
       projectVideo.load();
+      
+      // Auto-play next video when current one ends
+      projectVideo.onended = () => {
+        if (videoList.length > 1 && currentVideoIndex < videoList.length - 1) {
+          currentVideoIndex++;
+          projectVideo.src = videoList[currentVideoIndex];
+          projectVideo.load();
+          projectVideo.play().catch(() => {});
+          
+          document.querySelectorAll('.video-thumb').forEach((t, i) => {
+            t.classList.toggle('active', i === currentVideoIndex);
+          });
+        }
+      };
       
       projectTitle.textContent = project.title;
       projectDesc.textContent = project.desc;
+
+      // Build video gallery thumbnails
+      const gallery = document.getElementById('videoGallery');
+      if (gallery) {
+        gallery.innerHTML = '';
+        if (videoList.length > 1) {
+          videoList.forEach((vidSrc, index) => {
+            const thumbContainer = document.createElement('div');
+            thumbContainer.className = 'video-thumb' + (index === 0 ? ' active' : '');
+            thumbContainer.innerHTML = `<video src="${vidSrc}" muted preload="metadata"></video><span>Part ${index + 1}</span>`;
+            
+            thumbContainer.addEventListener('click', () => {
+              currentVideoIndex = index;
+              projectVideo.src = vidSrc;
+              projectVideo.load();
+              projectVideo.play().catch(() => {});
+              
+              document.querySelectorAll('.video-thumb').forEach(t => t.classList.remove('active'));
+              thumbContainer.classList.add('active');
+            });
+            
+            gallery.appendChild(thumbContainer);
+          });
+        }
+      }
 
       if (projectMeta) {
         projectMeta.innerHTML = '';

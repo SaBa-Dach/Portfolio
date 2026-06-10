@@ -241,3 +241,55 @@ img, video { max-width: 100%; display: block; }
   .nav-links.open { display: flex; }
   .menu-toggle { display: block; }
 }
+
+
+/* === Video Gallery for Multiple Videos === */
+.video-gallery {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+  overflow-x: auto;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) var(--surface);
+}
+.video-gallery::-webkit-scrollbar { height: 6px; }
+.video-gallery::-webkit-scrollbar-track { background: var(--surface); border-radius: 10px; }
+.video-gallery::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 10px; }
+
+.video-thumb {
+  flex: 0 0 180px;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid var(--border);
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+  position: relative;
+}
+.video-thumb:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+}
+.video-thumb.active {
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(232, 255, 87, 0.3);
+}
+.video-thumb video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  pointer-events: none;
+}
+.video-thumb span {
+  position: absolute;
+  bottom: 6px;
+  left: 8px;
+  font-size: 11px;
+  background: rgba(0,0,0,0.8);
+  padding: 2px 8px;
+  border-radius: 4px;
+  color: var(--text);
+  font-weight: 600;
+}
