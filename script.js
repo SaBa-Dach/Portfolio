@@ -109,9 +109,15 @@
 
     if (projectTitle && projectVideo) {
       const params = new URLSearchParams(window.location.search);
-      const projId = params.get('id') || 'coin';
+      const projId = params.get('id') || 'trivia';
 
       const projects = {
+        trivia: {
+          title: 'Multiplayer Trivia System',
+          video: 'videos/Full Game.mp4',
+          desc: 'A multiplayer Roblox trivia game built around quick decision-making, progression, and replayability.\n\nPlayers join tables and compete against others in a series of "Higher or Lower?" style questions across multiple categories including gaming, sports, music, social media, geography, and more. Each round challenges players to choose between two options before the timer expires. Wrong answers cost lives, while correct answers reward coins, XP, and streak bonuses.\n\n### Systems Developed\n• Multiplayer table matchmaking\n• Round management system\n• Question and answer framework\n• Server-authoritative answer validation\n• Lives and elimination system\n• Coin and XP rewards\n• Answer streak bonuses\n• Daily rewards\n• Data saving and player progression\n• Global leaderboards\n• Cosmetic rewards integration\n• 1v1 duel support\n• Modular and scalable architecture\n\n### Technical Highlights\n• Server-authoritative gameplay logic\n• Modular codebase designed for future expansion\n• Secure remote communication\n• Multi-table support allowing multiple matches simultaneously\n• Optimized client-server architecture\n• Persistent player data and statistics\n\n### My Contribution\nI was responsible for the complete scripting and gameplay systems implementation, including matchmaking, game flow, progression systems, rewards, data persistence, and overall architecture.\n\nTechnologies: Roblox Studio, Luau, ProfileService, DataStore Systems, Remote Events & Remote Functions',
+          tags: ['Full Game', 'Multiplayer', 'ProfileService']
+        },
         slapping: {
           title: 'Slapping / Ragdoll System',
           video: 'videos/slapping.mp4',
@@ -162,7 +168,7 @@
         }
       };
 
-      const project = projects[projId] || projects.slapping;
+      const project = projects[projId] || projects.trivia;
       
       projectVideo.src = project.video;
       projectVideo.load();
