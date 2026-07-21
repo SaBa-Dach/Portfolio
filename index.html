@@ -4,68 +4,114 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>inbo — Roblox Scripter</title>
+  <meta name="description" content="Luau scripter building clean, scalable gameplay systems for Roblox. Combat, data, UI, and more.">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="./ib_logo.png">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 <body>
+
+  <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
-    <a href="index.html" class="nav-logo">inbo<span class="accent">.</span></a>
+    <a href="index.html" class="nav-logo">inbo<span class="nav-logo-dot">.</span></a>
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
       <a href="#skills">Skills</a>
+      <a href="#pricing">Pricing</a>
       <a href="#contact">Contact</a>
+      <a href="https://discord.com/users/1481990642174263462" target="_blank" class="nav-cta">Hire me ↗</a>
     </div>
     <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
     </button>
   </nav>
 
+  <!-- HERO -->
   <header class="hero">
-    <div class="hero-grid"></div>
-    <div class="container hero-content fade-in">
-      <span class="hero-label">// hello, world</span>
-      <h1 class="hero-title"><span id="typewriter"></span><span class="accent blink">|</span></h1>
-      <p class="hero-sub">I build clean, scalable gameplay systems</p>
+    <div class="hero-bg"></div>
+    <div class="hero-scanline"></div>
+    <div class="container hero-content" id="heroContent">
+      <div class="hero-eyebrow">
+        <span class="hero-eyebrow-dot"></span>
+        Available for commissions
+      </div>
+      <h1 class="hero-title">
+        <!-- Height is locked to the tallest phrase so layout never shifts -->
+        <span class="hero-title-ghost" aria-hidden="true">Roblox Scripter</span>
+        <span class="hero-title-live" id="typewriterWrap">
+          <span id="typewriter"></span><span class="accent blink">_</span>
+        </span>
+      </h1>
+      <p class="hero-sub">Clean, scalable Luau systems built for performance, security, and long-term maintainability.</p>
       <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">View Projects</a>
-        <a href="#contact" class="btn btn-outline">Get in Touch</a>
+        <a href="#projects" class="btn btn-primary">View projects</a>
+        <a href="#contact" class="btn btn-outline">Get in touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <span class="hero-stat-num">1–2<span class="accent">yrs</span></span>
+          <span class="hero-stat-label">Experience</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">15<span class="accent">+</span></span>
+          <span class="hero-stat-label">Projects shipped</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">3<span class="accent">x</span></span>
+          <span class="hero-stat-label">Repeat clients</span>
+        </div>
+        <div class="hero-stat-divider"></div>
+        <div class="hero-stat">
+          <span class="hero-stat-num">&lt;12<span class="accent">h</span></span>
+          <span class="hero-stat-label">Reply time</span>
+        </div>
       </div>
     </div>
   </header>
 
   <main>
+
+    <!-- ABOUT -->
     <section id="about" class="section">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-num">01</span>
-          <h2>About Me</h2>
+          <span class="section-tag">About</span>
+          <h2>Who I am</h2>
         </div>
         <div class="about-body fade-in">
           <div class="avatar">IB</div>
           <div class="about-text">
-            <p>Hi, I'm <strong>inbo</strong> — a Roblox scripter focused on building clean, efficient, and scalable systems. I mainly work on gameplay systems and core mechanics, handling everything from server logic to complete game features.</p>
-            <div class="stat-chips">
-              <span class="chip"> Gameplay Systems</span>
-              <span class="chip">⚙️ Core Mechanics</span>
-              <span class="chip">🔗 Server Logic</span>
+            <p>Hi, I'm <strong>inbo</strong> — a Roblox scripter with <strong>1–2 years of experience</strong> building clean, efficient, and production-ready Luau systems. Over that time I've shipped <strong>15+ projects</strong> ranging from full multiplayer games to standalone gameplay systems, working with clients who have trusted me enough to come back multiple times.</p>
+            <p style="margin-top:14px;">I specialise in gameplay architecture, server-authoritative logic, and data systems — the stuff that has to work correctly every time. Every project is built with <strong>Rojo</strong> and <strong>Git</strong> so the code is organised, version-controlled, and easy to hand off or extend later.</p>
+            <div class="chips">
+              <span class="chip">Gameplay systems</span>
+              <span class="chip">Server-authoritative logic</span>
+              <span class="chip">ProfileService / DataStore</span>
+              <span class="chip">Combat &amp; physics</span>
+              <span class="chip">Rojo + Git</span>
+              <span class="chip">Anti-exploit</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- PROJECTS -->
     <section id="projects" class="section section-alt">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-num">02</span>
+          <span class="section-tag">Work</span>
           <h2>Projects</h2>
         </div>
         <div class="projects-grid">
-          
-          <!-- FEATURED PROJECT: MULTIPLAYER TRIVIA -->
+
           <a href="project.html?id=trivia" class="card card-featured fade-in">
             <div class="card-video">
               <video src="videos/TriviaGame1.mp4" muted loop playsinline preload="metadata"></video>
@@ -76,7 +122,7 @@
                 <span class="card-tag">Full Game</span>
               </div>
               <h3 class="card-title">Multiplayer Trivia System</h3>
-              <p class="card-desc">A multiplayer Roblox trivia game with "Higher or Lower?" style questions across 6+ categories. Features table matchmaking, lives/elimination, XP/coin rewards, streak bonuses, global leaderboards, 1v1 duels, and full ProfileService data persistence.</p>
+              <p class="card-desc">Multiplayer trivia with table matchmaking, 6+ categories, lives/elimination, XP/coin rewards, streak bonuses, global leaderboards, 1v1 duels, and full ProfileService persistence.</p>
               <div class="card-footer">
                 <span class="card-watch">▶ Watch demo</span>
               </div>
@@ -93,7 +139,7 @@
                 <span class="card-tag">Full Game</span>
               </div>
               <h3 class="card-title">Hide & Seek Framework</h3>
-              <p class="card-desc">A modular, production-ready hide-and-seek framework with server-authoritative gameplay. Features role management (Ghost/Hider/Seeker), round & countdown systems, admin panel, permission system, spectator/fly mode, Laser Eyes seeker ability, and secure remote networking.</p>
+              <p class="card-desc">Production-ready, server-authoritative hide-and-seek framework with role management, round system, admin panel, spectator mode, and Laser Eyes seeker ability.</p>
               <div class="card-footer">
                 <span class="card-watch">▶ Watch demo</span>
               </div>
@@ -106,11 +152,11 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon"></span>
+                <span class="card-icon">💥</span>
                 <span class="card-tag">Combat / Physics</span>
               </div>
               <h3 class="card-title">Slapping / Ragdoll System</h3>
-              <p class="card-desc">Advanced physics-based ragdoll using BallSocketConstraints for realistic limb movement. Features server-authoritative hit detection, dynamic knockback scaling, reach validation, and multi-target detection. Includes network ownership handling and a synced get-up mechanic.</p>
+              <p class="card-desc">Physics-based ragdoll with BallSocketConstraints, server-authoritative hit detection, dynamic knockback, reach validation, and synced get-up mechanic.</p>
               <div class="card-footer">
                 <span class="card-watch">▶ Watch demo</span>
               </div>
@@ -127,7 +173,7 @@
                 <span class="card-tag">Full Game</span>
               </div>
               <h3 class="card-title">Coin Throwing System</h3>
-              <p class="card-desc">Full game system — players buy throwable coins with Robux, throw them at others to deal damage, and earn daily rewards based on spending. Includes config module, server logic, shop UI, physics projectiles, effects handler, and remote architecture.</p>
+              <p class="card-desc">Players buy throwable coins with Robux, deal damage, and earn daily rewards. Includes shop UI, physics projectiles, effects handler, and full remote architecture.</p>
               <div class="card-footer">
                 <span class="card-watch">▶ Watch demo</span>
               </div>
@@ -144,7 +190,7 @@
                 <span class="card-tag">Economy</span>
               </div>
               <h3 class="card-title">Tipping / Donation System</h3>
-              <p class="card-desc">Gamepass ID input, automatic price fetching from Roblox's API, and a full in-game purchase flow — built clean and reusable.</p>
+              <p class="card-desc">Gamepass ID input, automatic price fetching from the Roblox API, and a complete in-game purchase flow — clean and reusable.</p>
               <div class="card-footer">
                 <span class="card-watch">▶ Watch demo</span>
               </div>
@@ -161,24 +207,7 @@
                 <span class="card-tag">Progression</span>
               </div>
               <h3 class="card-title">Daily Rewards System</h3>
-              <p class="card-desc">Streak tracking with persistent DataStore saving and a polished UI that shows current streak, next reward, and claim buttons.</p>
-              <div class="card-footer">
-                <span class="card-watch">▶ Watch demo</span>
-              </div>
-            </div>
-          </a>
-
-          <a href="project.html?id=staff" class="card fade-in">
-            <div class="card-video">
-              <video src="videos/staff-display.mp4" muted loop playsinline preload="metadata"></video>
-            </div>
-            <div class="card-body">
-              <div class="card-header">
-                <span class="card-icon">👥</span>
-                <span class="card-tag">Systems</span>
-              </div>
-              <h3 class="card-title">Staff / Player Display System</h3>
-              <p class="card-desc">Live panel showing player avatars and group rank detection — great for admin dashboards or server-info boards.</p>
+              <p class="card-desc">Streak tracking with persistent DataStore saving and a polished UI showing current streak, next reward, and claim state.</p>
               <div class="card-footer">
                 <span class="card-watch">▶ Watch demo</span>
               </div>
@@ -195,7 +224,7 @@
                 <span class="card-tag">Gameplay</span>
               </div>
               <h3 class="card-title">Combat System</h3>
-              <p class="card-desc">M1 combo chains, server-side hit detection, and damage handling — built with latency in mind for a fair experience.</p>
+              <p class="card-desc">M1 combo chains, server-side hit detection, and damage handling built with latency compensation for a fair multiplayer experience.</p>
               <div class="card-footer">
                 <span class="card-watch">▶ Watch demo</span>
               </div>
@@ -219,17 +248,34 @@
             </div>
           </a>
 
+          <a href="project.html?id=staff" class="card fade-in">
+            <div class="card-video">
+              <video src="videos/staff-display.mp4" muted loop playsinline preload="metadata"></video>
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-icon">👥</span>
+                <span class="card-tag">Systems</span>
+              </div>
+              <h3 class="card-title">Staff / Player Display</h3>
+              <p class="card-desc">Live panel showing player avatars and group rank detection — ideal for admin dashboards and server-info boards.</p>
+              <div class="card-footer">
+                <span class="card-watch">▶ Watch demo</span>
+              </div>
+            </div>
+          </a>
+
           <a href="project.html?id=ui" class="card fade-in">
             <div class="card-video">
               <video src="videos/ui-systems.mp4" muted loop playsinline preload="metadata"></video>
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">️</span>
+                <span class="card-icon">🖥️</span>
                 <span class="card-tag">Systems</span>
               </div>
               <h3 class="card-title">UI Systems</h3>
-              <p class="card-desc">Reusable button components, animated navigation menus, and clean input handling — all written for easy plug-and-play use.</p>
+              <p class="card-desc">Reusable button components, animated navigation menus, and clean input handling — all written for plug-and-play use.</p>
               <div class="card-footer">
                 <span class="card-watch">▶ Watch demo</span>
               </div>
@@ -240,40 +286,206 @@
       </div>
     </section>
 
+    <!-- SKILLS -->
     <section id="skills" class="section">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-num">03</span>
+          <span class="section-tag">Expertise</span>
           <h2>Skills</h2>
         </div>
         <div class="skills-grid">
           <div class="skill-card fade-in">
             <div class="skill-icon">🌙</div>
-            <h3 class="skill-name">Roblox Lua</h3>
-            <div class="skill-bar"><div class="skill-fill" style="width: 92%"></div></div>
+            <h3 class="skill-name">Roblox Luau</h3>
+            <p class="skill-desc">Core language — OOP, metatables, coroutines, and clean module patterns.</p>
+            <div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div>
+            <span class="skill-pct">93%</span>
           </div>
           <div class="skill-card fade-in">
             <div class="skill-icon">⚙️</div>
-            <h3 class="skill-name">Game Systems</h3>
-            <div class="skill-bar"><div class="skill-fill" style="width: 88%"></div></div>
+            <h3 class="skill-name">Gameplay systems</h3>
+            <p class="skill-desc">Round loops, matchmaking, progression, combat, and full game architecture.</p>
+            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
+            <span class="skill-pct">90%</span>
           </div>
           <div class="skill-card fade-in">
             <div class="skill-icon">🔗</div>
-            <h3 class="skill-name">Client/Server Logic</h3>
-            <div class="skill-bar"><div class="skill-fill" style="width: 85%"></div></div>
+            <h3 class="skill-name">Client / server logic</h3>
+            <p class="skill-desc">Secure RemoteEvents, server-authoritative validation, and anti-exploit design.</p>
+            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
+            <span class="skill-pct">88%</span>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon">💾</div>
+            <h3 class="skill-name">Data &amp; persistence</h3>
+            <p class="skill-desc">ProfileService, DataStore2, session locking, and safe data migration patterns.</p>
+            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
+            <span class="skill-pct">85%</span>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon">🖥️</div>
+            <h3 class="skill-name">UI &amp; animation</h3>
+            <p class="skill-desc">TweenService, reactive interfaces, and reusable component systems.</p>
+            <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
+            <span class="skill-pct">82%</span>
+          </div>
+          <div class="skill-card fade-in">
+            <div class="skill-icon">🛠️</div>
+            <h3 class="skill-name">Dev workflow</h3>
+            <p class="skill-desc">Rojo, Git version control, modular project structure, and clean code practices.</p>
+            <div class="skill-bar"><div class="skill-fill" style="width:87%"></div></div>
+            <span class="skill-pct">87%</span>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- PRICING -->
+    <section id="pricing" class="section section-alt">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-tag">Pricing</span>
+          <h2>What it costs</h2>
+        </div>
+        <div class="pricing-grid fade-in">
+
+          <div class="pricing-card">
+            <p class="pricing-tier">Small system</p>
+            <p class="pricing-price">From <span class="accent">$10</span></p>
+            <p class="pricing-desc">Single standalone systems with a clear, well-defined scope.</p>
+            <ul class="pricing-list">
+              <li>Daily rewards system</li>
+              <li>Sprint / dash mechanic</li>
+              <li>Tipping / donation flow</li>
+              <li>Staff display panel</li>
+              <li>Simple UI components</li>
+            </ul>
+            <p class="pricing-note">Full payment upfront.</p>
+          </div>
+
+          <div class="pricing-card pricing-card-featured">
+            <span class="pricing-badge">Most common</span>
+            <p class="pricing-tier">Medium system</p>
+            <p class="pricing-price">From <span class="accent">$25</span></p>
+            <p class="pricing-desc">Multi-part systems or anything requiring client/server architecture and data persistence.</p>
+            <ul class="pricing-list">
+              <li>Combat system with hit detection</li>
+              <li>Inventory &amp; shop system</li>
+              <li>Round-based gameplay loop</li>
+              <li>Admin panel + permission system</li>
+              <li>Ragdoll / physics system</li>
+            </ul>
+            <p class="pricing-note">50% upfront · 50% on delivery.</p>
+          </div>
+
+          <div class="pricing-card">
+            <p class="pricing-tier">Full game</p>
+            <p class="pricing-price"><span class="accent">Custom</span> quote</p>
+            <p class="pricing-desc">Complete game builds with matchmaking, progression, data systems, and full architecture.</p>
+            <ul class="pricing-list">
+              <li>Multiplayer game framework</li>
+              <li>Matchmaking &amp; lobby system</li>
+              <li>Full ProfileService integration</li>
+              <li>Leaderboards &amp; rewards</li>
+              <li>Ongoing support available</li>
+            </ul>
+            <p class="pricing-note">50% upfront · 50% on delivery.</p>
+          </div>
+
+        </div>
+        <p class="pricing-footer fade-in">Payment via <strong>PayPal</strong>, <strong>crypto</strong>, or other agreed platforms. Price depends on complexity — send me your brief and I'll give you a clear number before we start.</p>
+      </div>
+    </section>
+
+    <!-- REVIEWS (live via Supabase) -->
+    <section id="testimonials" class="section">
+      <div class="container">
+
+        <!-- Leave a review -->
+        <div class="review-form-wrap fade-in">
+          <div class="review-form-header">
+            <span class="section-tag">Leave a review</span>
+          </div>
+          <p class="review-form-sub">Worked with inbo? Leave an honest review — it shows up live for everyone who visits.</p>
+
+          <div class="review-form-grid">
+            <div class="review-field">
+              <label class="review-label" for="reviewUsername">Your username</label>
+              <input class="review-input" id="reviewUsername" type="text" placeholder="YourName" maxlength="40" autocomplete="off">
+            </div>
+            <div class="review-field">
+              <label class="review-label" for="reviewProject">Project type</label>
+              <input class="review-input" id="reviewProject" type="text" placeholder="e.g. Combat system, Full game…" maxlength="60" autocomplete="off">
+            </div>
+          </div>
+
+          <div class="review-field" style="margin-top:16px;">
+            <label class="review-label">Rating</label>
+            <div class="star-picker" id="starPicker" role="radiogroup" aria-label="Rating">
+              <span class="star" data-val="1">★</span>
+              <span class="star" data-val="2">★</span>
+              <span class="star" data-val="3">★</span>
+              <span class="star" data-val="4">★</span>
+              <span class="star" data-val="5">★</span>
+            </div>
+          </div>
+
+          <div class="review-field" style="margin-top:16px;">
+            <label class="review-label" for="reviewText">Your review</label>
+            <textarea class="review-input review-textarea" id="reviewText" placeholder="What was it like working with inbo? Be specific — it helps future clients." maxlength="600" rows="4"></textarea>
+            <span class="review-char-count" id="reviewCharCount">0 / 600</span>
+          </div>
+
+          <div id="reviewError" class="review-error" style="display:none;"></div>
+          <div id="reviewSuccess" class="review-success" style="display:none;">✓ Review submitted — thank you!</div>
+
+          <button class="btn btn-primary review-submit" id="reviewSubmit" style="margin-top:16px;">Submit review</button>
+        </div>
+
+        <!-- Display reviews -->
+        <div class="section-header fade-in" style="margin-top:72px;">
+          <span class="section-tag">Reviews</span>
+          <h2>What clients say</h2>
+        </div>
+
+        <div id="reviewsGrid" class="testimonials-grid fade-in">
+          <div class="review-loading">Loading reviews…</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT -->
     <section id="contact" class="section section-alt">
       <div class="container">
         <div class="contact-container fade-in">
           <div class="section-header center">
-            <span class="section-num">04</span>
-            <h2>Contact</h2>
+            <span class="section-tag">Contact</span>
+            <h2>Let's build something</h2>
           </div>
-          <p class="contact-sub">Ready to build something? I am available daily and can start immediately.</p>
+          <div class="contact-avail">
+            <span class="contact-avail-dot"></span>
+            Available now · replies within 12 hours
+          </div>
+          <p class="contact-sub">Send me your project idea, required features, budget, and deadline. I'll send back a clear estimate — no commitment needed.</p>
+
+          <div class="contact-process">
+            <div class="contact-step">
+              <span class="contact-step-num">01</span>
+              <span class="contact-step-text">You send me the brief</span>
+            </div>
+            <div class="contact-step-arrow">→</div>
+            <div class="contact-step">
+              <span class="contact-step-num">02</span>
+              <span class="contact-step-text">I reply with a price &amp; timeline</span>
+            </div>
+            <div class="contact-step-arrow">→</div>
+            <div class="contact-step">
+              <span class="contact-step-num">03</span>
+              <span class="contact-step-text">We agree, I start building</span>
+            </div>
+          </div>
+
           <div class="contact-info">
             <div class="contact-item">
               <span>💬</span>
@@ -284,14 +496,17 @@
               <span>Roblox: @mr_inbo</span>
             </div>
           </div>
-          <a href="https://discord.com/users/1481990642174263462" target="_blank" class="btn btn-primary hire-btn">Hire Me</a>
+          <a href="https://discord.com/users/1481990642174263462" target="_blank" class="btn btn-primary" style="padding: 15px 52px; font-size: 14px;">
+            Message me on Discord ↗
+          </a>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer class="footer">
-    <p>Built with ❤️ & Lua &nbsp;·&nbsp; © 2025-2026</p>
+    <p>Built with care &amp; Lua &nbsp;·&nbsp; inbo &nbsp;·&nbsp; © 2025–2026</p>
   </footer>
 
   <script src="script.js"></script>

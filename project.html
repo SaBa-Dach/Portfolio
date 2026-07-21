@@ -3,44 +3,70 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Project Demo — inbo</title>
+  <title>Project — inbo</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="./ib_logo.png">
 </head>
 <body>
-  <nav class="navbar scrolled">
-    <a href="index.html" class="nav-logo">inbo<span class="accent">.</span></a>
-    <a href="index.html" class="btn btn-outline" style="padding: 10px 18px; font-size: 13px;">← Back</a>
+
+  <nav class="navbar scrolled" id="navbar">
+    <a href="index.html" class="nav-logo">inbo<span class="nav-logo-dot">.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#about">About</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://discord.com/users/1481990642174263462" target="_blank" class="nav-cta">Hire me ↗</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
   </nav>
 
-  <main class="section">
-    <div class="container">
+  <main>
+    <div class="container project-page-header">
       <div class="project-header fade-in">
-        <a href="index.html" class="back-link">← Back to Projects</a>
-        <span class="hero-label">// project demo</span>
-        <h1 class="project-title" id="projectTitle">Loading...</h1>
+
+        <a href="index.html" class="project-back-nav">
+          ← Back to projects
+        </a>
+
+        <span class="project-eyebrow" id="projectEyebrow">// project demo</span>
+        <h1 class="project-title" id="projectTitle">Loading…</h1>
         <div class="project-meta" id="projectMeta"></div>
-        
-        <div class="project-video">
+
+        <div class="project-video-wrap">
           <video id="projectVideo" controls autoplay muted playsinline>
             <p>Your browser does not support HTML5 video.</p>
           </video>
         </div>
-        
-        <!-- NEW: Video Gallery Container -->
+
         <div class="video-gallery" id="videoGallery"></div>
 
-        <div class="project-description">
-          <p id="projectDesc">Loading description...</p>
+        <div class="project-body">
+          <div class="project-desc-text" id="projectDesc">Loading…</div>
+
+          <aside class="project-sidebar">
+            <div class="sidebar-card">
+              <h4>Technologies</h4>
+              <div class="sidebar-tag-list" id="sidebarTags"></div>
+              <a href="https://discord.com/users/1481990642174263462" target="_blank" class="sidebar-cta">
+                Hire me for something similar ↗
+              </a>
+            </div>
+          </aside>
         </div>
+
       </div>
     </div>
   </main>
 
   <footer class="footer">
-    <p>Built with ❤️ & Lua &nbsp;·&nbsp; © 2025</p>
+    <p>Built with care &amp; Lua &nbsp;·&nbsp; inbo &nbsp;·&nbsp; © 2025–2026</p>
   </footer>
 
   <script src="script.js"></script>
