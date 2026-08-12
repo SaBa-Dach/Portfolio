@@ -80,8 +80,8 @@ begin
     else left(btrim(new.discord_display_name), 2) || '***'
   end;
   new.discord_avatar_url := coalesce(nullif(user_metadata ->> 'avatar_url', ''), nullif(user_metadata ->> 'picture', ''));
-  new.status := 'pending';
-  new.reviewed_at := null;
+  new.status := 'approved';
+  new.reviewed_at := now();
   new.discord_verified := true;
   new.project_type := btrim(new.project_type);
   new.review := btrim(new.review);
@@ -97,6 +97,27 @@ $function$;
 revoke all on function public.secure_new_review_identity() from public, anon, authenticated;
 
 drop policy if exists reviews_read_own_pending on public.reviews;
+drop policy if exists reviews_discord_insert_pending on public.reviews;
+drop policy if exists reviews_discord_insert_approved on public.reviews;
+
+create policy reviews_discord_insert_approved
+on public.reviews
+for insert
+to authenticated
+with check (
+  auth_user_id = auth.uid()
+  and status = 'approved'
+  and discord_verified = true
+);
+
+alter table public.reviews
+  alter column status set default 'approved';
+
+update public.reviews
+set status = 'approved',
+    reviewed_at = coalesce(reviewed_at, now())
+where status = 'pending'
+  and discord_verified = true;
 
 revoke all on table public.reviews from anon, authenticated;
 

@@ -52,7 +52,7 @@ set public_display_name = case
 end;
 
 alter table public.reviews
-  alter column status set default 'pending',
+  alter column status set default 'approved',
   alter column status set not null,
   alter column created_at set default now();
 
@@ -157,8 +157,8 @@ begin
     nullif(user_metadata ->> 'avatar_url', ''),
     nullif(user_metadata ->> 'picture', '')
   );
-  new.status := 'pending';
-  new.reviewed_at := null;
+  new.status := 'approved';
+  new.reviewed_at := now();
   new.discord_verified := true;
   new.project_type := btrim(new.project_type);
   new.review := btrim(new.review);
@@ -227,13 +227,13 @@ for select
 to anon, authenticated
 using (status = 'approved');
 
-create policy reviews_discord_insert_pending
+create policy reviews_discord_insert_approved
 on public.reviews
 for insert
 to authenticated
 with check (
   auth_user_id = auth.uid()
-  and status = 'pending'
+  and status = 'approved'
   and discord_verified = true
 );
 

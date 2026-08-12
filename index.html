@@ -397,7 +397,7 @@
       </div>
     </section>
 
-    <!-- REVIEWS (Discord-authenticated and moderated via Supabase) -->
+    <!-- REVIEWS (Discord-authenticated via Supabase) -->
     <section id="testimonials" class="section">
       <div class="container">
         <div class="section-header fade-in">
@@ -408,18 +408,17 @@
         <div class="reviews-summary fade-in" id="reviewsSummary" aria-live="polite">
           <div>
             <div class="reviews-summary-score"><span id="reviewsAverage">—</span> / 5</div>
-            <div class="reviews-summary-label" id="reviewsAverageLabel">Loading approved reviews…</div>
+            <div class="reviews-summary-label" id="reviewsAverageLabel">Loading reviews…</div>
           </div>
           <div class="reviews-summary-visual">
             <div class="rating-bar" aria-hidden="true">
               <span class="rating-bar-fill" id="reviewsAverageBar"></span>
             </div>
-            <div class="reviews-summary-count" id="reviewsCount">0 approved reviews</div>
           </div>
         </div>
 
         <div id="reviewsGrid" class="testimonials-grid fade-in" aria-live="polite">
-          <div class="review-loading">Loading approved reviews…</div>
+          <div class="review-loading">Loading reviews…</div>
         </div>
 
         <div class="review-form-wrap fade-in">
@@ -451,8 +450,8 @@
 
           <div id="reviewError" class="review-error" role="alert" hidden></div>
           <div id="reviewSuccess" class="review-success" role="status" hidden>
-            <strong>Review submitted!</strong>
-            <span>Your review is waiting for approval. It will appear here once it has been reviewed.</span>
+            <strong>Review published!</strong>
+            <span>Your Discord-verified review is now live.</span>
           </div>
 
           <form id="reviewForm" hidden novalidate>

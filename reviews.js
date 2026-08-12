@@ -111,14 +111,12 @@
   function updateReviewSummary(reviews) {
     const averageEl = document.getElementById('reviewsAverage');
     const labelEl = document.getElementById('reviewsAverageLabel');
-    const countEl = document.getElementById('reviewsCount');
     const barEl = document.getElementById('reviewsAverageBar');
     const count = reviews.length;
 
     if (!count) {
       averageEl.textContent = '—';
       labelEl.textContent = 'No ratings yet';
-      countEl.textContent = '0 approved reviews';
       barEl.style.width = '0%';
       return;
     }
@@ -126,7 +124,6 @@
     const average = reviews.reduce((total, item) => total + Number(item.rating), 0) / count;
     averageEl.textContent = average.toFixed(1);
     labelEl.textContent = getAverageLabel(average);
-    countEl.textContent = `${count} approved ${count === 1 ? 'review' : 'reviews'}`;
     barEl.style.width = `${average * 20}%`;
   }
 
@@ -199,7 +196,7 @@
     reviewsGrid.replaceChildren();
     const loading = document.createElement('div');
     loading.className = 'review-loading';
-    loading.textContent = 'Loading approved reviews…';
+    loading.textContent = 'Loading reviews…';
     reviewsGrid.appendChild(loading);
 
     const { data, error } = await db
@@ -221,7 +218,7 @@
     if (!data?.length) {
       const empty = document.createElement('div');
       empty.className = 'review-empty';
-      empty.textContent = 'No approved reviews yet.';
+      empty.textContent = 'No reviews yet.';
       reviewsGrid.appendChild(empty);
       return;
     }
@@ -303,6 +300,7 @@
     charCountEl.textContent = '0 / 600';
     setRating(0);
     setHidden(successEl, false);
+    await loadReviews();
     document.getElementById('reviewProject').focus();
   });
 
