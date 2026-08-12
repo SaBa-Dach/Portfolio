@@ -397,61 +397,93 @@
       </div>
     </section>
 
-    <!-- REVIEWS (live via Supabase) -->
+    <!-- REVIEWS (Discord-authenticated and moderated via Supabase) -->
     <section id="testimonials" class="section">
       <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-tag">Reviews</span>
+          <h2>Client Reviews</h2>
+        </div>
 
-        <!-- Leave a review -->
+        <div class="reviews-summary fade-in" id="reviewsSummary" aria-live="polite">
+          <div>
+            <div class="reviews-summary-score"><span id="reviewsAverage">—</span> / 5</div>
+            <div class="reviews-summary-label" id="reviewsAverageLabel">Loading approved reviews…</div>
+          </div>
+          <div class="reviews-summary-visual">
+            <div class="rating-bar" aria-hidden="true">
+              <span class="rating-bar-fill" id="reviewsAverageBar"></span>
+            </div>
+            <div class="reviews-summary-count" id="reviewsCount">0 approved reviews</div>
+          </div>
+        </div>
+
+        <div id="reviewsGrid" class="testimonials-grid fade-in" aria-live="polite">
+          <div class="review-loading">Loading approved reviews…</div>
+        </div>
+
         <div class="review-form-wrap fade-in">
           <div class="review-form-header">
-            <span class="section-tag">Leave a review</span>
+            <span class="section-tag">Leave a Review</span>
+            <h3>Share your experience</h3>
           </div>
-          <p class="review-form-sub">Worked with inbo? Leave an honest review — it shows up live for everyone who visits.</p>
 
-          <div class="review-form-grid">
+          <div class="review-auth-status" id="reviewAuthLoading" role="status">Checking your Discord session…</div>
+
+          <div class="review-auth-panel" id="reviewLoggedOut" hidden>
+            <p>You must verify your Discord account before reviewing.</p>
+            <button class="btn btn-primary discord-login" id="discordLogin" type="button">Continue with Discord</button>
+          </div>
+
+          <div class="review-account" id="reviewAccount" hidden>
+            <div class="review-account-copy">
+              <span class="review-label">Reviewing as</span>
+              <div class="review-account-identity">
+                <div class="review-avatar-wrap review-account-avatar" id="reviewAccountAvatar" aria-hidden="true"></div>
+                <div>
+                  <strong id="reviewAccountName">Discord user</strong>
+                  <span class="discord-verified">✓ Discord verified</span>
+                </div>
+              </div>
+            </div>
+            <button class="review-signout" id="discordSignOut" type="button">Sign out</button>
+          </div>
+
+          <div class="review-pending-notice" id="reviewPending" hidden>You already have a review awaiting approval.</div>
+
+          <div id="reviewError" class="review-error" role="alert" hidden></div>
+          <div id="reviewSuccess" class="review-success" role="status" hidden>
+            <strong>Review submitted!</strong>
+            <span>Your review is waiting for approval. It will appear here once it has been reviewed.</span>
+          </div>
+
+          <form id="reviewForm" hidden novalidate>
             <div class="review-field">
-              <label class="review-label" for="reviewUsername">Your username</label>
-              <input class="review-input" id="reviewUsername" type="text" placeholder="YourName" maxlength="40" autocomplete="off">
+              <label class="review-label" for="reviewProject">Project / Commission</label>
+              <input class="review-input" id="reviewProject" name="project_type" type="text" placeholder="e.g. Combat system, Full game…" minlength="2" maxlength="80" autocomplete="off" required>
             </div>
+
+            <fieldset class="review-field rating-field">
+              <legend class="review-label">Rating</legend>
+              <div class="rating-picker" id="ratingPicker" role="radiogroup" aria-label="Choose a rating from 1 to 5">
+                <button class="rating-option" type="button" data-rating="1" role="radio" aria-checked="false" aria-label="1 out of 5, Poor">1</button>
+                <button class="rating-option" type="button" data-rating="2" role="radio" aria-checked="false" aria-label="2 out of 5, Below Expectations">2</button>
+                <button class="rating-option" type="button" data-rating="3" role="radio" aria-checked="false" aria-label="3 out of 5, Good">3</button>
+                <button class="rating-option" type="button" data-rating="4" role="radio" aria-checked="false" aria-label="4 out of 5, Very Good">4</button>
+                <button class="rating-option" type="button" data-rating="5" role="radio" aria-checked="false" aria-label="5 out of 5, Excellent">5</button>
+              </div>
+              <p class="rating-selection" id="ratingSelection" aria-live="polite">Select a rating</p>
+            </fieldset>
+
             <div class="review-field">
-              <label class="review-label" for="reviewProject">Project type</label>
-              <input class="review-input" id="reviewProject" type="text" placeholder="e.g. Combat system, Full game…" maxlength="60" autocomplete="off">
+              <label class="review-label" for="reviewText">Review</label>
+              <textarea class="review-input review-textarea" id="reviewText" name="review" placeholder="Tell others about your experience..." minlength="20" maxlength="600" rows="5" required></textarea>
+              <span class="review-char-count" id="reviewCharCount">0 / 600</span>
             </div>
-          </div>
 
-          <div class="review-field" style="margin-top:16px;">
-            <label class="review-label">Rating</label>
-            <div class="star-picker" id="starPicker" role="radiogroup" aria-label="Rating">
-              <span class="star" data-val="1">★</span>
-              <span class="star" data-val="2">★</span>
-              <span class="star" data-val="3">★</span>
-              <span class="star" data-val="4">★</span>
-              <span class="star" data-val="5">★</span>
-            </div>
-          </div>
-
-          <div class="review-field" style="margin-top:16px;">
-            <label class="review-label" for="reviewText">Your review</label>
-            <textarea class="review-input review-textarea" id="reviewText" placeholder="What was it like working with inbo? Be specific — it helps future clients." maxlength="600" rows="4"></textarea>
-            <span class="review-char-count" id="reviewCharCount">0 / 600</span>
-          </div>
-
-          <div id="reviewError" class="review-error" style="display:none;"></div>
-          <div id="reviewSuccess" class="review-success" style="display:none;">✓ Review submitted — thank you!</div>
-
-          <button class="btn btn-primary review-submit" id="reviewSubmit" style="margin-top:16px;">Submit review</button>
+            <button class="btn btn-primary review-submit" id="reviewSubmit" type="submit">Submit Review</button>
+          </form>
         </div>
-
-        <!-- Display reviews -->
-        <div class="section-header fade-in" style="margin-top:72px;">
-          <span class="section-tag">Reviews</span>
-          <h2>What clients say</h2>
-        </div>
-
-        <div id="reviewsGrid" class="testimonials-grid fade-in">
-          <div class="review-loading">Loading reviews…</div>
-        </div>
-
       </div>
     </section>
 
@@ -510,5 +542,6 @@
   </footer>
 
   <script src="script.js"></script>
+  <script src="reviews.js"></script>
 </body>
 </html>
