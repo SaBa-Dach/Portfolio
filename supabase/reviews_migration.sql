@@ -10,6 +10,7 @@ alter table public.reviews
   add column if not exists discord_display_name text,
   add column if not exists discord_avatar_url text,
   add column if not exists public_display_name text,
+  add column if not exists public_avatar_token uuid not null default gen_random_uuid(),
   add column if not exists status text,
   add column if not exists reviewed_at timestamptz,
   add column if not exists discord_verified boolean not null default false;
@@ -85,14 +86,11 @@ create index if not exists reviews_approved_created_at_idx
 create index if not exists reviews_auth_user_id_idx
   on public.reviews (auth_user_id);
 
--- Database-backed spam protection: one pending submission per account/Discord ID.
-create unique index if not exists reviews_one_pending_per_auth_user_idx
-  on public.reviews (auth_user_id)
-  where status = 'pending' and auth_user_id is not null;
+create unique index if not exists reviews_public_avatar_token_idx
+  on public.reviews (public_avatar_token);
 
-create unique index if not exists reviews_one_pending_per_discord_user_idx
-  on public.reviews (discord_user_id)
-  where status = 'pending' and discord_user_id is not null;
+drop index if exists public.reviews_one_pending_per_auth_user_idx;
+drop index if exists public.reviews_one_pending_per_discord_user_idx;
 
 create or replace function public.secure_new_review_identity()
 returns trigger
@@ -229,12 +227,6 @@ for select
 to anon, authenticated
 using (status = 'approved');
 
-create policy reviews_read_own_pending
-on public.reviews
-for select
-to authenticated
-using (auth_user_id = auth.uid() and status = 'pending');
-
 create policy reviews_discord_insert_pending
 on public.reviews
 for insert
@@ -251,6 +243,7 @@ revoke all on table public.reviews from anon, authenticated;
 
 grant select (
   public_display_name,
+  public_avatar_token,
   discord_verified,
   project_type,
   rating,
@@ -261,6 +254,7 @@ grant select (
 grant select (
   id,
   public_display_name,
+  public_avatar_token,
   discord_verified,
   project_type,
   rating,

@@ -5,7 +5,14 @@
 begin;
 
 alter table public.reviews
-  add column if not exists public_display_name text;
+  add column if not exists public_display_name text,
+  add column if not exists public_avatar_token uuid not null default gen_random_uuid();
+
+create unique index if not exists reviews_public_avatar_token_idx
+  on public.reviews (public_avatar_token);
+
+drop index if exists public.reviews_one_pending_per_auth_user_idx;
+drop index if exists public.reviews_one_pending_per_discord_user_idx;
 
 update public.reviews
 set public_display_name = case
@@ -89,10 +96,13 @@ $function$;
 
 revoke all on function public.secure_new_review_identity() from public, anon, authenticated;
 
+drop policy if exists reviews_read_own_pending on public.reviews;
+
 revoke all on table public.reviews from anon, authenticated;
 
 grant select (
   public_display_name,
+  public_avatar_token,
   discord_verified,
   project_type,
   rating,
@@ -103,6 +113,7 @@ grant select (
 grant select (
   id,
   public_display_name,
+  public_avatar_token,
   discord_verified,
   project_type,
   rating,

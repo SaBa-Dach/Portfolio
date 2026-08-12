@@ -3,6 +3,7 @@
 
   const SUPABASE_URL = 'https://elagiztpcujnyfpnhjwn.supabase.co';
   const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImVsYWdpenRwY3VqbnlmcG5oanduIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODQ2Mzk3OTQsImV4cCI6MjEwMDIxNTc5NH0.X7uM5FphrMFmeWOEFw7RZSWaxMfPYvHDwYMyDIJaaYQ';
+  const REVIEW_AVATAR_ENDPOINT = `${SUPABASE_URL}/functions/v1/review-avatar`;
   const reviewsGrid = document.getElementById('reviewsGrid');
 
   if (!reviewsGrid || !window.supabase) return;
@@ -161,7 +162,10 @@
     // Supabase returns only a server-generated masked name (for example,
     // "Sa***h"). The full Discord identity never reaches the browser.
     const authorName = review.public_display_name || 'Verified client';
-    author.appendChild(createAvatar(authorName, ''));
+    const avatarUrl = review.discord_verified && review.public_avatar_token
+      ? `${REVIEW_AVATAR_ENDPOINT}?token=${encodeURIComponent(review.public_avatar_token)}`
+      : '';
+    author.appendChild(createAvatar(authorName, avatarUrl));
 
     const authorCopy = document.createElement('div');
     authorCopy.className = 'testimonial-author-copy';
@@ -200,7 +204,7 @@
 
     const { data, error } = await db
       .from('reviews')
-      .select('public_display_name, discord_verified, project_type, rating, review, created_at')
+      .select('public_display_name, public_avatar_token, discord_verified, project_type, rating, review, created_at')
       .order('created_at', { ascending: false });
 
     reviewsGrid.replaceChildren();
@@ -235,7 +239,6 @@
     const loading = document.getElementById('reviewAuthLoading');
     const loggedOut = document.getElementById('reviewLoggedOut');
     const account = document.getElementById('reviewAccount');
-    const pending = document.getElementById('reviewPending');
     setHidden(loading, true);
     setHidden(successEl, true);
     setHidden(errorEl, true);
@@ -244,7 +247,6 @@
       setHidden(loggedOut, false);
       setHidden(account, true);
       setHidden(reviewForm, true);
-      setHidden(pending, true);
       return;
     }
 
@@ -253,25 +255,7 @@
     renderAccountAvatar(profile);
     setHidden(loggedOut, true);
     setHidden(account, false);
-
-    const { data, error } = await db
-      .from('reviews')
-      .select('id, status')
-      .eq('status', 'pending')
-      .limit(1);
-
-    if (currentSession?.user?.id !== session.user.id) return;
-
-    if (error) {
-      setHidden(reviewForm, true);
-      setHidden(pending, true);
-      setMessage(errorEl, 'We could not check your review status. Please refresh and try again.');
-      return;
-    }
-
-    const hasPendingReview = Boolean(data?.length);
-    setHidden(pending, !hasPendingReview);
-    setHidden(reviewForm, hasPendingReview);
+    setHidden(reviewForm, false);
   }
 
   document.getElementById('discordLogin').addEventListener('click', async () => {
@@ -311,11 +295,6 @@
     reviewSubmit.textContent = 'Submit Review';
 
     if (error) {
-      if (error.code === '23505') {
-        setHidden(reviewForm, true);
-        setHidden(document.getElementById('reviewPending'), false);
-        return;
-      }
       setMessage(errorEl, 'Your review could not be submitted. Please check the form and try again.');
       return;
     }
@@ -324,8 +303,7 @@
     charCountEl.textContent = '0 / 600';
     setRating(0);
     setHidden(successEl, false);
-    setHidden(reviewForm, true);
-    setHidden(document.getElementById('reviewPending'), false);
+    document.getElementById('reviewProject').focus();
   });
 
   loadReviews();

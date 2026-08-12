@@ -1,0 +1,2 @@
+[functions.review-avatar]
+verify_jwt = false
