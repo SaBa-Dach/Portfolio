@@ -9,6 +9,7 @@ alter table public.reviews
   add column if not exists discord_username text,
   add column if not exists discord_display_name text,
   add column if not exists discord_avatar_url text,
+  add column if not exists public_display_name text,
   add column if not exists status text,
   add column if not exists reviewed_at timestamptz,
   add column if not exists discord_verified boolean not null default false;
@@ -37,6 +38,17 @@ begin
   end if;
 end
 $migration$;
+
+-- Store only this masked derivative in browser-readable columns. The original
+-- identity remains private for moderation and abuse prevention.
+update public.reviews
+set public_display_name = case
+  when char_length(btrim(coalesce(discord_display_name, discord_username, 'Client'))) >= 3
+    then left(btrim(coalesce(discord_display_name, discord_username, 'Client')), 2)
+      || '***'
+      || right(btrim(coalesce(discord_display_name, discord_username, 'Client')), 1)
+  else left(btrim(coalesce(discord_display_name, discord_username, 'Client')), 2) || '***'
+end;
 
 alter table public.reviews
   alter column status set default 'pending',
@@ -138,6 +150,11 @@ begin
     nullif(user_metadata ->> 'name', ''),
     discord_name
   );
+  new.public_display_name := case
+    when char_length(btrim(new.discord_display_name)) >= 3
+      then left(btrim(new.discord_display_name), 2) || '***' || right(btrim(new.discord_display_name), 1)
+    else left(btrim(new.discord_display_name), 2) || '***'
+  end;
   new.discord_avatar_url := coalesce(
     nullif(user_metadata ->> 'avatar_url', ''),
     nullif(user_metadata ->> 'picture', '')
@@ -233,6 +250,7 @@ with check (
 revoke all on table public.reviews from anon, authenticated;
 
 grant select (
+  public_display_name,
   discord_verified,
   project_type,
   rating,
@@ -242,6 +260,7 @@ grant select (
 
 grant select (
   id,
+  public_display_name,
   discord_verified,
   project_type,
   rating,

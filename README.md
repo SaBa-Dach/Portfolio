@@ -22,7 +22,7 @@ The portfolio is a static site with a Discord-authenticated, manually moderated 
 
 ## Security model
 
-- Anonymous visitors can select only approved reviews. Public review responses exclude Supabase user IDs, Discord user IDs, Discord usernames, display names, and avatar URLs.
+- Anonymous visitors can select only approved reviews. Public review responses expose only a server-generated masked name such as `Sa***h`; they exclude Supabase user IDs, Discord user IDs, full Discord usernames, full display names, and avatar URLs.
 - Discord-authenticated users can insert only `project_type`, `rating`, and `review`.
 - A database trigger derives the Supabase UUID and Discord identity from the authenticated JWT, and always forces new submissions to `pending`.
 - Browser roles receive no update or delete permission, so reviewers cannot moderate records.

@@ -158,10 +158,10 @@
 
     const author = document.createElement('footer');
     author.className = 'testimonial-author';
-    // Public review cards deliberately use a generic identity. Discord names,
-    // user IDs, and avatar URLs never need to reach another visitor's browser.
-    const authorName = review.discord_verified ? 'Verified Discord client' : 'Portfolio client';
-    author.appendChild(createAvatar('DC', ''));
+    // Supabase returns only a server-generated masked name (for example,
+    // "Sa***h"). The full Discord identity never reaches the browser.
+    const authorName = review.public_display_name || 'Verified client';
+    author.appendChild(createAvatar(authorName, ''));
 
     const authorCopy = document.createElement('div');
     authorCopy.className = 'testimonial-author-copy';
@@ -200,7 +200,7 @@
 
     const { data, error } = await db
       .from('reviews')
-      .select('discord_verified, project_type, rating, review, created_at')
+      .select('public_display_name, discord_verified, project_type, rating, review, created_at')
       .order('created_at', { ascending: false });
 
     reviewsGrid.replaceChildren();
