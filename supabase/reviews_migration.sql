@@ -233,9 +233,6 @@ with check (
 revoke all on table public.reviews from anon, authenticated;
 
 grant select (
-  discord_username,
-  discord_display_name,
-  discord_avatar_url,
   discord_verified,
   project_type,
   rating,
@@ -245,9 +242,6 @@ grant select (
 
 grant select (
   id,
-  discord_username,
-  discord_display_name,
-  discord_avatar_url,
   discord_verified,
   project_type,
   rating,

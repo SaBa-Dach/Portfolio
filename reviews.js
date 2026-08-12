@@ -158,8 +158,10 @@
 
     const author = document.createElement('footer');
     author.className = 'testimonial-author';
-    const authorName = review.discord_display_name || review.discord_username || 'Discord user';
-    author.appendChild(createAvatar(authorName, review.discord_avatar_url));
+    // Public review cards deliberately use a generic identity. Discord names,
+    // user IDs, and avatar URLs never need to reach another visitor's browser.
+    const authorName = review.discord_verified ? 'Verified Discord client' : 'Portfolio client';
+    author.appendChild(createAvatar('DC', ''));
 
     const authorCopy = document.createElement('div');
     authorCopy.className = 'testimonial-author-copy';
@@ -198,7 +200,7 @@
 
     const { data, error } = await db
       .from('reviews')
-      .select('discord_username, discord_display_name, discord_avatar_url, discord_verified, project_type, rating, review, created_at')
+      .select('discord_verified, project_type, rating, review, created_at')
       .order('created_at', { ascending: false });
 
     reviewsGrid.replaceChildren();
