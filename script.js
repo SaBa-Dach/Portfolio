@@ -54,6 +54,7 @@
       const offset = (navbar?.offsetHeight ?? 68) + 8;
       window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
       document.getElementById('navLinks')?.classList.remove('open');
+      document.getElementById('menuToggle')?.setAttribute('aria-expanded', 'false');
     });
   });
 
@@ -97,11 +98,25 @@
   const menuToggle = document.getElementById('menuToggle');
   const navLinks   = document.getElementById('navLinks');
   if (menuToggle && navLinks) {
-    menuToggle.addEventListener('click', () => navLinks.classList.toggle('open'));
+    const setMenuOpen = open => {
+      navLinks.classList.toggle('open', open);
+      menuToggle.setAttribute('aria-expanded', String(open));
+    };
+    menuToggle.addEventListener('click', () => setMenuOpen(!navLinks.classList.contains('open')));
+    navLinks.addEventListener('click', e => {
+      if (e.target.closest('a')) setMenuOpen(false);
+    });
     document.addEventListener('click', e => {
-      if (!navbar?.contains(e.target)) navLinks.classList.remove('open');
+      if (!navbar?.contains(e.target)) setMenuOpen(false);
+    });
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') setMenuOpen(false);
     });
   }
+
+  document.querySelectorAll('[data-current-year]').forEach(el => {
+    el.textContent = String(new Date().getFullYear());
+  });
 
   /* =====================================================
      HERO ENTRY
@@ -342,8 +357,13 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 
   if (projectTitleEl && projectVideoEl) {
     const params  = new URLSearchParams(window.location.search);
-    const id      = params.get('id') || 'trivia';
-    const project = projectData[id] || projectData.trivia;
+    const id      = params.get('id');
+    const project = id ? projectData[id] : null;
+
+    if (!project) {
+      window.location.replace('index.html#projects');
+      return;
+    }
 
     document.title = `${project.title} — inbo`;
 
@@ -388,8 +408,11 @@ Players join tables and compete in a series of "Higher or Lower?" style question
     const galleryEl = document.getElementById('videoGallery');
     if (galleryEl && videoList.length > 1) {
       videoList.forEach((src, i) => {
-        const thumb = document.createElement('div');
+        const thumb = document.createElement('button');
+        thumb.type = 'button';
         thumb.className = 'video-thumb' + (i === 0 ? ' active' : '');
+        thumb.setAttribute('aria-label', `Play video part ${i + 1}`);
+        thumb.setAttribute('aria-pressed', String(i === 0));
         thumb.innerHTML = `<video src="${src}" muted preload="metadata"></video><span>Part ${i + 1}</span>`;
         thumb.addEventListener('click', () => switchVideo(i));
         galleryEl.appendChild(thumb);
@@ -403,6 +426,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       projectVideoEl.play().catch(() => {});
       document.querySelectorAll('.video-thumb').forEach((t, i) => {
         t.classList.toggle('active', i === idx);
+        t.setAttribute('aria-pressed', String(i === idx));
       });
     }
 
