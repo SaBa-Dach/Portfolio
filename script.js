@@ -125,6 +125,38 @@
      PROJECT DETAIL PAGE
      ===================================================== */
   const projectData = {
+    holegame: {
+      title: 'Hole Game',
+      category: 'Full Game / Combat Arena',
+      video: 'videos/hole-game.mp4',
+      poster: 'images/hole-game-poster.webp',
+      tags: ['Roblox', 'Luau', 'Server-Auth', 'R6 Combat', 'DataStore'],
+      desc: `A fast-paced multiplayer elimination game built around a mysterious central void. Players punch, push, and dash opponents into the hole while balancing an escalating Corruption meter.
+
+<h3>Combat and locomotion</h3>
+- Left punch, right punch, heavy push, directional dash, and sprint
+- State-driven combat covering attacks, lockouts, stuns, corruption, falling, and death
+- Server-authoritative validation with a six-second last-hit window for accurate elimination credit
+
+<h3>Corruption and arena mechanics</h3>
+- Distance-based corruption builds as players risk fighting near the void
+- Survival points reward players who remain close to danger
+- Maximum corruption locks input and forces the player toward the hole
+- Successful melee hits reset the attacker's corruption to zero
+
+<h3>Camera and controls</h3>
+- First-person R6 arms remain visible across movement and combat animations
+- Instant custom shift lock with stable character orientation
+- Camera and input state automatically synchronize during corruption and death
+
+<h3>Rounds and persistence</h3>
+- Fifteen-minute round lifecycle with voting, loading, intermission, active play, and cleanup
+- Physical lobby map voting with live counters and geometry validation
+- Kill and survival scoring, winner qualification, global stats, and DataStore persistence
+
+Built in strict Luau with a modular Service / Controller architecture, reusable instances, and optimized client-server replication.`,
+    },
+
     trivia: {
       title: 'Multiplayer Trivia System',
       category: 'Full Game',
@@ -343,6 +375,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
     const videoList = project.videos || [project.video];
     let currentIdx  = 0;
 
+    if (project.poster) projectVideoEl.poster = project.poster;
     projectVideoEl.src = videoList[0];
     projectVideoEl.load();
     projectVideoEl.onended = () => {
