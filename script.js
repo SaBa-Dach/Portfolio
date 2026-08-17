@@ -127,16 +127,6 @@
   }
 
   /* =====================================================
-     CARD VIDEO HOVER (index page)
-     ===================================================== */
-  document.querySelectorAll('.card').forEach(card => {
-    const video = card.querySelector('video');
-    if (!video) return;
-    card.addEventListener('mouseenter', () => video.play().catch(() => {}));
-    card.addEventListener('mouseleave', () => { video.pause(); video.currentTime = 0; });
-  });
-
-  /* =====================================================
      PROJECT DETAIL PAGE
      ===================================================== */
   const projectData = {
@@ -181,6 +171,12 @@ Built in strict Luau with a modular Service / Controller architecture, reusable 
         'videos/TriviaGame3.mp4',
         'videos/TriviaGame4.mp4',
       ],
+      posters: [
+        'images/trivia-1.webp',
+        'images/trivia-2.webp',
+        'images/trivia-3.webp',
+        'images/trivia-4.webp',
+      ],
       tags: ['Full Game', 'Multiplayer', 'ProfileService', 'DataStore', 'Luau'],
       desc: `A multiplayer Roblox trivia game built around quick decision-making, progression, and replayability.
 
@@ -214,6 +210,10 @@ Players join tables and compete in a series of "Higher or Lower?" style question
         'videos/Vid Project 1.mp4',
         'videos/Vid Project 2.mp4',
       ],
+      posters: [
+        'images/hide-and-seek-1.webp',
+        'images/hide-and-seek-2.webp',
+      ],
       tags: ['Full Game', 'Modular', 'Server-Auth', 'Luau', 'Raycasting'],
       desc: `A modular, production-ready Roblox hide-and-seek framework built with clean service-based architecture, server-authoritative networking, and expandable systems.
 
@@ -234,6 +234,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       title: 'Slapping / Ragdoll System',
       category: 'Combat / Physics',
       video: 'videos/slapping.mp4',
+      poster: 'images/slapping.webp',
       tags: ['Combat', 'Physics', 'Server-Auth', 'BallSocketConstraints', 'Luau'],
       desc: `Advanced physics-based ragdoll using BallSocketConstraints for realistic limb simulation.
 
@@ -250,6 +251,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       title: 'Coin Throwing System',
       category: 'Full Game',
       video: 'videos/CoinTrow.mp4',
+      poster: 'images/coin-throwing.webp',
       tags: ['Full Game', 'Economy', 'Robux', 'Physics', 'Server-Auth'],
       desc: `A full game system where players purchase throwable coins with Robux, throw them at others to deal damage, and earn daily rewards based on spending activity.
 
@@ -266,6 +268,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       title: 'Tipping / Donation System',
       category: 'Economy',
       video: 'videos/tipping.mp4',
+      poster: 'images/tipping.webp',
       tags: ['Economy', 'Gamepass', 'Roblox API', 'UI'],
       desc: `A clean, reusable donation system for Roblox experiences.
 
@@ -281,6 +284,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       title: 'Daily Rewards System',
       category: 'Progression',
       video: 'videos/daily-rewards.mp4',
+      poster: 'images/daily-rewards.webp',
       tags: ['Progression', 'DataStore', 'UI', 'Luau'],
       desc: `A streak-based daily reward system with persistent storage and a polished UI.
 
@@ -295,6 +299,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       title: 'Combat System',
       category: 'Gameplay',
       video: 'videos/combat.mp4',
+      poster: 'images/combat.webp',
       tags: ['Gameplay', 'Hit Detection', 'Latency', 'Server-Auth'],
       desc: `A server-side combat system built for fairness in multiplayer environments.
 
@@ -310,6 +315,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       title: 'Sprint / Dash System',
       category: 'Movement',
       video: 'videos/sprint.mp4',
+      poster: 'images/sprint.webp',
       tags: ['Movement', 'Physics', 'UX', 'Stamina'],
       desc: `Responsive sprint and dash mechanics with configurable feel.
 
@@ -325,6 +331,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       title: 'Staff / Player Display',
       category: 'Systems',
       video: 'videos/staff-display.mp4',
+      poster: 'images/staff-display.webp',
       tags: ['Systems', 'UI', 'Admin', 'Group Ranks'],
       desc: `A live server panel displaying player avatars and group rank information.
 
@@ -339,6 +346,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       title: 'UI Systems',
       category: 'Systems',
       video: 'videos/ui-systems.mp4',
+      poster: 'images/ui-systems.webp',
       tags: ['Systems', 'UI', 'Components', 'Animations'],
       desc: `A collection of reusable, plug-and-play UI components for Roblox.
 
@@ -393,9 +401,10 @@ Players join tables and compete in a series of "Higher or Lower?" style question
     }
 
     const videoList = project.videos || [project.video];
+    const posterList = project.posters || [project.poster];
     let currentIdx  = 0;
 
-    if (project.poster) projectVideoEl.poster = project.poster;
+    if (posterList[0]) projectVideoEl.poster = posterList[0];
     projectVideoEl.src = videoList[0];
     projectVideoEl.load();
     projectVideoEl.onended = () => {
@@ -407,13 +416,13 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 
     const galleryEl = document.getElementById('videoGallery');
     if (galleryEl && videoList.length > 1) {
-      videoList.forEach((src, i) => {
+      videoList.forEach((_, i) => {
         const thumb = document.createElement('button');
         thumb.type = 'button';
         thumb.className = 'video-thumb' + (i === 0 ? ' active' : '');
         thumb.setAttribute('aria-label', `Play video part ${i + 1}`);
         thumb.setAttribute('aria-pressed', String(i === 0));
-        thumb.innerHTML = `<video src="${src}" muted preload="metadata"></video><span>Part ${i + 1}</span>`;
+        thumb.innerHTML = `<img src="${posterList[i]}" alt="" loading="lazy" decoding="async"><span>Part ${i + 1}</span>`;
         thumb.addEventListener('click', () => switchVideo(i));
         galleryEl.appendChild(thumb);
       });
@@ -421,6 +430,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 
     function switchVideo(idx) {
       currentIdx = idx;
+      if (posterList[idx]) projectVideoEl.poster = posterList[idx];
       projectVideoEl.src = videoList[idx];
       projectVideoEl.load();
       projectVideoEl.play().catch(() => {});
