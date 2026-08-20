@@ -119,6 +119,24 @@
   });
 
   /* =====================================================
+     AUTOMATIC PROJECT COUNT
+     The displayed total combines showcased project cards with
+     previously shipped projects that are not listed on the site.
+     ===================================================== */
+  const projectGrid = document.querySelector('.projects-grid');
+  const projectCountEls = document.querySelectorAll('[data-project-count]');
+
+  function updateProjectCount() {
+    if (!projectGrid || !projectCountEls.length) return;
+    const showcasedCount = projectGrid.querySelectorAll(':scope > .card').length;
+    const unlistedCount = Number.parseInt(projectGrid.dataset.unlistedProjects || '0', 10);
+    const shippedCount = showcasedCount + (Number.isNaN(unlistedCount) ? 0 : unlistedCount);
+    projectCountEls.forEach(el => { el.textContent = String(shippedCount); });
+  }
+
+  updateProjectCount();
+
+  /* =====================================================
      HERO ENTRY
      ===================================================== */
   const heroContent = document.getElementById('heroContent');
