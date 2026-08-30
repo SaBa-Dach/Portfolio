@@ -393,6 +393,34 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 
     document.title = `${project.title} — inbo`;
 
+    const projectUrl = `https://inbodev.com/project.html?id=${encodeURIComponent(id)}`;
+    const plainDescription = project.desc
+      .replace(/<[^>]*>/g, ' ')
+      .replace(/[•\n]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim()
+      .slice(0, 155);
+    const projectDescription = `${project.title}: ${plainDescription}`;
+    const projectImage = new URL(project.poster || project.posters?.[0] || 'ib_logo.png', window.location.origin).href;
+
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.rel = 'canonical';
+      document.head.appendChild(canonicalLink);
+    }
+    canonicalLink.href = projectUrl;
+
+    const setMetaContent = (selector, content) => {
+      const element = document.querySelector(selector);
+      if (element) element.setAttribute('content', content);
+    };
+    setMetaContent('#projectMetaDescription', projectDescription);
+    setMetaContent('#projectOgTitle', `${project.title} — inbo`);
+    setMetaContent('#projectOgDescription', projectDescription);
+    setMetaContent('#projectOgImage', projectImage);
+    setMetaContent('#projectOgUrl', projectUrl);
+
     const eyebrowEl = document.getElementById('projectEyebrow');
     if (eyebrowEl) eyebrowEl.textContent = `// ${project.category.toLowerCase()}`;
 
