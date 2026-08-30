@@ -19,7 +19,10 @@
   const ratingSelection = document.getElementById('ratingSelection');
   const errorEl = document.getElementById('reviewError');
   const successEl = document.getElementById('reviewSuccess');
+  const projectOptionsEl = document.getElementById('reviewProjectOptions');
+  const projectSelectionEl = document.getElementById('reviewProjectSelection');
   let selectedRating = 0;
+  const selectedProjectIds = new Set();
   let currentSession = null;
 
   function setHidden(element, hidden) {
@@ -99,6 +102,80 @@
   reviewTextEl.addEventListener('input', () => {
     charCountEl.textContent = `${reviewTextEl.value.length} / 600`;
   });
+
+  function updateProjectSelection() {
+    const count = selectedProjectIds.size;
+    projectSelectionEl.textContent = count
+      ? `${count} project${count === 1 ? '' : 's'} selected`
+      : 'Select at least one project';
+  }
+
+  function renderProjectOptions(options) {
+    selectedProjectIds.clear();
+    projectOptionsEl.replaceChildren();
+
+    if (!options.length) {
+      const empty = document.createElement('p');
+      empty.className = 'review-empty';
+      empty.textContent = 'No reviewable projects are available right now.';
+      projectOptionsEl.appendChild(empty);
+      updateProjectSelection();
+      return;
+    }
+
+    options.forEach(project => {
+      const option = document.createElement('label');
+      option.className = 'review-project-option';
+      if (!project.available) option.classList.add('unavailable');
+
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.name = 'project_ids';
+      checkbox.value = project.project_id;
+      checkbox.disabled = !project.available;
+
+      const label = document.createElement('span');
+      label.textContent = project.project_label;
+      option.append(checkbox, label);
+
+      if (!project.available || project.owned_by_current_user) {
+        const status = document.createElement('span');
+        status.className = 'review-project-option-status';
+        status.textContent = project.owned_by_current_user ? 'Yours' : 'Reviewed';
+        option.appendChild(status);
+      }
+
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) selectedProjectIds.add(checkbox.value);
+        else selectedProjectIds.delete(checkbox.value);
+        updateProjectSelection();
+      });
+      projectOptionsEl.appendChild(option);
+    });
+
+    updateProjectSelection();
+  }
+
+  async function loadProjectOptions() {
+    projectOptionsEl.replaceChildren();
+    const loading = document.createElement('p');
+    loading.className = 'review-loading';
+    loading.textContent = 'Loading your project choices…';
+    projectOptionsEl.appendChild(loading);
+
+    const { data, error } = await db.rpc('get_review_project_options');
+    if (error) {
+      projectOptionsEl.replaceChildren();
+      const unavailable = document.createElement('p');
+      unavailable.className = 'review-empty';
+      unavailable.textContent = 'Project choices are temporarily unavailable. Please refresh and try again.';
+      projectOptionsEl.appendChild(unavailable);
+      setMessage(errorEl, 'The project selector could not be loaded. Please refresh and try again.');
+      return;
+    }
+
+    renderProjectOptions(data || []);
+  }
 
   function getAverageLabel(average) {
     if (average >= 4.5) return 'Excellent';
@@ -244,6 +321,9 @@
       setHidden(loggedOut, false);
       setHidden(account, true);
       setHidden(reviewForm, true);
+      selectedProjectIds.clear();
+      projectOptionsEl.replaceChildren();
+      updateProjectSelection();
       return;
     }
 
@@ -253,6 +333,7 @@
     setHidden(loggedOut, true);
     setHidden(account, false);
     setHidden(reviewForm, false);
+    await loadProjectOptions();
   }
 
   document.getElementById('discordLogin').addEventListener('click', async () => {
@@ -274,17 +355,17 @@
     setHidden(errorEl, true);
     setHidden(successEl, true);
 
-    const projectType = document.getElementById('reviewProject').value.trim();
+    const projectIds = [...selectedProjectIds];
     const reviewText = reviewTextEl.value.trim();
     if (!currentSession?.user) return setMessage(errorEl, 'Please sign in with Discord before submitting.');
-    if (projectType.length < 2 || projectType.length > 80) return setMessage(errorEl, 'Project / Commission must be between 2 and 80 characters.');
+    if (!projectIds.length) return setMessage(errorEl, 'Choose at least one project or commission.');
     if (!Number.isInteger(selectedRating) || selectedRating < 1 || selectedRating > 5) return setMessage(errorEl, 'Please choose a rating from 1 to 5.');
     if (reviewText.length < 20 || reviewText.length > 600) return setMessage(errorEl, 'Review must be between 20 and 600 characters.');
 
     reviewSubmit.disabled = true;
     reviewSubmit.textContent = 'Submitting…';
     const { error } = await db.from('reviews').insert({
-      project_type: projectType,
+      project_ids: projectIds,
       rating: selectedRating,
       review: reviewText
     });
@@ -292,16 +373,25 @@
     reviewSubmit.textContent = 'Submit Review';
 
     if (error) {
-      setMessage(errorEl, 'Your review could not be submitted. Please check the form and try again.');
+      const projectWasClaimed = `${error.code || ''} ${error.message || ''}`.includes('review_project_unavailable');
+      setMessage(
+        errorEl,
+        projectWasClaimed
+          ? 'One of those projects was already reviewed by another Discord user. Choose from the updated list and try again.'
+          : 'Your review could not be submitted. Please check the form and try again.'
+      );
+      if (projectWasClaimed) await loadProjectOptions();
       return;
     }
 
     reviewForm.reset();
+    selectedProjectIds.clear();
+    updateProjectSelection();
     charCountEl.textContent = '0 / 600';
     setRating(0);
     setHidden(successEl, false);
-    await loadReviews();
-    document.getElementById('reviewProject').focus();
+    await Promise.all([loadReviews(), loadProjectOptions()]);
+    projectOptionsEl.querySelector('input:not(:disabled)')?.focus();
   });
 
   loadReviews();

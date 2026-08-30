@@ -22,7 +22,7 @@
   <meta name="twitter:image" content="https://inbodev.com/ib_logo.png">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
-  <link rel="stylesheet" href="style.css?v=20260817-1">
+  <link rel="stylesheet" href="style.css?v=20260830-1">
   <link rel="icon" href="./ib_logo.png">
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script type="application/ld+json">
@@ -46,9 +46,9 @@
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
-      <a href="#testimonials">Reviews</a>
       <a href="#skills">Skills</a>
       <a href="#pricing">Pricing</a>
+      <a href="#testimonials">Reviews</a>
       <a href="#contact">Contact</a>
       <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire me ↗</a>
     </div>
@@ -501,10 +501,12 @@
           </div>
 
           <form id="reviewForm" hidden novalidate>
-            <div class="review-field">
-              <label class="review-label" for="reviewProject">Project / Commission</label>
-              <input class="review-input" id="reviewProject" name="project_type" type="text" placeholder="e.g. Combat system, Full game…" minlength="2" maxlength="80" autocomplete="off" required>
-            </div>
+            <fieldset class="review-field review-project-field">
+              <legend class="review-label">Project / Commission</legend>
+              <p class="review-field-help">Choose everything I built for you. You can select more than one.</p>
+              <div class="review-project-options" id="reviewProjectOptions" aria-describedby="reviewProjectSelection"></div>
+              <p class="review-project-selection" id="reviewProjectSelection" aria-live="polite">Select at least one project</p>
+            </fieldset>
 
             <fieldset class="review-field rating-field">
               <legend class="review-label">Rating</legend>
@@ -585,6 +587,6 @@
   </footer>
 
   <script src="script.js?v=20260820-1"></script>
-  <script src="reviews.js"></script>
+  <script src="reviews.js?v=20260830-1"></script>
 </body>
 </html>

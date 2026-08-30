@@ -811,6 +811,35 @@ button { cursor: pointer; font-family: inherit; }
   letter-spacing: 1.5px; color: var(--text-muted);
   margin-bottom: 7px; font-family: var(--font-mono);
 }
+.review-project-field { border: 0; min-width: 0; }
+.review-field-help {
+  margin: -1px 0 11px; color: var(--text-sub); font-size: 12px; line-height: 1.6;
+}
+.review-project-options {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 9px;
+}
+.review-project-option {
+  position: relative; display: flex; align-items: center; gap: 10px; min-height: 46px;
+  padding: 10px 12px; color: var(--text-sub); background: var(--bg);
+  border: 1px solid var(--border); border-radius: 9px; cursor: pointer;
+  font-family: var(--font-mono); font-size: 11px; line-height: 1.35;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, transform 0.2s var(--ease);
+}
+.review-project-option:hover { color: var(--text); border-color: var(--border-hi); transform: translateY(-1px); }
+.review-project-option:has(input:focus-visible) { outline: 2px solid var(--accent); outline-offset: 3px; }
+.review-project-option:has(input:checked) {
+  color: var(--text); border-color: var(--accent); background: var(--accent-dim);
+}
+.review-project-option.unavailable { opacity: 0.48; cursor: not-allowed; transform: none; }
+.review-project-option input {
+  width: 16px; height: 16px; flex: 0 0 16px; accent-color: var(--accent); cursor: inherit;
+}
+.review-project-option-status {
+  margin-left: auto; color: var(--text-muted); font-size: 9px; text-transform: uppercase;
+  letter-spacing: 0.7px; white-space: nowrap;
+}
+.review-project-option:has(input:checked) .review-project-option-status { color: var(--accent); }
+.review-project-selection { margin-top: 9px; color: var(--text-sub); font-size: 12px; min-height: 20px; }
 .review-input {
   width: 100%; background: var(--bg);
   border: 1px solid var(--border); border-radius: 8px;
@@ -1120,6 +1149,7 @@ button { cursor: pointer; font-family: inherit; }
   .reviews-summary-count { text-align: left; }
   .review-form-wrap { padding: 21px 18px; }
   .review-account { align-items: flex-start; }
+  .review-project-options { grid-template-columns: 1fr; }
   .rating-picker { gap: 6px; }
   .rating-option { min-height: 48px; font-size: 17px; }
   .review-submit { width: 100%; }
