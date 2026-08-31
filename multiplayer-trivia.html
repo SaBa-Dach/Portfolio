@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Multiplayer Trivia System — Portfolio</title>
+  <meta name="description" id="projectMetaDescription" content="Multiplayer Trivia System: A multiplayer Roblox trivia game built around quick decision-making, progression, and replayability. Players join tables and…">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="inbo">
+  <meta name="application-name" content="Portfolio">
+  <meta name="theme-color" content="#08090b">
+  <link rel="canonical" href="https://inbodev.com/multiplayer-trivia.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Portfolio">
+  <meta property="og:title" id="projectOgTitle" content="Multiplayer Trivia System — Portfolio">
+  <meta property="og:description" id="projectOgDescription" content="Multiplayer Trivia System: A multiplayer Roblox trivia game built around quick decision-making, progression, and replayability. Players join tables and…">
+  <meta property="og:image" id="projectOgImage" content="https://inbodev.com/images/trivia-1.webp">
+  <meta property="og:image:alt" content="Multiplayer Trivia System project preview">
+  <meta property="og:url" id="projectOgUrl" content="https://inbodev.com/multiplayer-trivia.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Multiplayer Trivia System — Portfolio">
+  <meta name="twitter:description" content="Multiplayer Trivia System: A multiplayer Roblox trivia game built around quick decision-making, progression, and replayability. Players join tables and…">
+  <meta name="twitter:image" content="https://inbodev.com/images/trivia-1.webp">
+  <meta name="twitter:image:alt" content="Multiplayer Trivia System project preview">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
+  <link rel="stylesheet" href="style.css?v=20260831-2">
+  <link rel="icon" type="image/png" href="./ib_logo.png?v=20260831-1">
+  <link rel="apple-touch-icon" href="./ib_logo.png?v=20260831-1">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Multiplayer Trivia System",
+      "description": "Multiplayer Trivia System: A multiplayer Roblox trivia game built around quick decision-making, progression, and replayability. Players join tables and…",
+      "url": "https://inbodev.com/multiplayer-trivia.html",
+      "image": "https://inbodev.com/images/trivia-1.webp",
+      "creator": {
+        "@id": "https://inbodev.com/#inbo"
+      },
+      "keywords": [
+        "Full Game",
+        "Multiplayer",
+        "ProfileService",
+        "DataStore",
+        "Luau"
+      ],
+      "inLanguage": "en"
+    }
+  </script>
+</head>
+<body data-project-id="trivia">
+  <nav class="navbar scrolled" id="navbar" aria-label="Primary navigation">
+    <a href="index.html" class="nav-logo">inbo<span class="nav-logo-dot">.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#about">About</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#testimonials">Reviews</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire me ↗</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+
+  <main>
+    <div class="container project-page-header">
+      <article class="project-header fade-in">
+        <nav class="project-breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Portfolio</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li aria-current="page">Multiplayer Trivia System</li>
+          </ol>
+        </nav>
+
+        <a href="index.html#projects" class="project-back-nav">← Back to projects</a>
+        <span class="project-eyebrow" id="projectEyebrow">// full game</span>
+        <h1 class="project-title" id="projectTitle">Multiplayer Trivia System</h1>
+        <div class="project-meta" id="projectMeta">
+          <span class="chip">Full Game</span>
+          <span class="chip">Multiplayer</span>
+          <span class="chip">ProfileService</span>
+          <span class="chip">DataStore</span>
+          <span class="chip">Luau</span>
+        </div>
+
+        <div class="project-video-wrap">
+          <video id="projectVideo" controls muted playsinline preload="metadata" poster="images/trivia-1.webp">
+            <source src="videos/TriviaGame1.mp4" type="video/mp4">
+            <p>Your browser does not support HTML5 video.</p>
+          </video>
+        </div>
+
+        <div class="video-gallery" id="videoGallery">
+          <button class="video-thumb active" type="button" aria-label="Play video part 1" aria-pressed="true">
+            <img src="images/trivia-1.webp" alt="" loading="lazy" decoding="async">
+            <span>Part 1</span>
+          </button>
+          <button class="video-thumb" type="button" aria-label="Play video part 2" aria-pressed="false">
+            <img src="images/trivia-2.webp" alt="" loading="lazy" decoding="async">
+            <span>Part 2</span>
+          </button>
+          <button class="video-thumb" type="button" aria-label="Play video part 3" aria-pressed="false">
+            <img src="images/trivia-3.webp" alt="" loading="lazy" decoding="async">
+            <span>Part 3</span>
+          </button>
+          <button class="video-thumb" type="button" aria-label="Play video part 4" aria-pressed="false">
+            <img src="images/trivia-4.webp" alt="" loading="lazy" decoding="async">
+            <span>Part 4</span>
+          </button>
+        </div>
+
+        <div class="project-body">
+          <div class="project-desc-text" id="projectDesc">
+              <p>A multiplayer Roblox trivia game built around quick decision-making, progression, and replayability.</p>
+              <p>Players join tables and compete in a series of &quot;Higher or Lower?&quot; style questions across multiple categories — gaming, sports, music, social media, geography, and more. Wrong answers cost lives; correct answers reward coins, XP, and streak bonuses.</p>
+              <h2>Systems built</h2>
+              <ul>
+              <li>Multiplayer table matchmaking</li>
+              <li>Round management and question framework</li>
+              <li>Server-authoritative answer validation</li>
+              <li>Lives and elimination system</li>
+              <li>Coin and XP rewards with streak bonuses</li>
+              <li>Daily rewards</li>
+              <li>Global leaderboards</li>
+              <li>Data saving and player progression</li>
+              <li>Cosmetic rewards integration</li>
+              <li>1v1 duel support</li>
+              <li>Modular, scalable architecture</li>
+              </ul>
+              <h2>Technical highlights</h2>
+              <ul>
+              <li>Server-authoritative gameplay logic</li>
+              <li>Multi-table support — multiple matches running simultaneously</li>
+              <li>Secure RemoteEvent communication</li>
+              <li>Persistent player statistics via ProfileService</li>
+              <li>Optimised client-server data flow</li>
+              </ul>
+          </div>
+
+          <aside class="project-sidebar" aria-label="Project technologies">
+            <div class="sidebar-card">
+              <h2>Technologies</h2>
+              <div class="sidebar-tag-list" id="sidebarTags">
+                <span class="chip">Full Game</span>
+                <span class="chip">Multiplayer</span>
+                <span class="chip">ProfileService</span>
+                <span class="chip">DataStore</span>
+                <span class="chip">Luau</span>
+              </div>
+              <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="sidebar-cta">Hire me for something similar ↗</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Built with care &amp; Lua &nbsp;·&nbsp; inbo &nbsp;·&nbsp; © 2022–<span data-current-year>2026</span></p>
+  </footer>
+
+  <script defer src="script.js?v=20260831-2"></script>
+</body>
+</html>

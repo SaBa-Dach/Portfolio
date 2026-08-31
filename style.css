@@ -849,7 +849,6 @@ button { cursor: pointer; font-family: inherit; }
   outline: none;
 }
 .review-input:focus { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-dim); }
-.review-input::placeholder { color: var(--text-muted); }
 .review-textarea { resize: vertical; min-height: 120px; }
 
 .rating-field { border: 0; min-width: 0; }
@@ -942,6 +941,15 @@ button { cursor: pointer; font-family: inherit; }
   margin-bottom: 28px;
 }
 .project-back-nav:hover { color: var(--accent); }
+.project-breadcrumbs { margin-bottom: 18px; }
+.project-breadcrumbs ol {
+  display: flex; align-items: center; flex-wrap: wrap; gap: 8px;
+  list-style: none; color: var(--text-muted); font-family: var(--font-mono); font-size: 10px;
+}
+.project-breadcrumbs li:not(:last-child)::after { content: '/'; margin-left: 8px; color: var(--border-hi); }
+.project-breadcrumbs a { color: var(--text-sub); transition: color 0.2s; }
+.project-breadcrumbs a:hover, .project-breadcrumbs a:focus-visible { color: var(--accent); }
+.project-breadcrumbs [aria-current="page"] { color: var(--text); }
 .project-page-header { padding-top: calc(var(--nav-h) + 32px); padding-bottom: 0; }
 .project-eyebrow {
   font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
@@ -990,18 +998,36 @@ button { cursor: pointer; font-family: inherit; }
 }
 .project-body { display: grid; grid-template-columns: 1fr 260px; gap: 36px; padding-bottom: 72px; }
 .project-desc-text {
-  font-size: 14px; color: var(--text-sub); line-height: 1.9; white-space: pre-line;
+  font-size: 14px; color: var(--text-sub); line-height: 1.9;
 }
 .project-desc-text strong { color: var(--text); font-weight: 600; }
+.project-desc-text h2,
 .project-desc-text h3 {
   font-family: var(--font-display); font-size: 16px; font-weight: 700;
   color: var(--text); margin: 24px 0 8px;
 }
+.project-desc-text ul { margin: 0 0 20px; padding-left: 20px; list-style: disc; }
+.project-desc-text li { margin-bottom: 6px; }
 .project-sidebar { position: sticky; top: 80px; align-self: start; }
+
+/* Custom GitHub Pages 404 */
+.error-page {
+  min-height: calc(100vh - var(--nav-h)); display: grid; place-items: center;
+  padding: calc(var(--nav-h) + 48px) 20px 72px;
+}
+.error-panel {
+  width: min(680px, 100%); padding: 48px; text-align: center;
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);
+}
+.error-code { color: var(--accent); font-family: var(--font-mono); font-size: 12px; letter-spacing: 2px; }
+.error-title { margin: 12px 0; font-size: clamp(34px, 8vw, 64px); letter-spacing: -2px; }
+.error-copy { max-width: 520px; margin: 0 auto 26px; color: var(--text-sub); line-height: 1.75; }
+.error-actions { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
 .sidebar-card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--radius-lg); padding: 18px;
 }
+.sidebar-card h2,
 .sidebar-card h4 {
   font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
   color: var(--text-muted); margin-bottom: 12px;

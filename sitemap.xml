@@ -2,19 +2,19 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://inbodev.com/</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-08-31</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
-  <url><loc>https://inbodev.com/project.html?id=holegame</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://inbodev.com/project.html?id=trivia</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://inbodev.com/project.html?id=hideandseek</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://inbodev.com/project.html?id=slapping</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://inbodev.com/project.html?id=coin</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://inbodev.com/project.html?id=tipping</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://inbodev.com/project.html?id=daily</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://inbodev.com/project.html?id=combat</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://inbodev.com/project.html?id=sprint</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://inbodev.com/project.html?id=staff</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
-  <url><loc>https://inbodev.com/project.html?id=ui</loc><lastmod>2026-08-30</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/hole-game.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/multiplayer-trivia.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/hide-and-seek.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/slapping-ragdoll.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/coin-throwing.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/tipping-donation.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/daily-rewards.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/combat-system.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/sprint-dash.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/staff-player-display.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/ui-systems.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
 </urlset>

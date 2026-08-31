@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hole Game — Portfolio</title>
+  <meta name="description" id="projectMetaDescription" content="Hole Game: A fast-paced multiplayer elimination game built around a mysterious central void. Players punch, push, and dash opponents into the hole…">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="inbo">
+  <meta name="application-name" content="Portfolio">
+  <meta name="theme-color" content="#08090b">
+  <link rel="canonical" href="https://inbodev.com/hole-game.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Portfolio">
+  <meta property="og:title" id="projectOgTitle" content="Hole Game — Portfolio">
+  <meta property="og:description" id="projectOgDescription" content="Hole Game: A fast-paced multiplayer elimination game built around a mysterious central void. Players punch, push, and dash opponents into the hole…">
+  <meta property="og:image" id="projectOgImage" content="https://inbodev.com/images/hole-game-poster.webp">
+  <meta property="og:image:alt" content="Hole Game project preview">
+  <meta property="og:url" id="projectOgUrl" content="https://inbodev.com/hole-game.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Hole Game — Portfolio">
+  <meta name="twitter:description" content="Hole Game: A fast-paced multiplayer elimination game built around a mysterious central void. Players punch, push, and dash opponents into the hole…">
+  <meta name="twitter:image" content="https://inbodev.com/images/hole-game-poster.webp">
+  <meta name="twitter:image:alt" content="Hole Game project preview">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
+  <link rel="stylesheet" href="style.css?v=20260831-2">
+  <link rel="icon" type="image/png" href="./ib_logo.png?v=20260831-1">
+  <link rel="apple-touch-icon" href="./ib_logo.png?v=20260831-1">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": "Hole Game",
+      "description": "Hole Game: A fast-paced multiplayer elimination game built around a mysterious central void. Players punch, push, and dash opponents into the hole…",
+      "url": "https://inbodev.com/hole-game.html",
+      "image": "https://inbodev.com/images/hole-game-poster.webp",
+      "creator": {
+        "@id": "https://inbodev.com/#inbo"
+      },
+      "keywords": [
+        "Roblox",
+        "Luau",
+        "Server-Auth",
+        "R6 Combat",
+        "DataStore"
+      ],
+      "inLanguage": "en"
+    }
+  </script>
+</head>
+<body data-project-id="holegame">
+  <nav class="navbar scrolled" id="navbar" aria-label="Primary navigation">
+    <a href="index.html" class="nav-logo">inbo<span class="nav-logo-dot">.</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html#about">About</a>
+      <a href="index.html#projects">Projects</a>
+      <a href="index.html#skills">Skills</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="index.html#testimonials">Reviews</a>
+      <a href="index.html#contact">Contact</a>
+      <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire me ↗</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+
+  <main>
+    <div class="container project-page-header">
+      <article class="project-header fade-in">
+        <nav class="project-breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Portfolio</a></li>
+            <li><a href="index.html#projects">Projects</a></li>
+            <li aria-current="page">Hole Game</li>
+          </ol>
+        </nav>
+
+        <a href="index.html#projects" class="project-back-nav">← Back to projects</a>
+        <span class="project-eyebrow" id="projectEyebrow">// full game / combat arena</span>
+        <h1 class="project-title" id="projectTitle">Hole Game</h1>
+        <div class="project-meta" id="projectMeta">
+          <span class="chip">Roblox</span>
+          <span class="chip">Luau</span>
+          <span class="chip">Server-Auth</span>
+          <span class="chip">R6 Combat</span>
+          <span class="chip">DataStore</span>
+        </div>
+
+        <div class="project-video-wrap">
+          <video id="projectVideo" controls muted playsinline preload="metadata" poster="images/hole-game-poster.webp">
+            <source src="videos/hole-game.mp4" type="video/mp4">
+            <p>Your browser does not support HTML5 video.</p>
+          </video>
+        </div>
+
+        <div class="video-gallery" id="videoGallery">
+        </div>
+
+        <div class="project-body">
+          <div class="project-desc-text" id="projectDesc">
+              <p>A fast-paced multiplayer elimination game built around a mysterious central void. Players punch, push, and dash opponents into the hole while balancing an escalating Corruption meter.</p>
+              <h2>Combat and locomotion</h2>
+              <ul>
+              <li>Left punch, right punch, heavy push, directional dash, and sprint</li>
+              <li>State-driven combat covering attacks, lockouts, stuns, corruption, falling, and death</li>
+              <li>Server-authoritative validation with a six-second last-hit window for accurate elimination credit</li>
+              </ul>
+              <h2>Corruption and arena mechanics</h2>
+              <ul>
+              <li>Distance-based corruption builds as players risk fighting near the void</li>
+              <li>Survival points reward players who remain close to danger</li>
+              <li>Maximum corruption locks input and forces the player toward the hole</li>
+              <li>Successful melee hits reset the attacker&#39;s corruption to zero</li>
+              </ul>
+              <h2>Camera and controls</h2>
+              <ul>
+              <li>First-person R6 arms remain visible across movement and combat animations</li>
+              <li>Instant custom shift lock with stable character orientation</li>
+              <li>Camera and input state automatically synchronize during corruption and death</li>
+              </ul>
+              <h2>Rounds and persistence</h2>
+              <ul>
+              <li>Fifteen-minute round lifecycle with voting, loading, intermission, active play, and cleanup</li>
+              <li>Physical lobby map voting with live counters and geometry validation</li>
+              <li>Kill and survival scoring, winner qualification, global stats, and DataStore persistence</li>
+              </ul>
+              <p>Built in strict Luau with a modular Service / Controller architecture, reusable instances, and optimized client-server replication.</p>
+          </div>
+
+          <aside class="project-sidebar" aria-label="Project technologies">
+            <div class="sidebar-card">
+              <h2>Technologies</h2>
+              <div class="sidebar-tag-list" id="sidebarTags">
+                <span class="chip">Roblox</span>
+                <span class="chip">Luau</span>
+                <span class="chip">Server-Auth</span>
+                <span class="chip">R6 Combat</span>
+                <span class="chip">DataStore</span>
+              </div>
+              <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="sidebar-cta">Hire me for something similar ↗</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>Built with care &amp; Lua &nbsp;·&nbsp; inbo &nbsp;·&nbsp; © 2022–<span data-current-year>2026</span></p>
+  </footer>
+
+  <script defer src="script.js?v=20260831-2"></script>
+</body>
+</html>

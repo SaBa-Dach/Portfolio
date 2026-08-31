@@ -147,6 +147,20 @@
   /* =====================================================
      PROJECT DETAIL PAGE
      ===================================================== */
+  const projectSlugs = {
+    holegame: 'hole-game.html',
+    trivia: 'multiplayer-trivia.html',
+    hideandseek: 'hide-and-seek.html',
+    slapping: 'slapping-ragdoll.html',
+    coin: 'coin-throwing.html',
+    tipping: 'tipping-donation.html',
+    daily: 'daily-rewards.html',
+    combat: 'combat-system.html',
+    sprint: 'sprint-dash.html',
+    staff: 'staff-player-display.html',
+    ui: 'ui-systems.html',
+  };
+
   const projectData = {
     holegame: {
       title: 'Hole Game',
@@ -383,8 +397,14 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 
   if (projectTitleEl && projectVideoEl) {
     const params  = new URLSearchParams(window.location.search);
-    const id      = params.get('id');
+    const pageId  = document.body.dataset.projectId;
+    const id      = pageId || params.get('id');
     const project = id ? projectData[id] : null;
+
+    if (!pageId && id && projectSlugs[id]) {
+      window.location.replace(projectSlugs[id]);
+      return;
+    }
 
     if (!project) {
       window.location.replace('index.html#projects');
@@ -393,7 +413,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 
     document.title = `${project.title} — Portfolio`;
 
-    const projectUrl = `https://inbodev.com/project.html?id=${encodeURIComponent(id)}`;
+    const projectUrl = `https://inbodev.com/${projectSlugs[id]}`;
     const plainDescription = project.desc
       .replace(/<[^>]*>/g, ' ')
       .replace(/[•\n]+/g, ' ')
@@ -428,6 +448,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 
     const metaEl = document.getElementById('projectMeta');
     if (metaEl) {
+      metaEl.replaceChildren();
       project.tags.forEach(tag => {
         const el = document.createElement('span');
         el.className = 'chip';
@@ -438,6 +459,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 
     const sidebarTagsEl = document.getElementById('sidebarTags');
     if (sidebarTagsEl) {
+      sidebarTagsEl.replaceChildren();
       project.tags.forEach(tag => {
         const el = document.createElement('span');
         el.className = 'chip';
@@ -461,6 +483,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
     };
 
     const galleryEl = document.getElementById('videoGallery');
+    if (galleryEl) galleryEl.replaceChildren();
     if (galleryEl && videoList.length > 1) {
       videoList.forEach((_, i) => {
         const thumb = document.createElement('button');
@@ -487,7 +510,9 @@ Players join tables and compete in a series of "Higher or Lower?" style question
     }
 
     const descEl = document.getElementById('projectDesc');
-    if (descEl) {
+    // Static project pages already contain semantic headings, lists, and paragraphs
+    // for readers and crawlers. Only build this block on the legacy template.
+    if (descEl && !pageId) {
       descEl.innerHTML = (project.desc || '')
         .replace(/\n/g, '<br>')
         .replace(/<h3>/g, '</p><h3>')
