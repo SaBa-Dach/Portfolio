@@ -391,7 +391,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       return;
     }
 
-    document.title = `${project.title} — inbo`;
+    document.title = `${project.title} — Portfolio`;
 
     const projectUrl = `https://inbodev.com/project.html?id=${encodeURIComponent(id)}`;
     const plainDescription = project.desc
@@ -416,7 +416,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       if (element) element.setAttribute('content', content);
     };
     setMetaContent('#projectMetaDescription', projectDescription);
-    setMetaContent('#projectOgTitle', `${project.title} — inbo`);
+    setMetaContent('#projectOgTitle', `${project.title} — Portfolio`);
     setMetaContent('#projectOgDescription', projectDescription);
     setMetaContent('#projectOgImage', projectImage);
     setMetaContent('#projectOgUrl', projectUrl);
