@@ -1061,9 +1061,9 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 /* =====================================================
-   RESPONSIVE — MOBILE (≤640px)
+   RESPONSIVE — NARROW SCREENS (≤800px)
    ===================================================== */
-@media (max-width: 640px) {
+@media (max-width: 800px) {
   :root {
     --section-pad: 64px;
     --nav-h: 56px;
