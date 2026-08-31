@@ -1102,9 +1102,15 @@ button { cursor: pointer; font-family: inherit; }
   .menu-toggle { display: flex; align-items: center; }
 
   /* ---- HERO ---- */
-  .hero { padding-bottom: 40px; }
+  .hero {
+    min-height: auto;
+    align-items: flex-start;
+    padding-top: calc(var(--nav-h) + 32px);
+    padding-bottom: 48px;
+  }
   .hero-eyebrow {
     font-size: 9px; letter-spacing: 1.5px; padding: 5px 11px;
+    margin-bottom: 16px;
     /* Prevent it from overflowing narrow screens */
     max-width: calc(100vw - 32px);
   }
@@ -1115,6 +1121,7 @@ button { cursor: pointer; font-family: inherit; }
   .hero-title {
     font-size: clamp(34px, 11vw, 52px);
     letter-spacing: -1.5px;
+    margin-bottom: 12px;
     display: block; /* back to normal flow on mobile */
     min-height: calc(clamp(34px, 11vw, 52px) * 1.05 * 2 + 4px);
   }
@@ -1124,25 +1131,25 @@ button { cursor: pointer; font-family: inherit; }
   .hero-sub {
     font-size: 13px;
     padding: 0 4px;
-    margin-bottom: 28px;
+    margin-bottom: 20px;
   }
 
   /* Full-width buttons on mobile */
-  .hero-actions { flex-direction: column; gap: 10px; padding: 0; }
+  .hero-actions { flex-direction: column; gap: 8px; padding: 0; }
   .hero-actions .btn {
-    width: 100%; padding: 14px 20px; font-size: 14px;
+    width: 100%; padding: 12px 20px; font-size: 14px;
   }
 
   /* ---- HERO STATS: 2×2 grid ---- */
   .hero-stats {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    margin-top: 32px;
+    margin-top: 20px;
     max-width: 100%;
     /* Remove the flex dividers — use border instead */
   }
   .hero-stat {
-    padding: 16px 12px;
+    padding: 12px;
     border-right: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
   }
