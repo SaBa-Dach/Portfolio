@@ -1,4 +1,4 @@
-(function () {
+(async function () {
   'use strict';
 
   const SUPABASE_URL = 'https://elagiztpcujnyfpnhjwn.supabase.co';
@@ -6,9 +6,66 @@
   const REVIEW_AVATAR_ENDPOINT = `${SUPABASE_URL}/functions/v1/review-avatar`;
   const reviewsGrid = document.getElementById('reviewsGrid');
 
-  if (!reviewsGrid || !window.supabase) return;
+  if (!reviewsGrid) return;
 
-  const { createClient } = window.supabase;
+  function loadSdkScript(src) {
+    return new Promise(resolve => {
+      const script = document.createElement('script');
+      let settled = false;
+      const finish = loaded => {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(timeout);
+        if (!loaded && script.isConnected) script.remove();
+        resolve(loaded);
+      };
+      const timeout = window.setTimeout(() => finish(false), 8000);
+      script.src = src;
+      script.async = true;
+      script.crossOrigin = 'anonymous';
+      script.addEventListener('load', () => finish(Boolean(window.supabase?.createClient)), { once: true });
+      script.addEventListener('error', () => finish(false), { once: true });
+      document.head.appendChild(script);
+    });
+  }
+
+  async function ensureSupabaseSdk() {
+    if (window.supabase?.createClient) return window.supabase;
+
+    const retryToken = Date.now();
+    const sources = [
+      `https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js?retry=${retryToken}`,
+      `https://unpkg.com/@supabase/supabase-js@2/dist/umd/supabase.min.js?retry=${retryToken}`
+    ];
+    for (const source of sources) {
+      if (await loadSdkScript(source)) return window.supabase;
+    }
+    return null;
+  }
+
+  const supabaseSdk = await ensureSupabaseSdk();
+  if (!supabaseSdk) {
+    reviewsGrid.replaceChildren();
+    const message = document.createElement('div');
+    message.className = 'review-empty';
+    message.textContent = 'The review service could not start.';
+    const retry = document.createElement('button');
+    retry.type = 'button';
+    retry.className = 'btn btn-outline review-retry';
+    retry.textContent = 'Restart reviews';
+    retry.addEventListener('click', () => window.location.reload());
+    reviewsGrid.append(message, retry);
+    const authLoading = document.getElementById('reviewAuthLoading');
+    if (authLoading) authLoading.hidden = true;
+    const startupError = document.getElementById('reviewError');
+    if (startupError) {
+      startupError.textContent = 'Check your connection, then restart the review system.';
+      startupError.hidden = false;
+    }
+    return;
+  }
+
+  const { createClient } = supabaseSdk;
   const db = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
   const ratingLabels = ['', 'Poor', 'Below Expectations', 'Good', 'Very Good', 'Excellent'];
   const reviewForm = document.getElementById('reviewForm');
@@ -24,6 +81,12 @@
   let selectedRating = 0;
   const selectedProjectIds = new Set();
   let currentSession = null;
+  let reviewRequestId = 0;
+  let projectRequestId = 0;
+  let hasLoadedReviews = false;
+  let refreshPromise = null;
+  let lastRefreshAt = 0;
+  const REQUEST_TIMEOUT_MS = 8000;
 
   function setHidden(element, hidden) {
     if (element) element.hidden = hidden;
@@ -33,6 +96,61 @@
     if (!element) return;
     element.textContent = message;
     element.hidden = false;
+  }
+
+  function wait(ms) {
+    return new Promise(resolve => window.setTimeout(resolve, ms));
+  }
+
+  function withTimeout(request, timeoutMs = REQUEST_TIMEOUT_MS) {
+    return new Promise((resolve, reject) => {
+      const timeout = window.setTimeout(
+        () => reject(new Error('review_request_timeout')),
+        timeoutMs
+      );
+      Promise.resolve(request).then(resolve, reject).finally(() => window.clearTimeout(timeout));
+    });
+  }
+
+  async function requestWithRetry(factory, { refreshAuth = false } = {}) {
+    const delays = [0, 700, 1800];
+    let lastResult = { data: null, error: new Error('review_request_failed') };
+    let refreshedSession = false;
+
+    for (let attempt = 0; attempt < delays.length; attempt++) {
+      if (delays[attempt]) await wait(delays[attempt]);
+      try {
+        lastResult = await withTimeout(factory());
+      } catch (error) {
+        lastResult = { data: null, error };
+      }
+      if (!lastResult?.error) return lastResult;
+
+      const status = Number(lastResult.error.status || lastResult.error.statusCode || 0);
+      if (refreshAuth && currentSession?.user && !refreshedSession && (status === 401 || status === 403)) {
+        refreshedSession = true;
+        try {
+          const refreshed = await withTimeout(db.auth.refreshSession());
+          if (refreshed?.data?.session) currentSession = refreshed.data.session;
+        } catch (_) {
+          // The normal retry below will render a useful recovery action.
+        }
+      }
+    }
+    return lastResult;
+  }
+
+  function renderRetry(container, message, retryAction) {
+    container.replaceChildren();
+    const copy = document.createElement('p');
+    copy.className = 'review-empty';
+    copy.textContent = message;
+    const retry = document.createElement('button');
+    retry.type = 'button';
+    retry.className = 'btn btn-outline review-retry';
+    retry.textContent = 'Try again';
+    retry.addEventListener('click', retryAction, { once: true });
+    container.append(copy, retry);
   }
 
   function getDiscordProfile(user) {
@@ -111,6 +229,7 @@
   }
 
   function renderProjectOptions(options) {
+    const previousSelections = new Set(selectedProjectIds);
     selectedProjectIds.clear();
     projectOptionsEl.replaceChildren();
 
@@ -133,6 +252,10 @@
       checkbox.name = 'project_ids';
       checkbox.value = project.project_id;
       checkbox.disabled = !project.available;
+      if (project.available && previousSelections.has(project.project_id)) {
+        checkbox.checked = true;
+        selectedProjectIds.add(project.project_id);
+      }
 
       const label = document.createElement('span');
       label.textContent = project.project_label;
@@ -156,26 +279,89 @@
     updateProjectSelection();
   }
 
-  async function loadProjectOptions() {
-    projectOptionsEl.replaceChildren();
-    const loading = document.createElement('p');
-    loading.className = 'review-loading';
-    loading.textContent = 'Loading your project choices…';
-    projectOptionsEl.appendChild(loading);
-
-    const { data, error } = await db.rpc('get_review_project_options');
-    if (error) {
+  async function loadProjectOptions({ showLoading = true } = {}) {
+    const requestId = ++projectRequestId;
+    if (showLoading) {
+      setHidden(errorEl, true);
       projectOptionsEl.replaceChildren();
-      const unavailable = document.createElement('p');
-      unavailable.className = 'review-empty';
-      unavailable.textContent = 'Project choices are temporarily unavailable. Please refresh and try again.';
-      projectOptionsEl.appendChild(unavailable);
-      setMessage(errorEl, 'The project selector could not be loaded. Please refresh and try again.');
+      const loading = document.createElement('p');
+      loading.className = 'review-loading';
+      loading.textContent = 'Loading your project choices…';
+      projectOptionsEl.appendChild(loading);
+    }
+
+    const { data, error } = await requestWithRetry(
+      () => db.rpc('get_review_project_options'),
+      { refreshAuth: true }
+    );
+    if (requestId !== projectRequestId) return;
+
+    if (error) {
+      renderRetry(
+        projectOptionsEl,
+        'Project choices are temporarily unavailable.',
+        () => loadProjectOptions({ showLoading: true })
+      );
+      setMessage(errorEl, 'The project selector could not be loaded. Try again without refreshing the page.');
       return;
     }
 
     renderProjectOptions(data || []);
   }
+
+  async function refreshSession() {
+    try {
+      let result = await withTimeout(db.auth.getSession());
+      if (result?.error) {
+        result = await withTimeout(db.auth.refreshSession());
+      }
+      return result;
+    } catch (error) {
+      return { data: { session: null }, error };
+    }
+  }
+
+  async function refreshReviewSystem({ showLoading = false } = {}) {
+    if (refreshPromise) return refreshPromise;
+    refreshPromise = (async () => {
+      const [sessionResult] = await Promise.all([
+        refreshSession(),
+        loadReviews({ showLoading: showLoading || !hasLoadedReviews })
+      ]);
+
+      if (sessionResult?.error) {
+        setHidden(document.getElementById('reviewAuthLoading'), true);
+        setMessage(errorEl, 'Your Discord session could not be restored. Try again without refreshing the page.');
+      } else {
+        await updateReviewerUi(
+          sessionResult?.data?.session || null,
+          { showProjectLoading: showLoading }
+        );
+      }
+      lastRefreshAt = Date.now();
+    })().finally(() => {
+      refreshPromise = null;
+    });
+    return refreshPromise;
+  }
+
+  function requestRecoveryRefresh(force = false) {
+    if (!window.navigator.onLine) return;
+    if (!force && Date.now() - lastRefreshAt < 15000) return;
+    window.setTimeout(() => refreshReviewSystem({ showLoading: false }), 0);
+  }
+
+  /*
+   * Browsers can freeze network requests while a phone sleeps or a tab sits in
+   * the back/forward cache. Resume the review client automatically instead of
+   * leaving visitors on a permanent loading or error state.
+   */
+  window.addEventListener('pageshow', event => requestRecoveryRefresh(event.persisted));
+  window.addEventListener('online', () => requestRecoveryRefresh(true));
+  window.addEventListener('focus', () => requestRecoveryRefresh(false));
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState === 'visible') requestRecoveryRefresh(false);
+  });
 
   function getAverageLabel(average) {
     if (average >= 4.5) return 'Excellent';
@@ -269,27 +455,36 @@
     window.portfolioFadeObserver?.observe(card);
   }
 
-  async function loadReviews() {
-    reviewsGrid.replaceChildren();
-    const loading = document.createElement('div');
-    loading.className = 'review-loading';
-    loading.textContent = 'Loading reviews…';
-    reviewsGrid.appendChild(loading);
+  async function loadReviews({ showLoading = true } = {}) {
+    const requestId = ++reviewRequestId;
+    if (showLoading) {
+      reviewsGrid.replaceChildren();
+      const loading = document.createElement('div');
+      loading.className = 'review-loading';
+      loading.textContent = 'Loading reviews…';
+      reviewsGrid.appendChild(loading);
+    }
 
-    const { data, error } = await db
+    const { data, error } = await requestWithRetry(() => db
       .from('reviews')
       .select('public_display_name, public_avatar_token, discord_verified, project_type, rating, review, created_at')
-      .order('created_at', { ascending: false });
+      .order('created_at', { ascending: false }));
+    if (requestId !== reviewRequestId) return;
 
-    reviewsGrid.replaceChildren();
     if (error) {
-      const message = document.createElement('div');
-      message.className = 'review-empty';
-      message.textContent = 'Reviews are temporarily unavailable. Please try again later.';
-      reviewsGrid.appendChild(message);
-      updateReviewSummary([]);
+      if (!hasLoadedReviews) {
+        renderRetry(
+          reviewsGrid,
+          'Reviews are temporarily unavailable.',
+          () => loadReviews({ showLoading: true })
+        );
+        updateReviewSummary([]);
+      }
       return;
     }
+
+    hasLoadedReviews = true;
+    reviewsGrid.replaceChildren();
 
     updateReviewSummary(data || []);
     if (!data?.length) {
@@ -308,7 +503,7 @@
     mount.replaceChildren(...avatar.childNodes);
   }
 
-  async function updateReviewerUi(session) {
+  async function updateReviewerUi(session, { showProjectLoading = true } = {}) {
     currentSession = session;
     const loading = document.getElementById('reviewAuthLoading');
     const loggedOut = document.getElementById('reviewLoggedOut');
@@ -318,6 +513,7 @@
     setHidden(errorEl, true);
 
     if (!session?.user) {
+      projectRequestId++;
       setHidden(loggedOut, false);
       setHidden(account, true);
       setHidden(reviewForm, true);
@@ -333,7 +529,7 @@
     setHidden(loggedOut, true);
     setHidden(account, false);
     setHidden(reviewForm, false);
-    await loadProjectOptions();
+    await loadProjectOptions({ showLoading: showProjectLoading });
   }
 
   document.getElementById('discordLogin').addEventListener('click', async () => {
@@ -364,23 +560,37 @@
 
     reviewSubmit.disabled = true;
     reviewSubmit.textContent = 'Submitting…';
-    const { error } = await db.from('reviews').insert({
-      project_ids: projectIds,
-      rating: selectedRating,
-      review: reviewText
-    });
+    let submission;
+    try {
+      submission = await withTimeout(db.from('reviews').insert({
+        project_ids: projectIds,
+        rating: selectedRating,
+        review: reviewText
+      }), 15000);
+    } catch (error) {
+      submission = { error };
+    }
     reviewSubmit.disabled = false;
     reviewSubmit.textContent = 'Submit Review';
 
+    const { error } = submission;
     if (error) {
       const projectWasClaimed = `${error.code || ''} ${error.message || ''}`.includes('review_project_unavailable');
+      const requestTimedOut = error.message === 'review_request_timeout';
       setMessage(
         errorEl,
         projectWasClaimed
           ? 'One of those projects was already reviewed by another Discord user. Choose from the updated list and try again.'
+          : requestTimedOut
+            ? 'The submission took too long to confirm. The reviews have been rechecked; verify it is not already live before trying again.'
           : 'Your review could not be submitted. Please check the form and try again.'
       );
-      if (projectWasClaimed) await loadProjectOptions();
+      if (projectWasClaimed || requestTimedOut) {
+        await Promise.all([
+          loadReviews({ showLoading: false }),
+          loadProjectOptions({ showLoading: false })
+        ]);
+      }
       return;
     }
 
@@ -394,18 +604,17 @@
     projectOptionsEl.querySelector('input:not(:disabled)')?.focus();
   });
 
-  loadReviews();
-
-  db.auth.getSession().then(({ data, error }) => {
-    if (error) {
-      setHidden(document.getElementById('reviewAuthLoading'), true);
-      setMessage(errorEl, 'Your sign-in session could not be checked. Please refresh and try again.');
-      return;
-    }
-    updateReviewerUi(data.session);
+  db.auth.onAuthStateChange((event, session) => {
+    window.setTimeout(() => {
+      if (event === 'INITIAL_SESSION') return;
+      if (event === 'TOKEN_REFRESHED') {
+        currentSession = session;
+        requestRecoveryRefresh(true);
+        return;
+      }
+      updateReviewerUi(session);
+    }, 0);
   });
 
-  db.auth.onAuthStateChange((_event, session) => {
-    window.setTimeout(() => updateReviewerUi(session), 0);
-  });
+  refreshReviewSystem({ showLoading: true });
 })();
