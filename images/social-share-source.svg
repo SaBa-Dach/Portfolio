@@ -1,48 +1,49 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#0d1012"/>
-      <stop offset="1" stop-color="#08090a"/>
+      <stop offset="0.58" stop-color="#090b0d"/>
+      <stop offset="1" stop-color="#060708"/>
     </linearGradient>
-    <linearGradient id="shade" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0" stop-color="#000" stop-opacity="0"/>
-      <stop offset="1" stop-color="#000" stop-opacity="0.78"/>
+    <linearGradient id="imageShade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0.35" stop-color="#050607" stop-opacity="0"/>
+      <stop offset="1" stop-color="#050607" stop-opacity="0.94"/>
     </linearGradient>
-    <clipPath id="shotClip">
-      <rect x="704" y="76" width="420" height="304" rx="8"/>
+    <clipPath id="imageClip">
+      <rect x="708" y="62" width="424" height="388" rx="12"/>
     </clipPath>
   </defs>
 
-  <rect width="1200" height="630" fill="url(#bg)"/>
-  <rect x="0" y="0" width="8" height="630" fill="#bff12f"/>
-  <path d="M72 76H632" stroke="#272c31"/>
-  <path d="M72 548H1128" stroke="#272c31"/>
+  <rect width="1200" height="630" fill="url(#background)"/>
+  <rect width="7" height="630" fill="#bff12f"/>
+  <path d="M70 62H640" stroke="#23282d"/>
+  <path d="M70 548H1132" stroke="#23282d"/>
 
-  <text x="72" y="119" fill="#f2f3f4" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">inbo<tspan fill="#bff12f">.</tspan></text>
-  <text x="72" y="181" fill="#bff12f" font-family="Consolas, monospace" font-size="14" letter-spacing="2">ROBLOX / LUAU DEVELOPMENT</text>
+  <text x="70" y="112" fill="#f4f5f6" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="700">inbo<tspan fill="#bff12f">.</tspan></text>
+  <text x="70" y="176" fill="#bff12f" font-family="Consolas, monospace" font-size="14" font-weight="700" letter-spacing="2.1">ROBLOX SYSTEMS DEVELOPER</text>
 
-  <text x="72" y="271" fill="#f2f3f4" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" letter-spacing="-2">Gameplay systems,</text>
-  <text x="72" y="335" fill="#f2f3f4" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" letter-spacing="-2">documented.</text>
-  <text x="72" y="391" fill="#a9b0b8" font-family="Arial, Helvetica, sans-serif" font-size="20">Combat · rounds · persistent data · interface logic</text>
+  <text x="70" y="267" fill="#f4f5f6" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" letter-spacing="-1.8">Roblox systems,</text>
+  <text x="70" y="331" fill="#f4f5f6" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="700" letter-spacing="-1.8">built to scale.</text>
+  <text x="70" y="387" fill="#9fa7af" font-family="Arial, Helvetica, sans-serif" font-size="19">Gameplay · multiplayer · data · interface</text>
 
-  <g clip-path="url(#shotClip)">
-    <image href="hole-game-poster.webp" x="664" y="76" width="500" height="304" preserveAspectRatio="xMidYMid slice"/>
-    <rect x="704" y="76" width="420" height="304" fill="url(#shade)"/>
+  <g clip-path="url(#imageClip)">
+    <image href="hole-game-poster.webp" x="708" y="62" width="424" height="388" preserveAspectRatio="xMidYMid slice"/>
+    <rect x="708" y="62" width="424" height="388" fill="url(#imageShade)"/>
   </g>
-  <rect x="704.5" y="76.5" width="419" height="303" rx="7.5" fill="none" stroke="#343a40"/>
-  <text x="730" y="325" fill="#bff12f" font-family="Consolas, monospace" font-size="11" letter-spacing="1.5">FEATURED CASE STUDY</text>
-  <text x="730" y="354" fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="24" font-weight="700">Hole Game</text>
+  <rect x="708.5" y="62.5" width="423" height="387" rx="11.5" fill="none" stroke="#343b42"/>
+  <text x="738" y="382" fill="#bff12f" font-family="Consolas, monospace" font-size="11" font-weight="700" letter-spacing="1.7">FEATURED PROJECT</text>
+  <text x="738" y="419" fill="#ffffff" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="700">Hole Game</text>
 
   <g font-family="Arial, Helvetica, sans-serif">
-    <text x="72" y="500" fill="#f2f3f4" font-size="18" font-weight="700">4 years</text>
-    <text x="72" y="524" fill="#7f8790" font-size="13">Roblox development</text>
+    <text x="70" y="498" fill="#f4f5f6" font-size="18" font-weight="700">4+ years</text>
+    <text x="70" y="523" fill="#7f8891" font-size="13">development experience</text>
 
-    <text x="294" y="500" fill="#f2f3f4" font-size="18" font-weight="700">11 projects</text>
-    <text x="294" y="524" fill="#7f8790" font-size="13">with demos and notes</text>
+    <text x="292" y="498" fill="#f4f5f6" font-size="18" font-weight="700">11 projects</text>
+    <text x="292" y="523" fill="#7f8891" font-size="13">documented builds</text>
 
-    <text x="516" y="500" fill="#f2f3f4" font-size="18" font-weight="700">Rojo + Git</text>
-    <text x="516" y="524" fill="#7f8790" font-size="13">delivery workflow</text>
+    <text x="492" y="498" fill="#f4f5f6" font-size="18" font-weight="700">Luau · Rojo · Git</text>
+    <text x="492" y="523" fill="#7f8891" font-size="13">production workflow</text>
   </g>
 
-  <text x="1128" y="594" text-anchor="end" fill="#bff12f" font-family="Consolas, monospace" font-size="15">inbodev.com</text>
+  <text x="1132" y="592" text-anchor="end" fill="#bff12f" font-family="Consolas, monospace" font-size="15" font-weight="700">inbodev.com</text>
 </svg>
