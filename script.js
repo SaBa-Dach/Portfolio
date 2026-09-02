@@ -2,38 +2,6 @@
   'use strict';
 
   /* =====================================================
-     TYPEWRITER — fixed: height locked so layout never shifts
-     ===================================================== */
-  const phrases = ['Roblox Scripter', 'Luau Developer', 'Systems Engineer'];
-  let pIdx = 0, cIdx = 0, deleting = false;
-  const typewriterEl = document.getElementById('typewriter');
-  const typewriterWrap = document.getElementById('typewriterWrap');
-
-  function typeWriter() {
-    if (!typewriterEl) return;
-    const current = phrases[pIdx];
-    if (deleting) {
-      cIdx--;
-    } else {
-      cIdx++;
-    }
-    typewriterEl.textContent = current.substring(0, cIdx);
-
-    if (!deleting && cIdx < current.length) {
-      setTimeout(typeWriter, 100);
-    } else if (deleting && cIdx > 0) {
-      setTimeout(typeWriter, 55);
-    } else if (!deleting && cIdx === current.length) {
-      setTimeout(() => { deleting = true; typeWriter(); }, 2400);
-    } else {
-      deleting = false;
-      pIdx = (pIdx + 1) % phrases.length;
-      setTimeout(typeWriter, 450);
-    }
-  }
-  setTimeout(typeWriter, 900);
-
-  /* =====================================================
      NAVBAR SCROLL STATE
      ===================================================== */
   const navbar = document.getElementById('navbar');
@@ -73,26 +41,6 @@
   document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
   /* =====================================================
-     SKILL BARS
-     ===================================================== */
-  const skillSection = document.querySelector('#skills');
-  if (skillSection) {
-    const skillObserver = new IntersectionObserver(entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          document.querySelectorAll('.skill-fill').forEach(bar => {
-            const w = bar.style.width;
-            bar.style.width = '0';
-            requestAnimationFrame(() => { setTimeout(() => { bar.style.width = w; }, 80); });
-          });
-          skillObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.3 });
-    skillObserver.observe(skillSection);
-  }
-
-  /* =====================================================
      MOBILE MENU
      ===================================================== */
   const menuToggle = document.getElementById('menuToggle');
@@ -120,8 +68,8 @@
 
   /* =====================================================
      AUTOMATIC PROJECT COUNT
-     The displayed total combines showcased project cards with
-     previously shipped projects that are not listed on the site.
+     The displayed total follows the project cards on the page, so
+     adding another documented project updates the count automatically.
      ===================================================== */
   const projectGrid = document.querySelector('.projects-grid');
   const projectCountEls = document.querySelectorAll('[data-project-count]');
@@ -129,20 +77,10 @@
   function updateProjectCount() {
     if (!projectGrid || !projectCountEls.length) return;
     const showcasedCount = projectGrid.querySelectorAll(':scope > .card').length;
-    const unlistedCount = Number.parseInt(projectGrid.dataset.unlistedProjects || '0', 10);
-    const shippedCount = showcasedCount + (Number.isNaN(unlistedCount) ? 0 : unlistedCount);
-    projectCountEls.forEach(el => { el.textContent = String(shippedCount); });
+    projectCountEls.forEach(el => { el.textContent = String(showcasedCount); });
   }
 
   updateProjectCount();
-
-  /* =====================================================
-     HERO ENTRY
-     ===================================================== */
-  const heroContent = document.getElementById('heroContent');
-  if (heroContent) {
-    setTimeout(() => heroContent.classList.add('visible'), 220);
-  }
 
   /* =====================================================
      PROJECT DETAIL PAGE
@@ -247,7 +185,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
         'images/hide-and-seek-2.webp',
       ],
       tags: ['Full Game', 'Modular', 'Server-Auth', 'Luau', 'Raycasting'],
-      desc: `A modular, production-ready Roblox hide-and-seek framework built with clean service-based architecture, server-authoritative networking, and expandable systems.
+      desc: `A modular Roblox hide-and-seek framework built around service-owned round state, server-authoritative networking, and systems that can be extended independently.
 
 <h3>Systems built</h3>
 • Admin permission system and panel

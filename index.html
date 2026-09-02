@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Portfolio</title>
-  <meta name="description" content="Roblox Luau developer portfolio featuring server-authoritative combat, multiplayer games, data systems, UI, and scalable gameplay architecture.">
+  <meta name="description" content="Roblox and Luau development by inbo: combat, round systems, persistent data, UI, and complete multiplayer gameplay shown through documented project work.">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="inbo">
   <meta name="application-name" content="Portfolio">
@@ -13,21 +13,21 @@
   <link rel="canonical" href="https://inbodev.com/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://inbodev.com/">
-  <meta property="og:title" content="Portfolio">
-  <meta property="og:description" content="Production-ready Roblox systems, multiplayer games, combat, data, UI, and server-authoritative Luau architecture.">
-  <meta property="og:image" content="https://inbodev.com/images/social-share.png?v=20260831-1">
+  <meta property="og:title" content="inbo — Roblox Systems Developer">
+  <meta property="og:description" content="Four years building combat, round systems, persistent data, UI, and multiplayer gameplay in Luau. View the work and implementation notes.">
+  <meta property="og:image" content="https://inbodev.com/images/social-share.png?v=20260902-1">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Portfolio — Roblox Luau developer">
+  <meta property="og:image:alt" content="inbo Roblox systems developer portfolio and featured Hole Game project">
   <meta property="og:site_name" content="Portfolio">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Portfolio">
-  <meta name="twitter:description" content="Production-ready Roblox systems, multiplayer games, combat, data, UI, and server-authoritative Luau architecture.">
-  <meta name="twitter:image" content="https://inbodev.com/images/social-share.png?v=20260831-1">
-  <meta name="twitter:image:alt" content="Portfolio — Roblox Luau developer">
+  <meta name="twitter:title" content="inbo — Roblox Systems Developer">
+  <meta name="twitter:description" content="Four years building combat, round systems, persistent data, UI, and multiplayer gameplay in Luau.">
+  <meta name="twitter:image" content="https://inbodev.com/images/social-share.png?v=20260902-1">
+  <meta name="twitter:image:alt" content="inbo Roblox systems developer portfolio and featured Hole Game project">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
-  <link rel="stylesheet" href="style.css?v=20260901-1">
+  <link rel="stylesheet" href="style.css?v=20260902-1">
   <link rel="icon" type="image/png" href="./ib_logo.png?v=20260831-1">
   <link rel="apple-touch-icon" href="./ib_logo.png?v=20260831-1">
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -40,7 +40,7 @@
           "@id": "https://inbodev.com/#website",
           "url": "https://inbodev.com/",
           "name": "Portfolio",
-          "description": "Roblox Luau developer portfolio featuring multiplayer games and production-ready gameplay systems.",
+          "description": "Documented Roblox and Luau work covering combat, multiplayer rounds, persistent data, UI, and gameplay systems.",
           "inLanguage": "en"
         },
         {
@@ -74,7 +74,7 @@
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
-      <a href="#skills">Skills</a>
+      <a href="#skills">Approach</a>
       <a href="#pricing">Pricing</a>
       <a href="#testimonials">Reviews</a>
       <a href="#contact">Contact</a>
@@ -89,46 +89,33 @@
 
   <!-- HERO -->
   <header class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-scanline"></div>
     <div class="container hero-content" id="heroContent">
-      <div class="hero-eyebrow">
-        <span class="hero-eyebrow-dot"></span>
-        Available for commissions
+      <div class="hero-copy">
+        <p class="hero-eyebrow">Roblox / Luau development</p>
+        <h1 class="hero-title">I build Roblox gameplay systems in Luau.</h1>
+        <p class="hero-sub">Combat, multiplayer rounds, persistent data, rewards, shops, and interface logic—delivered through Rojo and Git with clear client/server boundaries.</p>
+        <div class="hero-actions">
+          <a href="#projects" class="btn btn-primary">View selected work</a>
+          <a href="#contact" class="btn btn-outline">Discuss a project</a>
+        </div>
+        <dl class="hero-facts" aria-label="Portfolio facts">
+          <div><dt>4 years</dt><dd>Roblox development</dd></div>
+          <div><dt><span data-project-count>11</span></dt><dd>Documented projects</dd></div>
+          <div><dt>Rojo + Git</dt><dd>Delivery workflow</dd></div>
+        </dl>
       </div>
-      <h1 class="hero-title">
-        <!-- Height is locked to the tallest phrase so layout never shifts -->
-        <span class="hero-title-ghost" aria-hidden="true">Roblox Scripter</span>
-        <span class="hero-title-live" id="typewriterWrap">
-          <span id="typewriter"></span><span class="accent blink">_</span>
-        </span>
-      </h1>
-      <p class="hero-sub">Clean, scalable Luau systems built for performance, security, and long-term maintainability.</p>
-      <div class="hero-actions">
-        <a href="#projects" class="btn btn-primary">View projects</a>
-        <a href="#contact" class="btn btn-outline">Get in touch</a>
-      </div>
-      <div class="hero-stats">
-        <div class="hero-stat">
-          <span class="hero-stat-num">3–4<span class="accent">yrs</span></span>
-          <span class="hero-stat-label">Experience</span>
+
+      <a class="hero-case" href="hole-game.html" aria-label="Read the Hole Game case study">
+        <div class="hero-case-media">
+          <img src="images/hole-game-poster.webp" alt="Hole Game arena showing the central void and combat interface" width="960" height="426">
         </div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat">
-          <span class="hero-stat-num"><span data-project-count>16</span><span class="accent">+</span></span>
-          <span class="hero-stat-label">Projects shipped</span>
+        <div class="hero-case-copy">
+          <span class="hero-case-label">Featured case study</span>
+          <h2>Hole Game</h2>
+          <p>R6 combat, corruption state, round voting, camera control, and persistent scoring.</p>
+          <span class="hero-case-link">View implementation notes <span aria-hidden="true">→</span></span>
         </div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">3<span class="accent">x</span></span>
-          <span class="hero-stat-label">Repeat clients</span>
-        </div>
-        <div class="hero-stat-divider"></div>
-        <div class="hero-stat">
-          <span class="hero-stat-num">&lt;12<span class="accent">h</span></span>
-          <span class="hero-stat-label">Reply time</span>
-        </div>
-      </div>
+      </a>
     </div>
   </header>
 
@@ -138,23 +125,19 @@
     <section id="about" class="section">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-tag">About</span>
-          <h2>Who I am</h2>
+          <span class="section-tag">Profile</span>
+          <h2>What I work on</h2>
         </div>
         <div class="about-body fade-in">
-          <div class="avatar">IB</div>
           <div class="about-text">
-            <p>Hi, I'm <strong>inbo</strong> — a Roblox scripter with <strong>3–4 years of experience</strong> building clean, efficient, and production-ready Luau systems. Over that time I've shipped <strong><span data-project-count>16</span>+ projects</strong> ranging from full multiplayer games to standalone gameplay systems, working with clients who have trusted me enough to come back multiple times.</p>
-            <p style="margin-top:14px;">I specialise in gameplay architecture, server-authoritative logic, and data systems — the stuff that has to work correctly every time. Every project is built with <strong>Rojo</strong> and <strong>Git</strong> so the code is organised, version-controlled, and easy to hand off or extend later.</p>
-            <div class="chips">
-              <span class="chip">Gameplay systems</span>
-              <span class="chip">Server-authoritative logic</span>
-              <span class="chip">ProfileService / DataStore</span>
-              <span class="chip">Combat &amp; physics</span>
-              <span class="chip">Rojo + Git</span>
-              <span class="chip">Anti-exploit</span>
-            </div>
+            <p class="about-lead">I'm inbo, a Roblox developer focused on gameplay code: the systems players interact with and the server logic that keeps those systems reliable.</p>
+            <p>I have four years of development experience across full multiplayer games and standalone commissions. My recent work includes state-driven R6 combat, map voting and round loops, ProfileService and DataStore persistence, reward systems, shops, admin tools, and reusable UI.</p>
           </div>
+          <dl class="about-details">
+            <div><dt>Focus</dt><dd>Gameplay, server logic, persistence, and UI integration</dd></div>
+            <div><dt>Structure</dt><dd>Service/controller modules with explicit ownership boundaries</dd></div>
+            <div><dt>Handoff</dt><dd>Organised Rojo project, Git history, and implementation notes</dd></div>
+          </dl>
         </div>
       </div>
     </section>
@@ -163,11 +146,11 @@
     <section id="projects" class="section section-alt">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-tag">Work</span>
-          <h2>Projects</h2>
+          <span class="section-tag">Selected work</span>
+          <h2>Documented projects</h2>
+          <p class="section-intro">Recorded footage, implementation details, and the systems I owned on each build.</p>
         </div>
-        <!-- Five additional shipped projects are not showcased here. -->
-        <div class="projects-grid" data-unlisted-projects="5">
+        <div class="projects-grid">
 
           <a href="hole-game.html" class="card card-featured fade-in">
             <div class="card-video">
@@ -175,7 +158,7 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">🌀</span>
+                <span class="card-index">01</span>
                 <span class="card-tag">Full Game</span>
               </div>
               <h3 class="card-title">Hole Game</h3>
@@ -192,7 +175,7 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">🧠</span>
+                <span class="card-index">02</span>
                 <span class="card-tag">Full Game</span>
               </div>
               <h3 class="card-title">Multiplayer Trivia System</h3>
@@ -209,11 +192,11 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">👻</span>
+                <span class="card-index">03</span>
                 <span class="card-tag">Full Game</span>
               </div>
               <h3 class="card-title">Hide & Seek Framework</h3>
-              <p class="card-desc">Production-ready, server-authoritative hide-and-seek framework with role management, round system, admin panel, spectator mode, and Laser Eyes seeker ability.</p>
+              <p class="card-desc">Server-authoritative hide-and-seek framework with role assignment, round state, admin tools, spectator mode, and a validated Laser Eyes ability.</p>
               <div class="card-footer">
                 <span class="card-watch">▶ Watch demo</span>
               </div>
@@ -226,7 +209,7 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">💥</span>
+                <span class="card-index">04</span>
                 <span class="card-tag">Combat / Physics</span>
               </div>
               <h3 class="card-title">Slapping / Ragdoll System</h3>
@@ -243,7 +226,7 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">🪙</span>
+                <span class="card-index">05</span>
                 <span class="card-tag">Full Game</span>
               </div>
               <h3 class="card-title">Coin Throwing System</h3>
@@ -260,7 +243,7 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">💰</span>
+                <span class="card-index">06</span>
                 <span class="card-tag">Economy</span>
               </div>
               <h3 class="card-title">Tipping / Donation System</h3>
@@ -277,7 +260,7 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">📅</span>
+                <span class="card-index">07</span>
                 <span class="card-tag">Progression</span>
               </div>
               <h3 class="card-title">Daily Rewards System</h3>
@@ -294,7 +277,7 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">⚔️</span>
+                <span class="card-index">08</span>
                 <span class="card-tag">Gameplay</span>
               </div>
               <h3 class="card-title">Combat System</h3>
@@ -311,7 +294,7 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">💨</span>
+                <span class="card-index">09</span>
                 <span class="card-tag">Movement</span>
               </div>
               <h3 class="card-title">Sprint / Dash System</h3>
@@ -328,7 +311,7 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">👥</span>
+                <span class="card-index">10</span>
                 <span class="card-tag">Systems</span>
               </div>
               <h3 class="card-title">Staff / Player Display</h3>
@@ -345,7 +328,7 @@
             </div>
             <div class="card-body">
               <div class="card-header">
-                <span class="card-icon">🖥️</span>
+                <span class="card-index">11</span>
                 <span class="card-tag">Systems</span>
               </div>
               <h3 class="card-title">UI Systems</h3>
@@ -360,56 +343,31 @@
       </div>
     </section>
 
-    <!-- SKILLS -->
+    <!-- ENGINEERING APPROACH -->
     <section id="skills" class="section">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-tag">Expertise</span>
-          <h2>Skills</h2>
+          <span class="section-tag">Engineering</span>
+          <h2>How I build</h2>
+          <p class="section-intro">Practical decisions that make a Roblox system easier to test, secure, and extend.</p>
         </div>
-        <div class="skills-grid">
-          <div class="skill-card fade-in">
-            <div class="skill-icon">🌙</div>
-            <h3 class="skill-name">Roblox Luau</h3>
-            <p class="skill-desc">Core language — OOP, metatables, coroutines, and clean module patterns.</p>
-            <div class="skill-bar"><div class="skill-fill" style="width:93%"></div></div>
-            <span class="skill-pct">93%</span>
-          </div>
-          <div class="skill-card fade-in">
-            <div class="skill-icon">⚙️</div>
-            <h3 class="skill-name">Gameplay systems</h3>
-            <p class="skill-desc">Round loops, matchmaking, progression, combat, and full game architecture.</p>
-            <div class="skill-bar"><div class="skill-fill" style="width:90%"></div></div>
-            <span class="skill-pct">90%</span>
-          </div>
-          <div class="skill-card fade-in">
-            <div class="skill-icon">🔗</div>
-            <h3 class="skill-name">Client / server logic</h3>
-            <p class="skill-desc">Secure RemoteEvents, server-authoritative validation, and anti-exploit design.</p>
-            <div class="skill-bar"><div class="skill-fill" style="width:88%"></div></div>
-            <span class="skill-pct">88%</span>
-          </div>
-          <div class="skill-card fade-in">
-            <div class="skill-icon">💾</div>
-            <h3 class="skill-name">Data &amp; persistence</h3>
-            <p class="skill-desc">ProfileService, DataStore2, session locking, and safe data migration patterns.</p>
-            <div class="skill-bar"><div class="skill-fill" style="width:85%"></div></div>
-            <span class="skill-pct">85%</span>
-          </div>
-          <div class="skill-card fade-in">
-            <div class="skill-icon">🖥️</div>
-            <h3 class="skill-name">UI &amp; animation</h3>
-            <p class="skill-desc">TweenService, state-driven interfaces, and reusable component systems.</p>
-            <div class="skill-bar"><div class="skill-fill" style="width:82%"></div></div>
-            <span class="skill-pct">82%</span>
-          </div>
-          <div class="skill-card fade-in">
-            <div class="skill-icon">🛠️</div>
-            <h3 class="skill-name">Dev workflow</h3>
-            <p class="skill-desc">Rojo, Git version control, modular project structure, and clean code practices.</p>
-            <div class="skill-bar"><div class="skill-fill" style="width:87%"></div></div>
-            <span class="skill-pct">87%</span>
-          </div>
+        <div class="approach-list">
+          <article class="approach-item fade-in">
+            <span class="approach-index">01</span>
+            <div><h3>Server ownership first</h3><p>Damage, rewards, purchases, and progression are validated on the server. The client requests an action; it does not decide the result.</p></div>
+          </article>
+          <article class="approach-item fade-in">
+            <span class="approach-index">02</span>
+            <div><h3>State is explicit</h3><p>Combat, rounds, and player lifecycles use named states and controlled transitions instead of scattered boolean flags.</p></div>
+          </article>
+          <article class="approach-item fade-in">
+            <span class="approach-index">03</span>
+            <div><h3>Data has a lifecycle</h3><p>Profiles are loaded, reconciled, session-locked, and saved deliberately, with failure paths handled before new features depend on them.</p></div>
+          </article>
+          <article class="approach-item fade-in">
+            <span class="approach-index">04</span>
+            <div><h3>The handoff stays readable</h3><p>Rojo and Git keep source files reviewable. Modules are grouped by responsibility so another developer can continue the work.</p></div>
+          </article>
         </div>
       </div>
     </section>
@@ -418,56 +376,50 @@
     <section id="pricing" class="section section-alt">
       <div class="container">
         <div class="section-header fade-in">
-          <span class="section-tag">Pricing</span>
-          <h2>What it costs</h2>
+          <span class="section-tag">Commissioning</span>
+          <h2>Ways to work together</h2>
+          <p class="section-intro">Final pricing is based on scope, dependencies, and delivery time—not a generic package.</p>
         </div>
         <div class="pricing-grid fade-in">
 
           <div class="pricing-card">
-            <p class="pricing-tier">Small system</p>
+            <p class="pricing-tier">Focused task</p>
             <p class="pricing-price">From <span class="accent">$10</span></p>
-            <p class="pricing-desc">Single standalone systems with a clear, well-defined scope.</p>
+            <p class="pricing-desc">A contained fix or mechanic with a clear acceptance condition.</p>
             <ul class="pricing-list">
-              <li>Daily rewards system</li>
-              <li>Sprint / dash mechanic</li>
-              <li>Tipping / donation flow</li>
-              <li>Staff display panel</li>
-              <li>Simple UI components</li>
+              <li>Bug diagnosis and correction</li>
+              <li>Small movement or UI mechanic</li>
+              <li>Existing-code integration</li>
             </ul>
             <p class="pricing-note">Full payment upfront.</p>
           </div>
 
-          <div class="pricing-card pricing-card-featured">
-            <span class="pricing-badge">Most common</span>
-            <p class="pricing-tier">Medium system</p>
-            <p class="pricing-price">From <span class="accent">$25</span></p>
-            <p class="pricing-desc">Multi-part systems or anything requiring client/server architecture and data persistence.</p>
+          <div class="pricing-card">
+            <p class="pricing-tier">Standalone system</p>
+            <p class="pricing-price"><span class="accent">Scoped</span> quote</p>
+            <p class="pricing-desc">A complete feature spanning client, server, UI, or persistent data.</p>
             <ul class="pricing-list">
-              <li>Combat system with hit detection</li>
-              <li>Inventory &amp; shop system</li>
-              <li>Round-based gameplay loop</li>
-              <li>Admin panel + permission system</li>
-              <li>Ragdoll / physics system</li>
+              <li>Written feature scope</li>
+              <li>Rojo project structure</li>
+              <li>Tested integration and handoff</li>
             </ul>
             <p class="pricing-note">50% upfront · 50% on delivery.</p>
           </div>
 
           <div class="pricing-card">
-            <p class="pricing-tier">Full game</p>
-            <p class="pricing-price"><span class="accent">Custom</span> quote</p>
-            <p class="pricing-desc">Complete game builds with matchmaking, progression, data systems, and full architecture.</p>
+            <p class="pricing-tier">Multi-system build</p>
+            <p class="pricing-price"><span class="accent">Scoped</span> quote</p>
+            <p class="pricing-desc">A round framework or full experience made of several connected systems.</p>
             <ul class="pricing-list">
-              <li>Multiplayer game framework</li>
-              <li>Matchmaking &amp; lobby system</li>
-              <li>Full ProfileService integration</li>
-              <li>Leaderboards &amp; rewards</li>
-              <li>Ongoing support available</li>
+              <li>Milestones agreed before work</li>
+              <li>Client/server architecture</li>
+              <li>Integration support</li>
             </ul>
             <p class="pricing-note">50% upfront · 50% on delivery.</p>
           </div>
 
         </div>
-        <p class="pricing-footer fade-in">Payment via <strong>PayPal</strong>, <strong>crypto</strong>, or other agreed platforms. Price depends on complexity — send me your brief and I'll give you a clear number before we start.</p>
+        <p class="pricing-footer fade-in">Payment is available through <strong>PayPal</strong>, <strong>crypto</strong>, or another agreed platform. I do not accept revenue share as payment.</p>
       </div>
     </section>
 
@@ -476,7 +428,7 @@
       <div class="container">
         <div class="section-header fade-in">
           <span class="section-tag">Reviews</span>
-          <h2>Client Reviews</h2>
+          <h2>Client feedback</h2>
         </div>
 
         <div class="reviews-summary fade-in" id="reviewsSummary" aria-live="polite">
@@ -498,7 +450,7 @@
         <div class="review-form-wrap fade-in">
           <div class="review-form-header">
             <span class="section-tag">Leave a Review</span>
-            <h3>Share your experience</h3>
+            <h3>Review completed work</h3>
           </div>
 
           <div class="review-auth-status" id="reviewAuthLoading" role="status">Checking your Discord session…</div>
@@ -567,39 +519,39 @@
         <div class="contact-container fade-in">
           <div class="section-header center">
             <span class="section-tag">Contact</span>
-            <h2>Let's build something</h2>
+            <h2>Discuss a commission</h2>
           </div>
           <div class="contact-avail">
             <span class="contact-avail-dot"></span>
-            Available now · replies within 12 hours
+            DMs open · currently available
           </div>
-          <p class="contact-sub">Send me your project idea, required features, budget, and deadline. I'll send back a clear estimate — no commitment needed.</p>
+          <p class="contact-sub">Send the feature list, current project state, budget, and deadline. I'll review the dependencies and reply with a scope, price, and delivery plan.</p>
 
           <div class="contact-process">
             <div class="contact-step">
               <span class="contact-step-num">01</span>
-              <span class="contact-step-text">You send me the brief</span>
+              <span class="contact-step-text">Brief and existing code</span>
             </div>
             <div class="contact-step-arrow">→</div>
             <div class="contact-step">
               <span class="contact-step-num">02</span>
-              <span class="contact-step-text">I reply with a price &amp; timeline</span>
+              <span class="contact-step-text">Scope, price, and timeline</span>
             </div>
             <div class="contact-step-arrow">→</div>
             <div class="contact-step">
               <span class="contact-step-num">03</span>
-              <span class="contact-step-text">We agree, I start building</span>
+              <span class="contact-step-text">Milestones and delivery</span>
             </div>
           </div>
 
           <div class="contact-info">
             <div class="contact-item">
-              <span>💬</span>
-              <span>Discord: inbo_scripts</span>
+              <span class="contact-label">Discord</span>
+              <span>inbo_scripts</span>
             </div>
             <div class="contact-item">
-              <span>🎮</span>
-              <span>Roblox: @mr_inbo</span>
+              <span class="contact-label">Roblox</span>
+              <span>@mr_inbo</span>
             </div>
           </div>
           <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 15px 52px; font-size: 14px;">
@@ -612,10 +564,10 @@
   </main>
 
   <footer class="footer">
-    <p>Built with care &amp; Lua &nbsp;·&nbsp; inbo &nbsp;·&nbsp; © 2022–<span data-current-year>2026</span></p>
+    <p>© 2022–<span data-current-year>2026</span> inbo · Roblox development in Luau</p>
   </footer>
 
-  <script defer src="script.js?v=20260831-2"></script>
+  <script defer src="script.js?v=20260902-1"></script>
   <script defer src="reviews.js?v=20260901-1"></script>
 </body>
 </html>

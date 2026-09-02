@@ -1,6 +1,6 @@
 # Portfolio
 
-> Official portfolio of inbo, a Roblox Luau developer focused on production-ready multiplayer games and gameplay systems.
+> Official portfolio of inbo, a Roblox Luau developer documenting multiplayer games and gameplay systems.
 
 Canonical site: https://inbodev.com/
 Projects: https://inbodev.com/#projects
