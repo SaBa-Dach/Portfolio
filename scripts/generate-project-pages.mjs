@@ -135,7 +135,7 @@ function projectPage(id, project) {
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>${escapeHtml(project.title)} — Portfolio</title>
+  <title>${escapeHtml(project.title)} | Portfolio</title>
   <meta name="description" id="projectMetaDescription" content="${escapeHtml(description)}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="author" content="inbo">
@@ -144,13 +144,13 @@ function projectPage(id, project) {
   <link rel="canonical" href="${canonical}">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Portfolio">
-  <meta property="og:title" id="projectOgTitle" content="${escapeHtml(project.title)} — Portfolio">
+  <meta property="og:title" id="projectOgTitle" content="${escapeHtml(project.title)} | Portfolio">
   <meta property="og:description" id="projectOgDescription" content="${escapeHtml(description)}">
   <meta property="og:image" id="projectOgImage" content="${image}">
   <meta property="og:image:alt" content="${escapeHtml(project.title)} project preview">
   <meta property="og:url" id="projectOgUrl" content="${canonical}">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="${escapeHtml(project.title)} — Portfolio">
+  <meta name="twitter:title" content="${escapeHtml(project.title)} | Portfolio">
   <meta name="twitter:description" content="${escapeHtml(description)}">
   <meta name="twitter:image" content="${image}">
   <meta name="twitter:image:alt" content="${escapeHtml(project.title)} project preview">
@@ -230,10 +230,10 @@ ${schema.split('\n').map(line => `    ${line}`).join('\n')}
   </main>
 
   <footer class="footer">
-    <p>© 2022–<span data-current-year>2026</span> inbo · Roblox development in Luau</p>
+    <p>© 2022 to <span data-current-year>2026</span> inbo · Roblox development in Luau</p>
   </footer>
 
-  <script defer src="script.js?v=20260902-1"></script>
+  <script defer src="script.js?v=20260902-2"></script>
 </body>
 </html>
 `;

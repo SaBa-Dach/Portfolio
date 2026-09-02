@@ -198,7 +198,7 @@
       option.setAttribute('aria-checked', String(isSelected));
       option.tabIndex = isSelected || (!rating && Number(option.dataset.rating) === 1) ? 0 : -1;
     });
-    ratingSelection.textContent = rating ? `Rating: ${rating} / 5 — ${ratingLabels[rating]}` : 'Select a rating';
+    ratingSelection.textContent = rating ? `Rating: ${rating} / 5, ${ratingLabels[rating]}` : 'Select a rating';
     if (focus && rating) options[rating - 1].focus();
   }
 
@@ -378,7 +378,7 @@
     const count = reviews.length;
 
     if (!count) {
-      averageEl.textContent = '—';
+      averageEl.textContent = '...';
       labelEl.textContent = 'No ratings yet';
       barEl.style.width = '0%';
       return;

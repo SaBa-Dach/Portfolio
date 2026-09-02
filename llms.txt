@@ -9,9 +9,9 @@ Pricing: https://inbodev.com/#pricing
 Verified client reviews: https://inbodev.com/#testimonials
 Contact: https://inbodev.com/#contact
 
-The portfolio includes 11 detailed project case studies covering server-authoritative combat, multiplayer round systems, data persistence, UI, movement, physics, economy, and progression systems. Each case study includes a demonstration video, technical summary, and technologies used.
+The portfolio includes 11 detailed project case studies covering server controlled combat, multiplayer round systems, data persistence, UI, movement, physics, economy, and progression systems. Each case study includes a demonstration video, technical summary, and technologies used.
 
-Primary technologies: Roblox, Luau, Rojo, Git, ProfileService, DataStore, RemoteEvents, server-authoritative validation.
+Primary technologies: Roblox, Luau, Rojo, Git, ProfileService, DataStore, RemoteEvents, and server validation.
 
 Public profiles:
 - GitHub: https://github.com/SaBa-Dach

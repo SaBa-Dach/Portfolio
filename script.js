@@ -105,31 +105,31 @@
       category: 'Full Game / Combat Arena',
       video: 'videos/hole-game.mp4',
       poster: 'images/hole-game-poster.webp',
-      tags: ['Roblox', 'Luau', 'Server-Auth', 'R6 Combat', 'DataStore'],
-      desc: `A fast-paced multiplayer elimination game built around a mysterious central void. Players punch, push, and dash opponents into the hole while balancing an escalating Corruption meter.
+      tags: ['Roblox', 'Luau', 'Server Auth', 'R6 Combat', 'DataStore'],
+      desc: `A fast paced multiplayer elimination game built around a mysterious central void. Players punch, push, and dash opponents into the hole while balancing an escalating Corruption meter.
 
 <h3>Combat and locomotion</h3>
 - Left punch, right punch, heavy push, directional dash, and sprint
-- State-driven combat covering attacks, lockouts, stuns, corruption, falling, and death
-- Server-authoritative validation with a six-second last-hit window for accurate elimination credit
+- State based combat covering attacks, lockouts, stuns, corruption, falling, and death
+- Server validation with a six second last hit window for accurate elimination credit
 
 <h3>Corruption and arena mechanics</h3>
-- Distance-based corruption builds as players risk fighting near the void
+- Corruption builds based on distance as players risk fighting near the void
 - Survival points reward players who remain close to danger
 - Maximum corruption locks input and forces the player toward the hole
 - Successful melee hits reset the attacker's corruption to zero
 
 <h3>Camera and controls</h3>
-- First-person R6 arms remain visible across movement and combat animations
+- First person R6 arms remain visible across movement and combat animations
 - Instant custom shift lock with stable character orientation
 - Camera and input state automatically synchronize during corruption and death
 
 <h3>Rounds and persistence</h3>
-- Fifteen-minute round lifecycle with voting, loading, intermission, active play, and cleanup
+- Fifteen minute round lifecycle with voting, loading, intermission, active play, and cleanup
 - Physical lobby map voting with live counters and geometry validation
 - Kill and survival scoring, winner qualification, global stats, and DataStore persistence
 
-Built in strict Luau with a modular Service / Controller architecture, reusable instances, and optimized client-server replication.`,
+Built in strict Luau with a modular Service / Controller architecture, reusable instances, and optimized replication between the client and server.`,
     },
 
     trivia: {
@@ -148,14 +148,14 @@ Built in strict Luau with a modular Service / Controller architecture, reusable 
         'images/trivia-4.webp',
       ],
       tags: ['Full Game', 'Multiplayer', 'ProfileService', 'DataStore', 'Luau'],
-      desc: `A multiplayer Roblox trivia game built around quick decision-making, progression, and replayability.
+      desc: `A multiplayer Roblox trivia game built around quick decisions, progression, and replayability.
 
-Players join tables and compete in a series of "Higher or Lower?" style questions across multiple categories — gaming, sports, music, social media, geography, and more. Wrong answers cost lives; correct answers reward coins, XP, and streak bonuses.
+Players join tables and compete in a series of "Higher or Lower?" style questions across multiple categories, including gaming, sports, music, social media, geography, and more. Wrong answers cost lives. Correct answers reward coins, XP, and streak bonuses.
 
 <h3>Systems built</h3>
 • Multiplayer table matchmaking
 • Round management and question framework
-• Server-authoritative answer validation
+• Server controlled answer validation
 • Lives and elimination system
 • Coin and XP rewards with streak bonuses
 • Daily rewards
@@ -166,11 +166,11 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 • Modular, scalable architecture
 
 <h3>Technical highlights</h3>
-• Server-authoritative gameplay logic
-• Multi-table support — multiple matches running simultaneously
+• Server controlled gameplay logic
+• Support for multiple tables and simultaneous matches
 • Secure RemoteEvent communication
 • Persistent player statistics via ProfileService
-• Optimised client-server data flow`,
+• Optimised data flow between the client and server`,
     },
 
     hideandseek: {
@@ -184,8 +184,8 @@ Players join tables and compete in a series of "Higher or Lower?" style question
         'images/hide-and-seek-1.webp',
         'images/hide-and-seek-2.webp',
       ],
-      tags: ['Full Game', 'Modular', 'Server-Auth', 'Luau', 'Raycasting'],
-      desc: `A modular Roblox hide-and-seek framework built around service-owned round state, server-authoritative networking, and systems that can be extended independently.
+      tags: ['Full Game', 'Modular', 'Server Auth', 'Luau', 'Raycasting'],
+      desc: `A modular Roblox hide and seek framework with round state controlled by services, server controlled networking, and systems that can be extended independently.
 
 <h3>Systems built</h3>
 • Admin permission system and panel
@@ -197,7 +197,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 • Seeker panel with Laser Eyes ability (raycasting + Beam effects)
 • Secure RemoteEvents
 • Win detection and UI system
-• Modular, service-based architecture`,
+• Modular architecture built with services`,
     },
 
     slapping: {
@@ -205,16 +205,16 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       category: 'Combat / Physics',
       video: 'videos/slapping.mp4',
       poster: 'images/slapping.webp',
-      tags: ['Combat', 'Physics', 'Server-Auth', 'BallSocketConstraints', 'Luau'],
-      desc: `Advanced physics-based ragdoll using BallSocketConstraints for realistic limb simulation.
+      tags: ['Combat', 'Physics', 'Server Auth', 'BallSocketConstraints', 'Luau'],
+      desc: `Advanced physics based ragdoll using BallSocketConstraints for realistic limb simulation.
 
 <h3>Features</h3>
-• Server-authoritative hit detection
+• Server controlled hit detection
 • Dynamic knockback scaling based on force
 • Reach validation to prevent exploit abuse
-• Multi-target detection
+• Detection for multiple targets
 • Network ownership handling for smooth physics
-• Synced get-up mechanic across all clients`,
+• Synced recovery across all clients`,
     },
 
     coin: {
@@ -222,14 +222,14 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       category: 'Full Game',
       video: 'videos/CoinTrow.mp4',
       poster: 'images/coin-throwing.webp',
-      tags: ['Full Game', 'Economy', 'Robux', 'Physics', 'Server-Auth'],
+      tags: ['Full Game', 'Economy', 'Robux', 'Physics', 'Server Auth'],
       desc: `A full game system where players purchase throwable coins with Robux, throw them at others to deal damage, and earn daily rewards based on spending activity.
 
 <h3>Features</h3>
 • Config module for easy customisation
-• Server-authoritative game logic
+• Server controlled game logic
 • Shop UI for coin purchases
-• Physics-based projectile system
+• Projectile system driven by physics
 • Visual effects handler
 • Clean remote architecture`,
     },
@@ -245,7 +245,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 <h3>Features</h3>
 • Gamepass ID input
 • Automatic price fetching from the Roblox API
-• Full in-game purchase flow
+• Full purchase flow inside the game
 • Clean UI with purchase confirmation
 • Modular and easy to drop into any game`,
     },
@@ -256,13 +256,13 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       video: 'videos/daily-rewards.mp4',
       poster: 'images/daily-rewards.webp',
       tags: ['Progression', 'DataStore', 'UI', 'Luau'],
-      desc: `A streak-based daily reward system with persistent storage and a polished UI.
+      desc: `A daily reward system with persistent streak storage and a polished UI.
 
 <h3>Features</h3>
 • Streak tracking with DataStore persistence
 • Polished UI showing current streak, next reward, and claim state
 • Configurable reward tiers
-• Anti-exploit server validation`,
+• Server validation against exploits`,
     },
 
     combat: {
@@ -270,12 +270,12 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       category: 'Gameplay',
       video: 'videos/combat.mp4',
       poster: 'images/combat.webp',
-      tags: ['Gameplay', 'Hit Detection', 'Latency', 'Server-Auth'],
-      desc: `A server-side combat system built for fairness in multiplayer environments.
+      tags: ['Gameplay', 'Hit Detection', 'Latency', 'Server Auth'],
+      desc: `A combat system controlled by the server and built for fairness in multiplayer environments.
 
 <h3>Features</h3>
 • M1 combo chain system
-• Server-side hit detection with latency compensation
+• Server side hit detection with latency compensation
 • Damage handling and health management
 • Combo window timing
 • Clean animation integration`,
@@ -306,10 +306,10 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       desc: `A live server panel displaying player avatars and group rank information.
 
 <h3>Features</h3>
-• Real-time player avatar display
+• Live player avatar display
 • Group rank detection and labelling
 • Clean, configurable UI layout
-• Ideal for admin dashboards or server-info boards`,
+• Ideal for admin dashboards or server information boards`,
     },
 
     ui: {
@@ -318,14 +318,14 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       video: 'videos/ui-systems.mp4',
       poster: 'images/ui-systems.webp',
       tags: ['Systems', 'UI', 'Components', 'Animations'],
-      desc: `A collection of reusable, plug-and-play UI components for Roblox.
+      desc: `A collection of reusable UI components that are ready to integrate into Roblox projects.
 
 <h3>Features</h3>
 • Reusable button components
 • Animated navigation menus
 • Clean input handling
-• Tween-based animations
-• Modular structure for easy re-use across projects`,
+• Animations driven by TweenService
+• Modular structure for easy reuse across projects`,
     },
   };
 
@@ -349,7 +349,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       return;
     }
 
-    document.title = `${project.title} — Portfolio`;
+    document.title = `${project.title} | Portfolio`;
 
     const projectUrl = `https://inbodev.com/${projectSlugs[id]}`;
     const plainDescription = project.desc
@@ -374,7 +374,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
       if (element) element.setAttribute('content', content);
     };
     setMetaContent('#projectMetaDescription', projectDescription);
-    setMetaContent('#projectOgTitle', `${project.title} — Portfolio`);
+    setMetaContent('#projectOgTitle', `${project.title} | Portfolio`);
     setMetaContent('#projectOgDescription', projectDescription);
     setMetaContent('#projectOgImage', projectImage);
     setMetaContent('#projectOgUrl', projectUrl);
