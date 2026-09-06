@@ -14,6 +14,7 @@ if (!projectObjectMatch) {
 const projects = vm.runInNewContext(`(${projectObjectMatch[1]})`);
 const slugs = {
   holegame: 'hole-game.html',
+  communitybot: '4r-community-bot.html',
   trivia: 'multiplayer-trivia.html',
   hideandseek: 'hide-and-seek.html',
   slapping: 'slapping-ragdoll.html',
@@ -106,17 +107,36 @@ function projectPage(id, project) {
   const slug = slugs[id];
   const canonical = `https://inbodev.com/${slug}`;
   const description = metaDescription(project);
-  const videoList = project.videos || [project.video];
+  const hasVideo = Boolean(project.video || project.videos?.length);
+  const videoList = hasVideo ? (project.videos || [project.video]) : [];
   const posterList = project.posters || [project.poster];
   const image = `https://inbodev.com/${posterList[0]}`;
   const tags = project.tags.map(tag => `<span class="chip">${escapeHtml(tag)}</span>`).join('\n          ');
   const sidebarTags = project.tags.map(tag => `<span class="chip">${escapeHtml(tag)}</span>`).join('\n                ');
-  const gallery = videoList.length > 1
+  const gallery = hasVideo && videoList.length > 1
     ? videoList.map((_, index) => `
           <button class="video-thumb${index === 0 ? ' active' : ''}" type="button" aria-label="Play video part ${index + 1}" aria-pressed="${index === 0}">
             <img src="${escapeHtml(posterList[index])}" alt="" loading="lazy" decoding="async">
             <span>Part ${index + 1}</span>
           </button>`).join('')
+    : '';
+  const media = hasVideo
+    ? `<div class="project-video-wrap">
+          <video id="projectVideo" controls muted playsinline preload="metadata" poster="${escapeHtml(posterList[0])}">
+            <source src="${escapeHtml(videoList[0])}" type="video/mp4">
+            <p>Your browser does not support HTML5 video.</p>
+          </video>
+        </div>
+
+        <div class="video-gallery" id="videoGallery">${gallery}
+        </div>`
+    : `<a class="project-image-wrap" href="${escapeHtml(project.externalUrl)}" target="_blank" rel="noopener noreferrer" aria-label="${escapeHtml(project.externalLabel || 'Open live project')}">
+          <img src="${escapeHtml(posterList[0])}" alt="${escapeHtml(project.title)} system overview" width="1200" height="675">
+          <span>${escapeHtml(project.externalLabel || 'Open live project')} ↗</span>
+        </a>`;
+  const externalCta = project.externalUrl
+    ? `              <a href="${escapeHtml(project.externalUrl)}" target="_blank" rel="noopener noreferrer" class="sidebar-cta">${escapeHtml(project.externalLabel || 'Open live project')} ↗</a>
+`
     : '';
   const schema = JSON.stringify({
     '@context': 'https://schema.org',
@@ -156,7 +176,7 @@ function projectPage(id, project) {
   <meta name="twitter:image:alt" content="${escapeHtml(project.title)} project preview">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
-  <link rel="stylesheet" href="style.css?v=20260902-1">
+  <link rel="stylesheet" href="style.css?v=20260906-1">
   <link rel="icon" type="image/png" href="./ib_logo.png?v=20260831-1">
   <link rel="apple-touch-icon" href="./ib_logo.png?v=20260831-1">
   <script type="application/ld+json">
@@ -200,15 +220,7 @@ ${schema.split('\n').map(line => `    ${line}`).join('\n')}
           ${tags}
         </div>
 
-        <div class="project-video-wrap">
-          <video id="projectVideo" controls muted playsinline preload="metadata" poster="${escapeHtml(posterList[0])}">
-            <source src="${escapeHtml(videoList[0])}" type="video/mp4">
-            <p>Your browser does not support HTML5 video.</p>
-          </video>
-        </div>
-
-        <div class="video-gallery" id="videoGallery">${gallery}
-        </div>
+        ${media}
 
         <div class="project-body">
           <div class="project-desc-text" id="projectDesc">
@@ -221,7 +233,7 @@ ${schema.split('\n').map(line => `    ${line}`).join('\n')}
               <div class="sidebar-tag-list" id="sidebarTags">
                 ${sidebarTags}
               </div>
-              <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="sidebar-cta">Hire me for something similar ↗</a>
+${externalCta}              <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="sidebar-cta${project.externalUrl ? ' sidebar-cta-secondary' : ''}">Hire me for something similar ↗</a>
             </div>
           </aside>
         </div>
@@ -233,7 +245,7 @@ ${schema.split('\n').map(line => `    ${line}`).join('\n')}
     <p>© 2022 to <span data-current-year>2026</span> inbo · Roblox development in Luau</p>
   </footer>
 
-  <script defer src="script.js?v=20260902-2"></script>
+  <script defer src="script.js?v=20260906-1"></script>
 </body>
 </html>
 `;

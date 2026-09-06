@@ -2,11 +2,12 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://inbodev.com/</loc>
-    <lastmod>2026-08-31</lastmod>
+    <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url><loc>https://inbodev.com/hole-game.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
+  <url><loc>https://inbodev.com/4r-community-bot.html</loc><lastmod>2026-09-06</lastmod><priority>0.8</priority></url>
   <url><loc>https://inbodev.com/multiplayer-trivia.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
   <url><loc>https://inbodev.com/hide-and-seek.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>
   <url><loc>https://inbodev.com/slapping-ragdoll.html</loc><lastmod>2026-08-31</lastmod><priority>0.8</priority></url>

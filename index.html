@@ -28,7 +28,7 @@
   <meta name="twitter:image:alt" content="inbo Roblox systems developer portfolio and featured Hole Game project">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
-  <link rel="stylesheet" href="style.css?v=20260902-1">
+  <link rel="stylesheet" href="style.css?v=20260906-1">
   <link rel="icon" type="image/png" href="./ib_logo.png?v=20260831-1">
   <link rel="apple-touch-icon" href="./ib_logo.png?v=20260831-1">
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
@@ -152,9 +152,13 @@
           <h2>Documented projects</h2>
           <p class="section-intro">Recorded footage, implementation details, and the systems I owned on each build.</p>
         </div>
+        <div class="project-filters fade-in" aria-label="Project categories">
+          <button class="project-filter is-active" type="button" data-project-filter="roblox" aria-pressed="true">Roblox projects</button>
+          <button class="project-filter" type="button" data-project-filter="discord" aria-pressed="false">Discord bots</button>
+        </div>
         <div class="projects-grid">
 
-          <a href="hole-game.html" class="card card-featured fade-in">
+          <a href="hole-game.html" class="card card-featured fade-in" data-project-category="roblox">
             <div class="card-video">
               <img src="images/hole-game-poster.webp" alt="Hole Game combat arena with the corruption meter and central void" width="960" height="426" loading="lazy" decoding="async">
             </div>
@@ -171,7 +175,24 @@
             </div>
           </a>
 
-          <a href="multiplayer-trivia.html" class="card fade-in">
+          <a href="4r-community-bot.html" class="card fade-in" data-project-category="discord" hidden>
+            <div class="card-video">
+              <img src="images/4r-community-bot.webp" alt="4R Studios Community Bot verification and operations overview" width="1200" height="675" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-index">01</span>
+                <span class="card-tag">Client Project</span>
+              </div>
+              <h3 class="card-title">4R Studios Community Bot</h3>
+              <p class="card-desc">Production Discord bot with secure Roblox verification, automated roles, support tickets, moderation, giveaways, audit logging, and managed deployment.</p>
+              <div class="card-footer">
+                <span class="card-watch">View case study ↗</span>
+              </div>
+            </div>
+          </a>
+
+          <a href="multiplayer-trivia.html" class="card fade-in" data-project-category="roblox">
             <div class="card-video">
               <img src="images/trivia-4.webp" alt="Multiplayer trivia question round with leaderboard and countdown" width="960" height="540" loading="lazy" decoding="async">
             </div>
@@ -188,7 +209,7 @@
             </div>
           </a>
 
-          <a href="hide-and-seek.html" class="card fade-in">
+          <a href="hide-and-seek.html" class="card fade-in" data-project-category="roblox">
             <div class="card-video">
               <img src="images/hide-and-seek-1.webp" alt="Hide and Seek Framework admin panel and map controls" width="960" height="540" loading="lazy" decoding="async">
             </div>
@@ -205,7 +226,7 @@
             </div>
           </a>
 
-          <a href="slapping-ragdoll.html" class="card fade-in">
+          <a href="slapping-ragdoll.html" class="card fade-in" data-project-category="roblox">
             <div class="card-video">
               <img src="images/slapping.webp" alt="Roblox slapping and ragdoll combat demonstration" width="960" height="540" loading="lazy" decoding="async">
             </div>
@@ -222,7 +243,7 @@
             </div>
           </a>
 
-          <a href="coin-throwing.html" class="card fade-in">
+          <a href="coin-throwing.html" class="card fade-in" data-project-category="roblox">
             <div class="card-video">
               <img src="images/coin-throwing.webp" alt="Coin throwing system targeting Roblox training dummies" width="960" height="540" loading="lazy" decoding="async">
             </div>
@@ -239,7 +260,7 @@
             </div>
           </a>
 
-          <a href="tipping-donation.html" class="card fade-in">
+          <a href="tipping-donation.html" class="card fade-in" data-project-category="roblox">
             <div class="card-video">
               <img src="images/tipping.webp" alt="Roblox tipping interface with multiple Robux options" width="960" height="540" loading="lazy" decoding="async">
             </div>
@@ -256,7 +277,7 @@
             </div>
           </a>
 
-          <a href="daily-rewards.html" class="card fade-in">
+          <a href="daily-rewards.html" class="card fade-in" data-project-category="roblox">
             <div class="card-video">
               <img src="images/daily-rewards.webp" alt="Daily rewards streak interface with claim timers" width="960" height="540" loading="lazy" decoding="async">
             </div>
@@ -273,7 +294,7 @@
             </div>
           </a>
 
-          <a href="combat-system.html" class="card fade-in">
+          <a href="combat-system.html" class="card fade-in" data-project-category="roblox">
             <div class="card-video">
               <img src="images/combat.webp" alt="Roblox melee combat combo demonstration" width="960" height="540" loading="lazy" decoding="async">
             </div>
@@ -290,7 +311,7 @@
             </div>
           </a>
 
-          <a href="sprint-dash.html" class="card fade-in">
+          <a href="sprint-dash.html" class="card fade-in" data-project-category="roblox">
             <div class="card-video">
               <img src="images/sprint.webp" alt="Directional sprint and dash cooldown demonstration" width="960" height="540" loading="lazy" decoding="async">
             </div>
@@ -307,7 +328,7 @@
             </div>
           </a>
 
-          <a href="staff-player-display.html" class="card fade-in">
+          <a href="staff-player-display.html" class="card fade-in" data-project-category="roblox">
             <div class="card-video">
               <img src="images/staff-display.webp" alt="Roblox staff onboarding and employment interface" width="960" height="540" loading="lazy" decoding="async">
             </div>
@@ -324,7 +345,7 @@
             </div>
           </a>
 
-          <a href="ui-systems.html" class="card fade-in">
+          <a href="ui-systems.html" class="card fade-in" data-project-category="roblox">
             <div class="card-video">
               <img src="images/ui-systems.webp" alt="Roblox store interface with featured products and gamepasses" width="960" height="540" loading="lazy" decoding="async">
             </div>
@@ -569,7 +590,7 @@
     <p>© 2022 to <span data-current-year>2026</span> inbo · Roblox development in Luau</p>
   </footer>
 
-  <script defer src="script.js?v=20260902-2"></script>
+  <script defer src="script.js?v=20260906-1"></script>
   <script defer src="reviews.js?v=20260902-2"></script>
 </body>
 </html>

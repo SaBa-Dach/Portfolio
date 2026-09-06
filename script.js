@@ -82,11 +82,31 @@
 
   updateProjectCount();
 
+  const projectFilters = [...document.querySelectorAll('[data-project-filter]')];
+  const projectCards = projectGrid ? [...projectGrid.querySelectorAll(':scope > .card')] : [];
+
+  function showProjectCategory(category) {
+    projectCards.forEach(card => {
+      card.hidden = card.dataset.projectCategory !== category;
+    });
+
+    projectFilters.forEach(button => {
+      const selected = button.dataset.projectFilter === category;
+      button.classList.toggle('is-active', selected);
+      button.setAttribute('aria-pressed', String(selected));
+    });
+  }
+
+  projectFilters.forEach(button => {
+    button.addEventListener('click', () => showProjectCategory(button.dataset.projectFilter));
+  });
+
   /* =====================================================
      PROJECT DETAIL PAGE
      ===================================================== */
   const projectSlugs = {
     holegame: 'hole-game.html',
+    communitybot: '4r-community-bot.html',
     trivia: 'multiplayer-trivia.html',
     hideandseek: 'hide-and-seek.html',
     slapping: 'slapping-ragdoll.html',
@@ -130,6 +150,36 @@
 - Kill and survival scoring, winner qualification, global stats, and DataStore persistence
 
 Built in strict Luau with a modular Service / Controller architecture, reusable instances, and optimized replication between the client and server.`,
+    },
+
+    communitybot: {
+      title: '4R Studios Community Bot',
+      category: 'Client Project / Discord Bot',
+      poster: 'images/4r-community-bot.webp',
+      externalUrl: 'https://discord.gg/C6v6snyfM5',
+      externalLabel: 'Visit the 4R Studios server',
+      tags: ['TypeScript', 'discord.js', 'Roblox OAuth', 'Prisma', 'Docker'],
+      desc: `A production Discord community bot developed and deployed for 4R Studios. The system connects a Roblox community's verification, support, moderation, engagement, and operational tooling in one configurable application. The client has approved linking the live community server from this portfolio.
+
+<h3>Roblox verification</h3>
+• Native Roblox OAuth 2.0 authorization with PKCE
+• Profile code verification available as a fallback
+• Duplicate account protection and account unlinking
+• Automatic Discord role and nickname synchronization
+
+<h3>Community operations</h3>
+• Category based private support tickets with staff claiming and transcripts
+• Persistent warnings, timeouts, bans, message purging, and moderation logs
+• Persistent giveaways with role requirements, multiple winners, and rerolls
+• Welcome messages, self role panels, announcements, and detailed audit logging
+
+<h3>Security and deployment</h3>
+• Short lived authorization sessions with state, nonce, and PKCE validation
+• OAuth tokens discarded after verification and secrets stored outside the codebase
+• Permission checks, protected mentions, rate limits, and role hierarchy validation
+• Continuous hosting with Docker, Caddy HTTPS, health monitoring, and database backups
+
+I designed, developed, tested, and deployed the complete bot, including its command architecture, OAuth pages, database structure, moderation tools, ticket workflow, security controls, and production infrastructure.`,
     },
 
     trivia: {

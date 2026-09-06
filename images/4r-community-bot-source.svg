@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#101318"/>
+      <stop offset="1" stop-color="#07090c"/>
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#171b21"/>
+      <stop offset="1" stop-color="#101319"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="58%">
+      <stop offset="0" stop-color="#bff12f" stop-opacity="0.2"/>
+      <stop offset="1" stop-color="#bff12f" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect x="0" width="7" height="675" fill="#bff12f"/>
+  <circle cx="1030" cy="80" r="360" fill="url(#glow)"/>
+  <path d="M70 78H655" stroke="#292f36"/>
+
+  <text x="70" y="128" fill="#f4f5f6" font-family="Arial, Helvetica, sans-serif" font-size="29" font-weight="700">4R STUDIOS</text>
+  <text x="70" y="198" fill="#bff12f" font-family="Consolas, monospace" font-size="15" font-weight="700" letter-spacing="2.2">CLIENT PROJECT</text>
+  <text x="70" y="292" fill="#f4f5f6" font-family="Arial, Helvetica, sans-serif" font-size="62" font-weight="700" letter-spacing="-2">Community Bot</text>
+  <text x="70" y="344" fill="#a6aeb7" font-family="Arial, Helvetica, sans-serif" font-size="21">Verification, support, moderation, and automation</text>
+
+  <g transform="translate(70 415)" font-family="Arial, Helvetica, sans-serif">
+    <rect width="182" height="48" rx="24" fill="#15191e" stroke="#30363d"/>
+    <circle cx="27" cy="24" r="7" fill="#bff12f"/>
+    <text x="45" y="30" fill="#dce1e6" font-size="15" font-weight="700">Roblox OAuth</text>
+
+    <rect x="196" width="168" height="48" rx="24" fill="#15191e" stroke="#30363d"/>
+    <circle cx="223" cy="24" r="7" fill="#bff12f"/>
+    <text x="241" y="30" fill="#dce1e6" font-size="15" font-weight="700">TypeScript</text>
+
+    <rect x="378" width="154" height="48" rx="24" fill="#15191e" stroke="#30363d"/>
+    <circle cx="405" cy="24" r="7" fill="#bff12f"/>
+    <text x="423" y="30" fill="#dce1e6" font-size="15" font-weight="700">discord.js</text>
+  </g>
+
+  <text x="70" y="594" fill="#7f8891" font-family="Consolas, monospace" font-size="14" letter-spacing="1.2">DESIGNED · BUILT · DEPLOYED</text>
+
+  <g transform="translate(724 90)" font-family="Arial, Helvetica, sans-serif">
+    <rect width="408" height="495" rx="18" fill="url(#panel)" stroke="#343b43"/>
+    <circle cx="48" cy="53" r="22" fill="#bff12f"/>
+    <path d="M38 53l7 7 13-16" fill="none" stroke="#0a0d0f" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="84" y="49" fill="#f4f5f6" font-size="20" font-weight="700">Verification active</text>
+    <text x="84" y="72" fill="#858e98" font-size="14">Roblox identity connected</text>
+    <path d="M30 104H378" stroke="#2a3037"/>
+
+    <text x="30" y="145" fill="#7f8891" font-family="Consolas, monospace" font-size="12" letter-spacing="1.4">SYSTEM STATUS</text>
+
+    <rect x="30" y="170" width="348" height="72" rx="10" fill="#0c0f13" stroke="#262c32"/>
+    <text x="52" y="200" fill="#f0f2f4" font-size="16" font-weight="700">Roles and nicknames</text>
+    <text x="52" y="224" fill="#858e98" font-size="13">Synchronized automatically</text>
+    <circle cx="347" cy="206" r="7" fill="#bff12f"/>
+
+    <rect x="30" y="256" width="348" height="72" rx="10" fill="#0c0f13" stroke="#262c32"/>
+    <text x="52" y="286" fill="#f0f2f4" font-size="16" font-weight="700">Support tickets</text>
+    <text x="52" y="310" fill="#858e98" font-size="13">Private channels and transcripts</text>
+    <circle cx="347" cy="292" r="7" fill="#bff12f"/>
+
+    <rect x="30" y="342" width="348" height="72" rx="10" fill="#0c0f13" stroke="#262c32"/>
+    <text x="52" y="372" fill="#f0f2f4" font-size="16" font-weight="700">Moderation and logging</text>
+    <text x="52" y="396" fill="#858e98" font-size="13">Persistent records and audit events</text>
+    <circle cx="347" cy="378" r="7" fill="#bff12f"/>
+
+    <text x="30" y="457" fill="#bff12f" font-family="Consolas, monospace" font-size="13" font-weight="700" letter-spacing="1.2">ONLINE · SECURED · MONITORED</text>
+  </g>
+</svg>
