@@ -125,7 +125,7 @@
       category: 'Full Game / Combat Arena',
       video: 'videos/hole-game.mp4',
       poster: 'images/hole-game-poster.webp',
-      tags: ['Roblox', 'Luau', 'Server Auth', 'R6 Combat', 'DataStore'],
+      tags: ['Round Systems', 'R6 Combat', 'Server Auth', 'DataStore', 'Luau'],
       desc: `A fast paced multiplayer elimination game built around a mysterious central void. Players punch, push, and dash opponents into the hole while balancing an escalating Corruption meter.
 
 <h3>Combat and locomotion</h3>
@@ -197,7 +197,7 @@ I designed, developed, tested, and deployed the complete bot, including its comm
         'images/trivia-3.webp',
         'images/trivia-4.webp',
       ],
-      tags: ['Full Game', 'Multiplayer', 'ProfileService', 'DataStore', 'Luau'],
+      tags: ['Round Systems', 'Multiplayer', 'ProfileService', 'DataStore', 'Luau'],
       desc: `A multiplayer Roblox trivia game built around quick decisions, progression, and replayability.
 
 Players join tables and compete in a series of "Higher or Lower?" style questions across multiple categories, including gaming, sports, music, social media, geography, and more. Wrong answers cost lives. Correct answers reward coins, XP, and streak bonuses.
@@ -234,7 +234,7 @@ Players join tables and compete in a series of "Higher or Lower?" style question
         'images/hide-and-seek-1.webp',
         'images/hide-and-seek-2.webp',
       ],
-      tags: ['Full Game', 'Modular', 'Server Auth', 'Luau', 'Raycasting'],
+      tags: ['Round Systems', 'Modular', 'Server Auth', 'Luau', 'Raycasting'],
       desc: `A modular Roblox hide and seek framework with round state controlled by services, server controlled networking, and systems that can be extended independently.
 
 <h3>Systems built</h3>
