@@ -153,13 +153,43 @@
     container.append(copy, retry);
   }
 
+  function getDiscordDefaultAvatar(key) {
+    let index = 0;
+    if (key) {
+      try {
+        const str = String(key).trim();
+        if (/^\d{16,21}$/.test(str)) {
+          index = Number((BigInt(str) >> 22n) % 6n);
+        } else {
+          let hash = 0;
+          for (let i = 0; i < str.length; i++) {
+            hash = ((hash << 5) - hash) + str.charCodeAt(i);
+            hash |= 0;
+          }
+          index = Math.abs(hash) % 6;
+        }
+      } catch {
+        index = 0;
+      }
+    }
+    return `https://cdn.discordapp.com/embed/avatars/${index}.png`;
+  }
+
   function getDiscordProfile(user) {
     const metadata = user?.user_metadata || {};
-    const username = metadata.user_name || metadata.preferred_username || metadata.name || 'Discord user';
+    const identityData = user?.identities?.[0]?.identity_data || {};
+    const username = metadata.user_name || metadata.preferred_username || metadata.name || identityData.user_name || 'Discord user';
+    const discordId = metadata.provider_id || metadata.discord_id || identityData.provider_id || identityData.id || user?.id || '';
+    let avatarUrl = metadata.avatar_url || metadata.picture || identityData.avatar_url || '';
+    if (!avatarUrl && identityData.avatar && discordId) {
+      avatarUrl = `https://cdn.discordapp.com/avatars/${discordId}/${identityData.avatar}.png?size=128`;
+    }
+    const fallbackAvatar = getDiscordDefaultAvatar(discordId || username);
     return {
       username,
-      displayName: metadata.full_name || metadata.global_name || metadata.name || username,
-      avatarUrl: metadata.avatar_url || metadata.picture || ''
+      displayName: metadata.full_name || metadata.global_name || metadata.name || identityData.full_name || username,
+      avatarUrl: avatarUrl || fallbackAvatar,
+      fallbackAvatar
     };
   }
 
@@ -168,7 +198,7 @@
     return words.slice(0, 2).map(word => word[0]).join('').toUpperCase() || '?';
   }
 
-  function createAvatar(name, avatarUrl, className = '') {
+  function createAvatar(name, avatarUrl, className = '', fallbackAvatarUrl = '') {
     const wrap = document.createElement('div');
     wrap.className = `review-avatar-wrap ${className}`.trim();
     const fallback = document.createElement('span');
@@ -176,14 +206,20 @@
     fallback.textContent = initialsFor(name);
     wrap.appendChild(fallback);
 
-    if (avatarUrl) {
+    const initialSrc = avatarUrl || fallbackAvatarUrl;
+    if (initialSrc) {
       const image = document.createElement('img');
       image.className = 'review-avatar';
-      image.src = avatarUrl;
+      image.src = initialSrc;
       image.alt = '';
       image.loading = 'lazy';
-      image.referrerPolicy = 'no-referrer';
-      image.addEventListener('error', () => image.remove(), { once: true });
+      image.addEventListener('error', () => {
+        if (fallbackAvatarUrl && image.src !== fallbackAvatarUrl) {
+          image.src = fallbackAvatarUrl;
+        } else {
+          image.remove();
+        }
+      });
       wrap.appendChild(image);
     }
     return wrap;
@@ -420,12 +456,12 @@
     const author = document.createElement('footer');
     author.className = 'testimonial-author';
     // Supabase returns only a server-generated masked name (for example,
-    // "Sa***h"). The full Discord identity never reaches the browser.
     const authorName = review.public_display_name || 'Verified client';
+    const fallbackAvatar = getDiscordDefaultAvatar(review.public_avatar_token || authorName);
     const avatarUrl = review.discord_verified && review.public_avatar_token
       ? `${REVIEW_AVATAR_ENDPOINT}?token=${encodeURIComponent(review.public_avatar_token)}`
-      : '';
-    author.appendChild(createAvatar(authorName, avatarUrl));
+      : fallbackAvatar;
+    author.appendChild(createAvatar(authorName, avatarUrl, '', fallbackAvatar));
 
     const authorCopy = document.createElement('div');
     authorCopy.className = 'testimonial-author-copy';
@@ -499,8 +535,20 @@
 
   function renderAccountAvatar(profile) {
     const mount = document.getElementById('reviewAccountAvatar');
-    const avatar = createAvatar(profile.displayName, profile.avatarUrl);
+    const avatar = createAvatar(profile.displayName, profile.avatarUrl, '', profile.fallbackAvatar);
     mount.replaceChildren(...avatar.childNodes);
+  }
+
+  async function syncReviewerProfile() {
+    if (!currentSession?.user) return;
+    try {
+      const { data, error } = await db.rpc('sync_reviewer_profile');
+      if (!error && data?.updated > 0) {
+        await loadReviews({ showLoading: false });
+      }
+    } catch (_) {
+      // Non-blocking sync attempt
+    }
   }
 
   async function updateReviewerUi(session, { showProjectLoading = true } = {}) {
@@ -529,6 +577,7 @@
     setHidden(loggedOut, true);
     setHidden(account, false);
     setHidden(reviewForm, false);
+    syncReviewerProfile();
     await loadProjectOptions({ showLoading: showProjectLoading });
   }
 
