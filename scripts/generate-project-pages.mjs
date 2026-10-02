@@ -1,4 +1,4 @@
-import { readFile, writeFile } from 'node:fs/promises';
+﻿import { readFile, writeFile } from 'node:fs/promises';
 import vm from 'node:vm';
 
 const rootUrl = new URL('../', import.meta.url);
@@ -185,7 +185,7 @@ ${schema.split('\n').map(line => `    ${line}`).join('\n')}
 </head>
 <body data-project-id="${id}">
   <nav class="navbar scrolled" id="navbar" aria-label="Primary navigation">
-    <a href="index.html" class="nav-logo">inbo<span class="nav-logo-dot">.</span></a>
+    <a href="index.html" class="nav-logo">inbodev<span class="nav-logo-dot">.com</span></a>
     <div class="nav-links" id="navLinks">
       <a href="index.html#about">About</a>
       <a href="index.html#projects">Projects</a>
