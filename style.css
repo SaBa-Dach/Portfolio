@@ -85,7 +85,7 @@ button { cursor: pointer; font-family: inherit; }
   flex-shrink: 0;
   z-index: 2;
 }
-.nav-logo-dot { color: var(--accent); }
+.nav-logo-dot { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: 0; }
 
 /* Desktop nav links — hidden on mobile by default */
 .nav-links {
