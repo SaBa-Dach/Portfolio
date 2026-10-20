@@ -1,5 +1,5 @@
 /* =====================================================
-   inbo portfolio — style.css (v4 — full mobile fix)
+   inbo portfolio - style.css (v4 - full mobile fix)
    ===================================================== */
 
 /* --- Tokens --- */
@@ -87,7 +87,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 .nav-logo-dot { color: var(--accent); font-size: 13px; font-weight: 600; letter-spacing: 0; }
 
-/* Desktop nav links — hidden on mobile by default */
+/* Desktop nav links - hidden on mobile by default */
 .nav-links {
   display: flex; align-items: center; gap: 28px;
 }
@@ -125,7 +125,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 .nav-cta::after { display: none !important; }
 
-/* Hamburger — shown only on mobile */
+/* Hamburger - shown only on mobile */
 .menu-toggle {
   display: none;
   background: none; border: none;
@@ -199,7 +199,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 /* =====================================================
-   TYPEWRITER — zero layout shift, works on all sizes
+   TYPEWRITER - zero layout shift, works on all sizes
    
    Strategy: the title is a fixed-height block.
    On desktop we use a ghost span (invisible longest phrase)
@@ -254,7 +254,7 @@ button { cursor: pointer; font-family: inherit; }
 @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
 /* =====================================================
-   HERO STATS — 2×2 grid on mobile instead of cramped row
+   HERO STATS - 2×2 grid on mobile instead of cramped row
    ===================================================== */
 .hero-stats {
   display: flex; align-items: stretch;
@@ -1101,7 +1101,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 /* =====================================================
-   RESPONSIVE — TABLET (≤1024px)
+   RESPONSIVE - TABLET (≤1024px)
    ===================================================== */
 @media (max-width: 1024px) {
   .navbar { padding: 0 24px; }
@@ -1116,7 +1116,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 /* =====================================================
-   RESPONSIVE — NARROW SCREENS (≤800px)
+   RESPONSIVE - NARROW SCREENS (≤800px)
    ===================================================== */
 @media (max-width: 800px) {
   :root {
@@ -1128,33 +1128,96 @@ button { cursor: pointer; font-family: inherit; }
   .container { padding: 0 16px; }
 
   /* ---- NAVBAR ---- */
-  .navbar { padding: 0 16px; }
+  .navbar {
+    padding: 0 16px !important;
+    justify-content: space-between !important;
+  }
+  .navbar > .nav-switch {
+    display: none !important;
+  }
+  .nav-role-badge {
+    display: none !important;
+  }
   .nav-links {
     /* Hidden by default, revealed by JS toggle */
     display: none;
     position: absolute; top: 100%; left: 0; right: 0;
-    background: rgba(9,9,11,0.98);
-    border-bottom: 1px solid var(--border);
-    flex-direction: column; align-items: flex-start;
-    padding: 16px 20px; gap: 0;
+    background: rgba(9, 9, 11, 0.98) !important;
+    backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid var(--border) !important;
+    box-shadow: 0 20px 48px rgba(0, 0, 0, 0.85);
+    flex-direction: column !important;
+    align-items: stretch !important;
+    padding: 16px 20px 24px !important;
+    gap: 0 !important;
+    z-index: 1000 !important;
+    max-height: calc(100vh - var(--nav-h));
+    overflow-y: auto;
   }
-  .nav-links.open { display: flex; }
+  .nav-links.open { display: flex !important; }
+  .mobile-nav-switch {
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .mobile-nav-switch .nav-switch {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+  .mobile-nav-switch .nav-switch-tab {
+    flex: 1;
+    text-align: center;
+    justify-content: center;
+    padding: 8px 12px;
+    font-size: 12px;
+  }
   .nav-links a {
-    width: 100%; padding: 12px 0;
+    width: 100%; padding: 13px 0;
     font-size: 15px; color: var(--text-sub);
     border-bottom: 1px solid var(--border);
+    display: block;
+    text-align: left;
   }
   .nav-links a:last-child { border-bottom: none; }
   .nav-links a::after { display: none; }
   /* Show "Hire me" inline in mobile menu as regular link */
   .nav-cta {
-    border: none !important; padding: 12px 0 !important;
+    border: none !important; padding: 13px 0 !important;
     font-size: 15px !important; color: var(--accent) !important;
     background: none !important; border-radius: 0 !important;
     width: 100%; display: block !important;
     border-bottom: 1px solid var(--border) !important;
   }
-  .menu-toggle { display: flex; align-items: center; }
+  .menu-toggle {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: none;
+    border: none;
+    padding: 6px;
+    color: var(--text);
+    cursor: pointer;
+    z-index: 1001;
+  }
+  .menu-toggle svg line {
+    transition: transform 0.25s var(--ease), opacity 0.2s ease;
+    transform-origin: center;
+  }
+  .menu-toggle[aria-expanded="true"] svg line:nth-child(1) {
+    transform: translateY(6px) rotate(45deg);
+  }
+  .menu-toggle[aria-expanded="true"] svg line:nth-child(2) {
+    opacity: 0;
+  }
+  .menu-toggle[aria-expanded="true"] svg line:nth-child(3) {
+    transform: translateY(-6px) rotate(-45deg);
+  }
 
   /* ---- HERO ---- */
   .hero {
@@ -1201,7 +1264,7 @@ button { cursor: pointer; font-family: inherit; }
     grid-template-columns: 1fr 1fr;
     margin-top: 20px;
     max-width: 100%;
-    /* Remove the flex dividers — use border instead */
+    /* Remove the flex dividers - use border instead */
   }
   .hero-stat {
     padding: 12px;
@@ -1214,7 +1277,7 @@ button { cursor: pointer; font-family: inherit; }
   /* Remove bottom border from bottom row */
   .hero-stat:nth-child(5),
   .hero-stat:nth-child(7) { border-bottom: none; }
-  /* Hide the flex divider spans — using border grid now */
+  /* Hide the flex divider spans - using border grid now */
   .hero-stat-divider { display: none; }
   .hero-stat-num { font-size: clamp(16px, 5vw, 22px); }
   .hero-stat-label { font-size: 9px; }
@@ -1241,7 +1304,7 @@ button { cursor: pointer; font-family: inherit; }
   .review-submit { width: 100%; }
   .pricing-grid { grid-template-columns: 1fr; gap: 14px; }
   .pricing-card-featured { grid-column: span 1; }
-  /* Kill stagger delays on mobile — all cards appear together */
+  /* Kill stagger delays on mobile - all cards appear together */
   .projects-grid .card { transition-delay: 0s !important; }
 
   /* ---- CARD text sizing ---- */
@@ -1264,7 +1327,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 /* =====================================================
-   EXTRA SMALL (≤380px) — phones like iPhone SE
+   EXTRA SMALL (≤380px) - phones like iPhone SE
    ===================================================== */
 @media (max-width: 380px) {
   .container { padding: 0 14px; }
@@ -1358,7 +1421,7 @@ button { cursor: pointer; font-family: inherit; }
 }
 
 /* =====================================================
-   PROFESSIONAL REFRESH — evidence-led, restrained layout
+   PROFESSIONAL REFRESH - evidence-led, restrained layout
    ===================================================== */
 :root {
   --bg: #090a0b;
@@ -1789,23 +1852,6 @@ body {
 
 .mobile-nav-switch {
   display: none;
-}
-
-@media (max-width: 900px) {
-  .navbar > .nav-switch {
-    display: none !important;
-  }
-  .nav-role-badge {
-    display: none !important;
-  }
-  .mobile-nav-switch {
-    display: flex !important;
-    width: 100%;
-    justify-content: center;
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid var(--border);
-  }
 }
 
 .project-filter-link {
