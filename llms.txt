@@ -1,17 +1,19 @@
 # Portfolio
 
-> Official portfolio of inbo, a Roblox Luau developer documenting multiplayer games and gameplay systems.
+> Official portfolio of inbo, a Roblox Luau developer and UI designer documenting multiplayer games, gameplay systems, and cartoon simulator interfaces.
 
 Canonical site: https://inbodev.com/
+Scripter portfolio: https://inbodev.com/script
+UI design portfolio: https://inbodev.com/ui
 Projects: https://inbodev.com/#projects
 Skills: https://inbodev.com/#skills
 Pricing: https://inbodev.com/#pricing
 Verified client reviews: https://inbodev.com/#testimonials
 Contact: https://inbodev.com/#contact
 
-The portfolio includes 11 detailed project case studies covering server controlled combat, multiplayer round systems, data persistence, UI, movement, physics, economy, and progression systems. Each case study includes a demonstration video, technical summary, and technologies used.
+The portfolio includes 12 documented project case studies and a dedicated UI design portfolio covering simulator inventory systems, in-game store bundles, HUDs, server controlled combat, multiplayer round systems, data persistence, movement, physics, economy, and progression systems. Each case study includes a demonstration video, technical summary, and technologies used.
 
-Primary technologies: Roblox, Luau, Rojo, Git, ProfileService, DataStore, RemoteEvents, and server validation.
+Primary technologies: Roblox, Luau, UI Design, Rojo, Git, ProfileService, DataStore, RemoteEvents, and server validation.
 
 Public profiles:
 - GitHub: https://github.com/SaBa-Dach

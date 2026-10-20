@@ -71,10 +71,19 @@
 
   <!-- NAVBAR -->
   <nav class="navbar" id="navbar">
-    <a href="index.html" class="nav-logo">inbodev<span class="nav-logo-dot">.com</span></a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="index.html" class="nav-logo">inbodev<span class="nav-logo-dot">.com</span></a>
+    </div>
+
+    <!-- Role Switcher -->
+    <div class="nav-switch" aria-label="Portfolio Switcher">
+      <a href="/script" class="nav-switch-tab is-active" title="Viewing Luau Scripting Portfolio">⚡ Scripting</a>
+      <a href="/ui" class="nav-switch-tab" title="View UI Design Portfolio">🎨 UI Design</a>
+    </div>
     <div class="nav-links" id="navLinks">
       <a href="#about">About</a>
       <a href="#projects">Projects</a>
+      <a href="/ui" style="color:var(--accent);" title="Roblox UI Design Portfolio">🎨 UI Portfolio</a>
       <a href="#skills">Approach</a>
       <a href="#pricing">Pricing</a>
       <a href="#testimonials">Reviews</a>
@@ -132,11 +141,11 @@
         <div class="about-body fade-in">
           <div class="about-text">
             <p class="about-lead">I'm inbo, a Roblox developer with four years of experience building gameplay systems, round-based frameworks, and complete multiplayer features in Luau.</p>
-            <p>I work across most parts of a Roblox experience, including round-based systems (intermissions, map voting, game lifecycles, role assignment, and win detection), combat, persistent data, progression, shops, admin tools, UI integration, performance work, and bug fixing. I can take ownership of one focused system or contribute across an entire project from planning and architecture through integration, testing, and delivery.</p>
+            <p>I work across most parts of a Roblox experience, including round-based systems (intermissions, map voting, game lifecycles, role assignment, and win detection), combat, persistent data, progression, shops, admin tools, UI design &amp; integration, performance work, and bug fixing. I can take ownership of one focused system or contribute across an entire project from planning and architecture through integration, testing, and delivery.</p>
             <p>I am available for both individual commissions and long term development. For ongoing projects, I can maintain existing systems, build new features, solve technical problems, and keep the codebase organized with Rojo and Git.</p>
           </div>
           <dl class="about-details">
-            <div><dt>Coverage</dt><dd>Round-based systems, combat, server logic, persistent data, UI, optimization, and fixes</dd></div>
+            <div><dt>Coverage</dt><dd>Round-based systems, combat, UI design, server logic, persistent data, optimization, and fixes</dd></div>
             <div><dt>Engagement</dt><dd>Individual commissions and long term development</dd></div>
             <div><dt>Handoff</dt><dd>Organized Rojo project, Git history, and implementation notes</dd></div>
           </dl>
@@ -155,8 +164,26 @@
         <div class="project-filters fade-in" aria-label="Project categories">
           <button class="project-filter is-active" type="button" data-project-filter="roblox" aria-pressed="true">Roblox projects</button>
           <button class="project-filter" type="button" data-project-filter="discord" aria-pressed="false">Discord bots</button>
+          <a href="/ui" class="project-filter project-filter-link" aria-label="View UI Design Portfolio">🎨 UI Design (New) ↗</a>
         </div>
         <div class="projects-grid">
+
+          <a href="/ui" class="card fade-in" data-project-category="roblox">
+            <div class="card-video">
+              <img src="images/ui-shop.webp" alt="Roblox UI Design Showcase - In-Game Shop and Inventory" width="960" height="540" loading="lazy" decoding="async">
+            </div>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-index">NEW</span>
+                <span class="card-tag">UI Design</span>
+              </div>
+              <h3 class="card-title">Roblox UI Design Showcase</h3>
+              <p class="card-desc">Custom cartoon simulator interfaces: in-game shop with bundle tiers, pet inventory with filter &amp; equip-best, and HUD elements.</p>
+              <div class="card-footer">
+                <span class="card-watch">View UI Portfolio ↗</span>
+              </div>
+            </div>
+          </a>
 
           <a href="hole-game.html" class="card card-featured fade-in" data-project-category="roblox">
             <div class="card-video">

@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roblox UI Design &amp; Interfaces | inbo</title>
+  <meta name="description" content="Custom Roblox game UI design by inbo: simulator inventory, in-game shop, HUDs, and cartoon interfaces designed with full-stack Luau scripting integration in mind.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="inbo">
+  <meta name="application-name" content="Portfolio">
+  <meta name="theme-color" content="#08090b">
+  <link rel="canonical" href="https://inbodev.com/ui">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Portfolio">
+  <meta property="og:title" content="inbo | Roblox UI Design &amp; Interfaces">
+  <meta property="og:description" content="Custom Roblox game UI design: simulator inventory, shop bundles, HUDs, and cartoon interfaces.">
+  <meta property="og:image" content="https://inbodev.com/images/ui-shop.webp">
+  <meta property="og:image:type" content="image/webp">
+  <meta property="og:url" content="https://inbodev.com/ui">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="inbo | Roblox UI Design &amp; Interfaces">
+  <meta name="twitter:description" content="Custom Roblox game UI design: simulator inventory, shop bundles, HUDs, and cartoon interfaces.">
+  <meta name="twitter:image" content="https://inbodev.com/images/ui-shop.webp">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
+  <link rel="stylesheet" href="/style.css?v=20261021-1">
+  <link rel="icon" type="image/png" href="/ib_logo.png?v=20260831-1">
+  <link rel="apple-touch-icon" href="/ib_logo.png?v=20260831-1">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebSite",
+          "@id": "https://inbodev.com/#website",
+          "url": "https://inbodev.com/",
+          "name": "inbodev.com",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "WebPage",
+          "@id": "https://inbodev.com/ui#webpage",
+          "url": "https://inbodev.com/ui",
+          "name": "Roblox UI Design & Interfaces | inbo",
+          "isPartOf": { "@id": "https://inbodev.com/#website" },
+          "description": "Custom Roblox game UI design by inbo: simulator inventory, in-game shop, HUDs, and cartoon interfaces.",
+          "inLanguage": "en"
+        },
+        {
+          "@type": "Person",
+          "@id": "https://inbodev.com/#inbo",
+          "name": "inbo",
+          "url": "https://inbodev.com/",
+          "image": "https://inbodev.com/ib_logo.png?v=20260831-1",
+          "jobTitle": "Roblox UI Designer & Luau Developer",
+          "knowsAbout": ["Roblox", "UI Design", "User Interface", "Game Design", "Luau", "TweenService"],
+          "sameAs": ["https://github.com/SaBa-Dach"]
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" id="navbar">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="/" class="nav-logo">inbodev<span class="nav-logo-dot">.com</span></a>
+      <span class="nav-role-badge">UI DESIGN</span>
+    </div>
+
+    <!-- Role Switcher -->
+    <div class="nav-switch" aria-label="Portfolio Switcher">
+      <a href="/script" class="nav-switch-tab" title="View Luau Scripting Portfolio">⚡ Scripting</a>
+      <a href="/ui" class="nav-switch-tab is-active" title="Viewing UI Design Portfolio">🎨 UI Design</a>
+    </div>
+
+    <div class="nav-links" id="navLinks">
+      <a href="#showcase">Showcase</a>
+      <a href="#about-ui">About</a>
+      <a href="#fullstack">Advantage</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
+      <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire me ↗</a>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container hero-content" id="heroContent">
+      <div class="hero-copy">
+        <p class="hero-eyebrow">// Roblox UI Design &amp; Game Interfaces</p>
+        <h1 class="hero-title">Vibrant, playful Roblox game interfaces.</h1>
+        <p class="hero-sub">I design clean cartoon and simulator-style game UIs in Roblox. As an experienced Luau developer, I design every layout with real game implementation in mind — responsive scaling, clean layer hierarchies, and seamless TweenService animation.</p>
+        <div class="hero-actions">
+          <a href="#showcase" class="btn btn-primary">View UI showcase</a>
+          <a href="/script" class="btn btn-outline">⚡ Switch to Scripter Portfolio ↗</a>
+        </div>
+        <dl class="hero-facts" aria-label="UI Portfolio facts">
+          <div><dt>4 years</dt><dd>Roblox platform experience</dd></div>
+          <div><dt>2</dt><dd>Recent practice concepts</dd></div>
+          <div><dt>Luau Ready</dt><dd>Design &amp; code integration</dd></div>
+        </dl>
+      </div>
+
+      <div class="hero-case" style="cursor:pointer;" onclick="openLightbox('/images/ui-shop.webp', 'Roblox Simulator Game Store &amp; HUD Suite');">
+        <div class="hero-case-media">
+          <img src="/images/ui-shop.webp" alt="Roblox Simulator Shop and HUD UI Design" width="879" height="625" style="width:100%;height:auto;object-fit:cover;">
+        </div>
+        <div class="hero-case-copy">
+          <span class="hero-case-label">Featured UI study</span>
+          <h2>Simulator Shop &amp; HUD</h2>
+          <p>Stud-textured category tabs, featured Robux bundle cards, quick navigation icons, and cash counter.</p>
+          <span class="hero-case-link">Click to view full size <span aria-hidden="true">→</span></span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SHOWCASE -->
+    <section id="showcase" class="section">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-tag">Showcase</span>
+          <h2>Recent UI Designs</h2>
+          <p class="section-intro">Here are two complete Roblox UI designs I've built for learning and practice. Click on either design to view full resolution.</p>
+        </div>
+
+        <div class="ui-showcase-grid">
+
+          <!-- UI 1: INVENTORY -->
+          <article class="ui-card fade-in">
+            <div class="ui-card-media" onclick="openLightbox('/images/ui-inventory.webp', 'Roblox Cartoony Simulator Inventory UI');" role="button" tabindex="0" aria-label="Open Inventory UI in full resolution">
+              <picture>
+                <source srcset="/images/ui-inventory.webp" type="image/webp">
+                <img src="/images/ui-inventory.png" alt="Roblox Simulator Pet and Item Inventory UI" width="687" height="474" loading="lazy" decoding="async">
+              </picture>
+              <div class="ui-card-zoom-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                <span>Click to zoom</span>
+              </div>
+            </div>
+
+            <div class="ui-card-body">
+              <div class="ui-card-header">
+                <span class="ui-card-eyebrow">Concept 01 · Simulator Interface</span>
+                <h3 class="ui-card-title">Pet / Item Inventory System</h3>
+              </div>
+
+              <p class="ui-card-desc">A cartoon simulator inventory modal built for high-retention pet collecting experiences. Features bold comic typography, bright tactile action buttons, and clear item organization.</p>
+
+              <ul class="ui-card-features">
+                <li><strong>Header banner:</strong> Cyan textured background with drop-shadow 3D comic typography (<code>INVENTORY!</code>) and bold red exit button (<code>X</code>).</li>
+                <li><strong>Toolbar:</strong> Integrated search bar with placeholder styling, plus quick action pills (<code>Equip Best</code>, <code>Delete Mode</code>, and <code>Filter</code>).</li>
+                <li><strong>Dynamic grid slots:</strong> 10-slot responsive item grid displaying pet icons, customizable item names, and <code>Level 999</code> stats badges.</li>
+                <li><strong>Rarity gradients:</strong> Tiered background cards (Legendary Gold &amp; Mythic Green) with comic halftone dot texture overlays.</li>
+              </ul>
+
+              <div class="ui-card-footer">
+                <div class="ui-card-chips">
+                  <span class="chip">Simulator</span>
+                  <span class="chip">Inventory</span>
+                  <span class="chip">Pet System</span>
+                  <span class="chip">Vector Art</span>
+                </div>
+                <button type="button" class="ui-card-zoom-btn" onclick="openLightbox('/images/ui-inventory.webp', 'Roblox Cartoony Simulator Inventory UI');">
+                  Full size ↗
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <!-- UI 2: SHOP & HUD -->
+          <article class="ui-card fade-in">
+            <div class="ui-card-media" onclick="openLightbox('/images/ui-shop.webp', 'Roblox In-Game Store &amp; Gameplay HUD Suite');" role="button" tabindex="0" aria-label="Open Shop and HUD UI in full resolution">
+              <picture>
+                <source srcset="/images/ui-shop.webp" type="image/webp">
+                <img src="/images/ui-shop.jpg" alt="Roblox In-Game Store and HUD UI" width="879" height="625" loading="lazy" decoding="async">
+              </picture>
+              <div class="ui-card-zoom-hint">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                <span>Click to zoom</span>
+              </div>
+            </div>
+
+            <div class="ui-card-body">
+              <div class="ui-card-header">
+                <span class="ui-card-eyebrow">Concept 02 · Store &amp; HUD Design</span>
+                <h3 class="ui-card-title">In-Game Shop &amp; Navigation HUD</h3>
+              </div>
+
+              <p class="ui-card-desc">A full in-game monetization store window coupled with persistent HUD navigation and currency display, styled with classic Roblox stud textures and vibrant pop-art borders.</p>
+
+              <ul class="ui-card-features">
+                <li><strong>Top Category Bar:</strong> Roblox stud-textured category tabs (<code>Sell</code>, <code>Base</code>, and active <code>Shop</code>) with bold outlines.</li>
+                <li><strong>Hero Bundle Card:</strong> High-priority monetization feature showcasing large crystal asset, bulleted description, and green Robux purchase button (<code>R$ 999</code>).</li>
+                <li><strong>Multi-tier Grid:</strong> 3-column bundle cards for gems, boosts, or currency purchases.</li>
+                <li><strong>HUD Navigation Dock:</strong> Left-side stacked action buttons for <code>Shop</code>, <code>Rebirth</code>, <code>Index</code>, and <code>Settings</code> with custom icon badges.</li>
+                <li><strong>Currency Counter:</strong> Stylized bottom-left cash display (<code>$9,999,999 +</code>) with green accenting for clear player feedback.</li>
+              </ul>
+
+              <div class="ui-card-footer">
+                <div class="ui-card-chips">
+                  <span class="chip">In-Game Store</span>
+                  <span class="chip">HUD Design</span>
+                  <span class="chip">Monetization</span>
+                  <span class="chip">Stud Style</span>
+                </div>
+                <button type="button" class="ui-card-zoom-btn" onclick="openLightbox('/images/ui-shop.webp', 'Roblox In-Game Store &amp; Gameplay HUD Suite');">
+                  Full size ↗
+                </button>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT UI & APPROACH -->
+    <section id="about-ui" class="section section-alt">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-tag">Background</span>
+          <h2>My UI Design Journey</h2>
+        </div>
+
+        <div class="about-body fade-in">
+          <div class="about-text">
+            <p class="about-lead">I am primarily known as a Roblox gameplay and round-systems developer, but I recently expanded into UI design to offer complete, visually cohesive game experiences.</p>
+            <p>I built these two interfaces as dedicated learning projects to master Roblox cartoon styling, drop-shadow typography, color contrast, and component modularity. Creating my own interfaces allows me to bridge the gap between aesthetic visual design and robust Luau implementation.</p>
+            <p>Because I am continuing to learn and expand my UI portfolio, I am open to taking on practice projects, small game UI commissions, or full UI + scripting packages at very accessible rates.</p>
+          </div>
+
+          <dl class="about-details">
+            <div><dt>Style</dt><dd>Simulator, cartoony, high-contrast, pop-art textures</dd></div>
+            <div><dt>Deliverables</dt><dd>Exported PNG assets, 9-slice slices, or Studio GuiObjects</dd></div>
+            <div><dt>Full Stack</dt><dd>Can design the UI and script the entire backend in Luau</dd></div>
+          </dl>
+        </div>
+      </div>
+    </section>
+
+    <!-- FULLSTACK ADVANTAGE -->
+    <section id="fullstack" class="section">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-tag">Advantage</span>
+          <h2>Why Hire a UI Designer Who Scripts?</h2>
+          <p class="section-intro">Most Roblox designers only hand over flat image files. Having four years of Luau development experience changes how I build interfaces.</p>
+        </div>
+
+        <div class="ui-advantage-grid fade-in">
+          <article class="ui-advantage-card">
+            <span class="ui-advantage-num">01</span>
+            <h3>Responsive Cross-Platform</h3>
+            <p>Every element is designed with proper AnchorPoints, Scale sizing, and UIAspectRatioConstraints so your UI never squashes or clips on phones, tablets, PCs, or consoles.</p>
+          </article>
+
+          <article class="ui-advantage-card">
+            <span class="ui-advantage-num">02</span>
+            <h3>TweenService Ready</h3>
+            <p>Button click squashes, modal spring pop-ins, hover lighting, and CanvasGroup transparency transitions are anticipated in the layout hierarchy from day one.</p>
+          </article>
+
+          <article class="ui-advantage-card">
+            <span class="ui-advantage-num">03</span>
+            <h3>Zero Hand-off Friction</h3>
+            <p>No more back-and-forth between a designer and a programmer arguing over broken slices or misaligned frames. I can deliver the graphics or script the complete UI functionality directly.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- REVIEWS -->
+    <section id="testimonials" class="section section-alt">
+      <div class="container">
+        <div class="section-header fade-in">
+          <span class="section-tag">Reputation</span>
+          <h2>Client feedback</h2>
+          <p class="section-intro">Verified reviews from clients who have hired me for Roblox commissions and game systems.</p>
+        </div>
+
+        <div class="reviews-stats fade-in" id="reviewsSummary" hidden>
+          <div class="reviews-stat-score">
+            <span class="reviews-stat-avg" id="reviewsAvgRating">5.0</span>
+            <div class="reviews-stars" id="reviewsSummaryStars" aria-hidden="true">★★★★★</div>
+            <span class="reviews-stat-count" id="reviewsCount">0 reviews</span>
+          </div>
+          <div class="reviews-stat-bars" id="reviewsBars" aria-label="Rating breakdown"></div>
+        </div>
+
+        <div class="reviews-grid" id="reviewsList" aria-live="polite">
+          <div class="reviews-empty" id="reviewsLoading">
+            <div class="reviews-spinner" aria-hidden="true"></div>
+            <p>Loading reviews...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+      <div class="container">
+        <div class="contact-container fade-in">
+          <div class="section-header center">
+            <span class="section-tag">Get in Touch</span>
+            <h2>Commission a UI or Project</h2>
+          </div>
+          <div class="contact-avail">
+            <span class="contact-avail-dot"></span>
+            DMs open · practice &amp; commissions welcome
+          </div>
+          <p class="contact-sub">Have an inventory, shop, HUD, or full game UI you need created? Reach out with your ideas, reference games, and required frames. I'll get back to you with timelines and budget-friendly pricing.</p>
+
+          <div class="contact-info">
+            <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <span class="contact-label">Discord</span>
+              <span>inbo_scripts ↗</span>
+            </a>
+            <a href="https://www.roblox.com/users/search?keyword=mr_inbo" target="_blank" rel="noopener noreferrer" class="contact-item">
+              <span class="contact-label">Roblox</span>
+              <span>@mr_inbo ↗</span>
+            </a>
+          </div>
+
+          <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:20px;">
+            <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 15px 44px; font-size: 14px;">
+              Message on Discord ↗
+            </a>
+            <a href="/script" class="btn btn-outline" style="padding: 15px 36px; font-size: 14px;">
+              ⚡ View Scripter Portfolio
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- LIGHTBOX MODAL -->
+  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image preview">
+    <div class="lightbox-wrap">
+      <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close preview">✕</button>
+      <img src="" alt="" class="lightbox-img" id="lightboxImg">
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <p>© 2022 to <span data-current-year>2026</span> inbo · Roblox UI design &amp; Luau development · <a href="/script" style="color:var(--accent);text-decoration:underline;">Scripter Portfolio</a></p>
+  </footer>
+
+  <script defer src="/script.js?v=20261021-1"></script>
+  <script defer src="/reviews.js?v=20261002-1"></script>
+
+  <script>
+    // Lightbox functions
+    const modal = document.getElementById('lightboxModal');
+    const modalImg = document.getElementById('lightboxImg');
+    const modalCaption = document.getElementById('lightboxCaption');
+    const modalClose = document.getElementById('lightboxClose');
+
+    function openLightbox(src, caption) {
+      if (!modal || !modalImg) return;
+      modalImg.src = src;
+      modalImg.alt = caption;
+      if (modalCaption) modalCaption.textContent = caption;
+      modal.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      if (!modal) return;
+      modal.classList.remove('is-active');
+      document.body.style.overflow = '';
+      if (modalImg) modalImg.src = '';
+    }
+
+    if (modalClose) modalClose.addEventListener('click', closeLightbox);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeLightbox();
+      });
+    }
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
+        closeLightbox();
+      }
+    });
+  </script>
+</body>
+</html>
