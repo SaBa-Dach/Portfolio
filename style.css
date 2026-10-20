@@ -1787,6 +1787,27 @@ body {
   color: #08090b;
 }
 
+.mobile-nav-switch {
+  display: none;
+}
+
+@media (max-width: 900px) {
+  .navbar > .nav-switch {
+    display: none !important;
+  }
+  .nav-role-badge {
+    display: none !important;
+  }
+  .mobile-nav-switch {
+    display: flex !important;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
 .project-filter-link {
   display: inline-flex;
   align-items: center;

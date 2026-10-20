@@ -258,6 +258,7 @@
   });
 
   function updateProjectSelection() {
+    if (!projectSelectionEl) return;
     const count = selectedProjectIds.size;
     projectSelectionEl.textContent = count
       ? `${count} project${count === 1 ? '' : 's'} selected`
@@ -267,7 +268,7 @@
   function renderProjectOptions(options) {
     const previousSelections = new Set(selectedProjectIds);
     selectedProjectIds.clear();
-    projectOptionsEl.replaceChildren();
+    if (projectOptionsEl) projectOptionsEl.replaceChildren();
 
     if (!options.length) {
       const empty = document.createElement('p');
@@ -572,16 +573,17 @@
     }
 
     const profile = getDiscordProfile(session.user);
-    document.getElementById('reviewAccountName').textContent = profile.displayName;
+    const accountName = document.getElementById('reviewAccountName');
+    if (accountName) accountName.textContent = profile.displayName;
     renderAccountAvatar(profile);
     setHidden(loggedOut, true);
     setHidden(account, false);
     setHidden(reviewForm, false);
     syncReviewerProfile();
-    await loadProjectOptions({ showLoading: showProjectLoading });
+    if (projectOptionsEl) await loadProjectOptions({ showLoading: showProjectLoading });
   }
 
-  document.getElementById('discordLogin').addEventListener('click', async () => {
+  document.getElementById('discordLogin')?.addEventListener('click', async () => {
     setHidden(errorEl, true);
     const { error } = await db.auth.signInWithOAuth({
       provider: 'discord',
@@ -590,12 +592,12 @@
     if (error) setMessage(errorEl, 'Discord sign-in could not be started. Please try again.');
   });
 
-  document.getElementById('discordSignOut').addEventListener('click', async () => {
+  document.getElementById('discordSignOut')?.addEventListener('click', async () => {
     const { error } = await db.auth.signOut();
     if (error) setMessage(errorEl, 'Sign out failed. Please try again.');
   });
 
-  reviewForm.addEventListener('submit', async event => {
+  reviewForm?.addEventListener('submit', async event => {
     event.preventDefault();
     setHidden(errorEl, true);
     setHidden(successEl, true);
