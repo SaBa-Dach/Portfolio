@@ -226,6 +226,7 @@
   }
 
   function setRating(rating, focus = false) {
+    if (!ratingPicker || !ratingSelection) return;
     selectedRating = rating;
     const options = [...ratingPicker.querySelectorAll('.rating-option')];
     options.forEach(option => {
@@ -235,27 +236,31 @@
       option.tabIndex = isSelected || (!rating && Number(option.dataset.rating) === 1) ? 0 : -1;
     });
     ratingSelection.textContent = rating ? `Rating: ${rating} / 5, ${ratingLabels[rating]}` : 'Select a rating';
-    if (focus && rating) options[rating - 1].focus();
+    if (focus && rating && options[rating - 1]) options[rating - 1].focus();
   }
 
-  ratingPicker.querySelectorAll('.rating-option').forEach(option => {
-    option.addEventListener('click', () => setRating(Number(option.dataset.rating)));
-    option.addEventListener('keydown', event => {
-      if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
-      event.preventDefault();
-      let next = selectedRating || 1;
-      if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') next = Math.max(1, next - 1);
-      if (event.key === 'ArrowRight' || event.key === 'ArrowUp') next = Math.min(5, next + 1);
-      if (event.key === 'Home') next = 1;
-      if (event.key === 'End') next = 5;
-      setRating(next, true);
+  if (ratingPicker) {
+    ratingPicker.querySelectorAll('.rating-option').forEach(option => {
+      option.addEventListener('click', () => setRating(Number(option.dataset.rating)));
+      option.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        let next = selectedRating || 1;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') next = Math.max(1, next - 1);
+        if (event.key === 'ArrowRight' || event.key === 'ArrowUp') next = Math.min(5, next + 1);
+        if (event.key === 'Home') next = 1;
+        if (event.key === 'End') next = 5;
+        setRating(next, true);
+      });
     });
-  });
-  setRating(0);
+    setRating(0);
+  }
 
-  reviewTextEl.addEventListener('input', () => {
-    charCountEl.textContent = `${reviewTextEl.value.length} / 600`;
-  });
+  if (reviewTextEl && charCountEl) {
+    reviewTextEl.addEventListener('input', () => {
+      charCountEl.textContent = `${reviewTextEl.value.length} / 600`;
+    });
+  }
 
   function updateProjectSelection() {
     if (!projectSelectionEl) return;
@@ -317,6 +322,7 @@
   }
 
   async function loadProjectOptions({ showLoading = true } = {}) {
+    if (!projectOptionsEl) return;
     const requestId = ++projectRequestId;
     if (showLoading) {
       setHidden(errorEl, true);
@@ -567,7 +573,7 @@
       setHidden(account, true);
       setHidden(reviewForm, true);
       selectedProjectIds.clear();
-      projectOptionsEl.replaceChildren();
+      if (projectOptionsEl) projectOptionsEl.replaceChildren();
       updateProjectSelection();
       return;
     }
@@ -648,11 +654,11 @@
     reviewForm.reset();
     selectedProjectIds.clear();
     updateProjectSelection();
-    charCountEl.textContent = '0 / 600';
+    if (charCountEl) charCountEl.textContent = '0 / 600';
     setRating(0);
     setHidden(successEl, false);
     await Promise.all([loadReviews(), loadProjectOptions()]);
-    projectOptionsEl.querySelector('input:not(:disabled)')?.focus();
+    if (projectOptionsEl) projectOptionsEl.querySelector('input:not(:disabled)')?.focus();
   });
 
   db.auth.onAuthStateChange((event, session) => {
