@@ -26,7 +26,7 @@
   <meta name="twitter:image:alt" content="Roblox Cartoony Simulator Pet and Item Inventory UI Design">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
-  <link rel="stylesheet" href="/style.css?v=20261109-3">
+  <link rel="stylesheet" href="/style.css?v=20261109-4">
   <link rel="icon" type="image/png" href="/ib_logo.png?v=20260831-1">
   <link rel="apple-touch-icon" href="/ib_logo.png?v=20260831-1">
   <script type="application/ld+json">
@@ -153,7 +153,7 @@
         <div class="projects-grid">
 
           <!-- 01. PLAYER TRADING SUITE (Part 1 Counter Offer & Part 2 Accepted State) -->
-          <article class="card card-featured fade-in" data-ui-cat="trade">
+          <article class="card fade-in" data-ui-cat="trade">
             <div class="ui-card-view" id="tradeCardMedia" onclick="openTradeSlider()" role="button" tabindex="0" aria-label="Open Trade UI in full size slider">
               <picture id="tradeCardPicture">
                 <source id="tradeCardWebp" srcset="/images/ui-trade-counter.webp" type="image/webp">
@@ -453,10 +453,10 @@
       <div class="lightbox-info">
         <h4 class="lightbox-title" id="lightboxTitle"></h4>
         <p class="lightbox-caption" id="lightboxCaption"></p>
+        <div class="lightbox-dots" id="lightboxDots" role="tablist" aria-label="Slide dots"></div>
       </div>
-
-      <div class="lightbox-thumbs" id="lightboxThumbs"></div>
     </div>
+  </div>
   </div>
 
   <footer class="footer">
@@ -607,7 +607,7 @@
     const modalClose = document.getElementById('lightboxClose');
     const btnPrev = document.getElementById('lightboxPrev');
     const btnNext = document.getElementById('lightboxNext');
-    const thumbsContainer = document.getElementById('lightboxThumbs');
+    const dotsContainer = document.getElementById('lightboxDots');
     const stage = document.getElementById('lightboxStage');
 
     let currentSliderItems = [];
@@ -618,29 +618,26 @@
       currentSliderItems = items;
       currentSlideIndex = Math.max(0, Math.min(startIndex, items.length - 1));
 
-      thumbsContainer.replaceChildren();
+      dotsContainer.replaceChildren();
 
       if (items.length > 1) {
-        thumbsContainer.hidden = false;
+        dotsContainer.hidden = false;
         btnPrev.hidden = false;
         btnNext.hidden = false;
         modalCounter.hidden = false;
 
         items.forEach((item, idx) => {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'lightbox-thumb' + (idx === currentSlideIndex ? ' is-active' : '');
-          btn.setAttribute('aria-label', `Slide ${idx + 1}: ${item.title}`);
-          const img = document.createElement('img');
-          img.src = item.webp;
-          img.alt = item.alt || item.title;
-          img.loading = 'lazy';
-          btn.appendChild(img);
-          btn.addEventListener('click', () => showSlide(idx));
-          thumbsContainer.appendChild(btn);
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'lightbox-dot' + (idx === currentSlideIndex ? ' is-active' : '');
+          dot.setAttribute('role', 'tab');
+          dot.setAttribute('aria-label', `Slide ${idx + 1}: ${item.title}`);
+          dot.setAttribute('aria-selected', String(idx === currentSlideIndex));
+          dot.addEventListener('click', () => showSlide(idx));
+          dotsContainer.appendChild(dot);
         });
       } else {
-        thumbsContainer.hidden = true;
+        dotsContainer.hidden = true;
         btnPrev.hidden = true;
         btnNext.hidden = true;
         modalCounter.hidden = true;
@@ -663,13 +660,11 @@
       if (modalTag) modalTag.textContent = item.tag || '';
       if (modalCounter) modalCounter.textContent = `${index + 1} / ${currentSliderItems.length}`;
 
-      const thumbs = thumbsContainer.querySelectorAll('.lightbox-thumb');
-      thumbs.forEach((th, idx) => {
+      const dots = dotsContainer.querySelectorAll('.lightbox-dot');
+      dots.forEach((dot, idx) => {
         const active = idx === index;
-        th.classList.toggle('is-active', active);
-        if (active) {
-          th.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-        }
+        dot.classList.toggle('is-active', active);
+        dot.setAttribute('aria-selected', String(active));
       });
     }
 
