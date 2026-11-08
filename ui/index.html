@@ -145,15 +145,15 @@
         <!-- Category Filters -->
         <div class="project-filters fade-in" aria-label="UI Categories">
           <button class="project-filter is-active" type="button" data-ui-filter="all" aria-pressed="true">All designs</button>
-          <button class="project-filter" type="button" data-ui-filter="trade" aria-pressed="false">Trading Suite</button>
-          <button class="project-filter" type="button" data-ui-filter="inventory" aria-pressed="false">Inventory</button>
-          <button class="project-filter" type="button" data-ui-filter="gallery" aria-pressed="false">Game UI Gallery</button>
+          <button class="project-filter" type="button" data-ui-filter="cartoony" aria-pressed="false">Cartoony Style</button>
+          <button class="project-filter" type="button" data-ui-filter="stud" aria-pressed="false">Stud Style</button>
+          <button class="project-filter" type="button" data-ui-filter="dark" aria-pressed="false">Dark Style</button>
         </div>
 
         <div class="projects-grid">
 
-          <!-- 1. PART 1 AND PART 2 TOGETHER: PLAYER TRADING SUITE -->
-          <article class="card card-featured fade-in" data-ui-cat="trade">
+          <!-- 01. PLAYER TRADING SUITE (Part 1 Counter Offer & Part 2 Accepted State) -->
+          <article class="card card-featured fade-in" data-ui-cat="dark">
             <div class="ui-card-view" id="tradeCardMedia" onclick="openActiveTradeLightbox()" role="button" tabindex="0" aria-label="Open Trade UI in full size">
               <picture id="tradeCardPicture">
                 <source id="tradeCardWebp" srcset="/images/ui-trade-counter.webp" type="image/webp">
@@ -189,9 +189,9 @@
             </div>
           </article>
 
-          <!-- 2. PART 4 ALONE: PET / ITEM INVENTORY SYSTEM -->
-          <article class="card fade-in" data-ui-cat="inventory">
-            <div class="ui-card-view" onclick="openLightbox('/images/ui-inventory.webp?v=3', 'Roblox Cartoony Simulator Inventory UI');" role="button" tabindex="0" aria-label="Open Inventory UI in full size">
+          <!-- 02. PET / ITEM INVENTORY SYSTEM -->
+          <article class="card fade-in" data-ui-cat="cartoony">
+            <div class="ui-card-view" onclick="openLightbox('/images/ui-inventory.webp?v=3', 'Roblox Cartoony Simulator Pet and Item Inventory UI');" role="button" tabindex="0" aria-label="Open Inventory UI in full size">
               <picture>
                 <source srcset="/images/ui-inventory.webp?v=3" type="image/webp">
                 <img src="/images/ui-inventory.png?v=3" alt="Roblox Cartoony Simulator Pet and Item Inventory UI" width="656" height="464" loading="lazy" decoding="async">
@@ -221,12 +221,12 @@
             </div>
           </article>
 
-          <!-- 3. ALL OTHER PARTS IN 1 THING: GAMEPLAY INTERFACES & HUD GALLERY -->
-          <article class="card card-featured-full fade-in" data-ui-cat="gallery">
-            <div class="ui-card-view" id="otherCardMedia" onclick="openActiveOtherLightbox()" role="button" tabindex="0" aria-label="Open active game UI design in full size">
-              <picture id="otherCardPicture">
-                <source id="otherCardWebp" srcset="/images/ui-shop.webp" type="image/webp">
-                <img id="otherCardImg" src="/images/ui-shop.jpg" alt="Roblox Stud Style In-Game Store and HUD UI" width="879" height="625" loading="lazy" decoding="async">
+          <!-- 03. IN-GAME SHOP & NAVIGATION HUD -->
+          <article class="card fade-in" data-ui-cat="stud">
+            <div class="ui-card-view" onclick="openLightbox('/images/ui-shop.webp', 'Roblox Stud Style In-Game Store and HUD UI');" role="button" tabindex="0" aria-label="Open In-Game Store UI in full size">
+              <picture>
+                <source srcset="/images/ui-shop.webp" type="image/webp">
+                <img src="/images/ui-shop.jpg" alt="Roblox Stud Style In-Game Store and HUD UI" width="879" height="625" loading="lazy" decoding="async">
               </picture>
               <div class="card-zoom-pill">
                 <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
@@ -234,51 +234,210 @@
               </div>
             </div>
 
-            <div class="card-gallery-wrap">
-              <div class="video-gallery" id="otherThumbGallery" role="tablist" aria-label="UI Showcase thumbnails">
-                <button class="video-thumb active" type="button" data-index="0" role="tab" aria-selected="true" aria-label="Part 1: In-Game Store and HUD">
-                  <img src="/images/ui-shop.webp" alt="In-Game Store UI" loading="lazy" decoding="async">
-                  <span>Part 1</span>
-                </button>
-                <button class="video-thumb" type="button" data-index="1" role="tab" aria-selected="false" aria-label="Part 2: Daily Rewards Streak">
-                  <img src="/images/ui-daily-rewards.webp?v=1" alt="Daily Rewards UI" loading="lazy" decoding="async">
-                  <span>Part 2</span>
-                </button>
-                <button class="video-thumb" type="button" data-index="2" role="tab" aria-selected="false" aria-label="Part 3: Playtime Free Gifts">
-                  <img src="/images/ui-free-gifts.webp" alt="Playtime Free Gifts UI" loading="lazy" decoding="async">
-                  <span>Part 3</span>
-                </button>
-                <button class="video-thumb" type="button" data-index="3" role="tab" aria-selected="false" aria-label="Part 4: Trivia Loading Screen">
-                  <img src="/images/ui-loading-screen.webp?v=1" alt="Loading Screen UI" loading="lazy" decoding="async">
-                  <span>Part 4</span>
-                </button>
-                <button class="video-thumb" type="button" data-index="4" role="tab" aria-selected="false" aria-label="Part 5: Gift Countdown Timer HUD">
-                  <img src="/images/ui-gift-timer.webp" alt="Gift Timer HUD" loading="lazy" decoding="async">
-                  <span>Part 5</span>
-                </button>
-                <button class="video-thumb" type="button" data-index="5" role="tab" aria-selected="false" aria-label="Part 6: Trivia Lifelines Action Buttons">
-                  <img src="/images/ui-action-buttons.webp" alt="Action Buttons UI" loading="lazy" decoding="async">
-                  <span>Part 6</span>
-                </button>
-                <button class="video-thumb" type="button" data-index="6" role="tab" aria-selected="false" aria-label="Part 7: In-Game Notification Alert Modal">
-                  <img src="/images/ui-notifications.webp" alt="Alert Modal UI" loading="lazy" decoding="async">
-                  <span>Part 7</span>
-                </button>
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-index">03</span>
+                <span class="card-tag">Stud Style</span>
+              </div>
+              <h3 class="card-title">In-Game Shop &amp; Navigation HUD</h3>
+              <p class="card-desc">A full in-game store window and HUD built in the iconic Roblox Stud Style with classic plastic studs, category tabs, Robux bundles, and currency counter.</p>
+              <div class="card-chips-row">
+                <span class="chip">Stud Style</span>
+                <span class="chip">In-Game Store</span>
+                <span class="chip">HUD Design</span>
+                <span class="chip">Roblox Studs</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-watch">View full size ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 04. 7-DAY DAILY REWARDS STREAK SYSTEM -->
+          <article class="card fade-in" data-ui-cat="cartoony">
+            <div class="ui-card-view" onclick="openLightbox('/images/ui-daily-rewards.webp?v=1', 'Roblox Cartoony 7-Day Daily Rewards Streak System UI');" role="button" tabindex="0" aria-label="Open Daily Rewards UI in full size">
+              <picture>
+                <source srcset="/images/ui-daily-rewards.webp?v=1" type="image/webp">
+                <img src="/images/ui-daily-rewards.png" alt="Roblox Cartoony 7-Day Daily Rewards Streak System UI" width="702" height="472" loading="lazy" decoding="async">
+              </picture>
+              <div class="card-zoom-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                <span>Full size</span>
               </div>
             </div>
 
             <div class="card-body">
               <div class="card-header">
-                <span class="card-index">03</span>
-                <span class="card-tag" id="otherCardTag">Stud Style</span>
+                <span class="card-index">04</span>
+                <span class="card-tag">Cartoony Style</span>
               </div>
-              <h3 class="card-title" id="otherCardTitle">In-Game Shop &amp; Navigation HUD (Stud Style)</h3>
-              <p class="card-desc" id="otherCardDesc">A full in-game store window and HUD built in the iconic Roblox Stud Style with classic plastic studs, category tabs, Robux bundles, and currency counter.</p>
-              <div class="card-chips-row" id="otherCardChips">
+              <h3 class="card-title">7-Day Daily Rewards Streak System</h3>
+              <p class="card-desc">Engaging daily streak claim modal featuring a 7-day progression track, highlighted day-7 grand prize gold chest, pop-up comic typography, and responsive claim buttons.</p>
+              <div class="card-chips-row">
+                <span class="chip">Cartoony Style</span>
+                <span class="chip">Daily Rewards</span>
+                <span class="chip">Retention System</span>
+                <span class="chip">Streak Bonus</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-watch">View full size ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 05. PLAYTIME FREE GIFTS REWARD SYSTEM -->
+          <article class="card fade-in" data-ui-cat="cartoony stud">
+            <div class="ui-card-view" onclick="openLightbox('/images/ui-free-gifts.webp', 'Roblox Playtime Free Gifts Reward System UI');" role="button" tabindex="0" aria-label="Open Free Gifts UI in full size">
+              <picture>
+                <source srcset="/images/ui-free-gifts.webp" type="image/webp">
+                <img src="/images/ui-free-gifts.png" alt="Roblox Playtime Free Gifts Reward System UI" width="1024" height="563" loading="lazy" decoding="async">
+              </picture>
+              <div class="card-zoom-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                <span>Full size</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-index">05</span>
+                <span class="card-tag">Cartoony &amp; Stud Style</span>
+              </div>
+              <h3 class="card-title">Playtime Free Gifts Reward System</h3>
+              <p class="card-desc">Timed reward modal encouraging session retention with 6 progressive gift tiers, real-time unlock timers, vibrant reward colors, and plastic stud framing.</p>
+              <div class="card-chips-row">
+                <span class="chip">Cartoony Style</span>
                 <span class="chip">Stud Style</span>
-                <span class="chip">In-Game Store</span>
-                <span class="chip">HUD Design</span>
-                <span class="chip">Roblox Studs</span>
+                <span class="chip">Playtime Rewards</span>
+                <span class="chip">Retention System</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-watch">View full size ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 06. TRIVIA GAME LOADING SCREEN & PROGRESS BAR -->
+          <article class="card fade-in" data-ui-cat="cartoony">
+            <div class="ui-card-view" onclick="openLightbox('/images/ui-loading-screen.webp?v=1', 'Roblox Cartoony Trivia Loading Screen UI');" role="button" tabindex="0" aria-label="Open Trivia Loading Screen UI in full size">
+              <picture>
+                <source srcset="/images/ui-loading-screen.webp?v=1" type="image/webp">
+                <img src="/images/ui-loading-screen.png" alt="Roblox Cartoony Trivia Loading Screen UI" width="1008" height="532" loading="lazy" decoding="async">
+              </picture>
+              <div class="card-zoom-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                <span>Full size</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-index">06</span>
+                <span class="card-tag">Cartoony Style</span>
+              </div>
+              <h3 class="card-title">Trivia Game Loading Screen &amp; Progress Bar</h3>
+              <p class="card-desc">A clean, high-energy cartoon loading screen designed for trivia and party games with 3D comic branding, avatar badge, and loading progress bar.</p>
+              <div class="card-chips-row">
+                <span class="chip">Cartoony Style</span>
+                <span class="chip">Loading Screen</span>
+                <span class="chip">Trivia Game</span>
+                <span class="chip">Content Streaming</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-watch">View full size ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 07. PLAYTIME GIFT COUNTDOWN HUD WIDGET -->
+          <article class="card fade-in" data-ui-cat="stud">
+            <div class="ui-card-view" onclick="openLightbox('/images/ui-gift-timer.webp', 'Roblox Playtime Gift Countdown HUD Widget');" role="button" tabindex="0" aria-label="Open Gift Countdown HUD Widget in full size">
+              <picture>
+                <source srcset="/images/ui-gift-timer.webp" type="image/webp">
+                <img src="/images/ui-gift-timer.png" alt="Roblox Playtime Gift Countdown HUD Widget" width="1024" height="238" loading="lazy" decoding="async">
+              </picture>
+              <div class="card-zoom-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                <span>Full size</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-index">07</span>
+                <span class="card-tag">Stud Style</span>
+              </div>
+              <h3 class="card-title">Playtime Gift Countdown HUD Widget</h3>
+              <p class="card-desc">A compact HUD launcher widget displaying real-time countdown timers for the player next playtime gift in the classic plastic stud aesthetic.</p>
+              <div class="card-chips-row">
+                <span class="chip">Stud Style</span>
+                <span class="chip">HUD Widget</span>
+                <span class="chip">Gift Timer</span>
+                <span class="chip">UI Component</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-watch">View full size ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 08. TRIVIA LIFELINES & POWER-UP ACTION BUTTONS -->
+          <article class="card fade-in" data-ui-cat="stud">
+            <div class="ui-card-view" onclick="openLightbox('/images/ui-action-buttons.webp', 'Roblox Trivia Lifelines & Power-Up Action Buttons');" role="button" tabindex="0" aria-label="Open Trivia Action Buttons in full size">
+              <picture>
+                <source srcset="/images/ui-action-buttons.webp" type="image/webp">
+                <img src="/images/ui-action-buttons.png" alt="Roblox Trivia Lifelines & Action Buttons" width="636" height="1024" loading="lazy" decoding="async">
+              </picture>
+              <div class="card-zoom-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                <span>Full size</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-index">08</span>
+                <span class="card-tag">Stud Style</span>
+              </div>
+              <h3 class="card-title">Trivia Lifelines &amp; Power-Up Action Buttons</h3>
+              <p class="card-desc">Tactile, stud-patterned gameplay action buttons designed for live trivia rounds, vote modifiers, and player abilities with high-contrast colors.</p>
+              <div class="card-chips-row">
+                <span class="chip">Stud Style</span>
+                <span class="chip">Action Buttons</span>
+                <span class="chip">Trivia Lifelines</span>
+                <span class="chip">Power-Ups</span>
+              </div>
+              <div class="card-footer">
+                <span class="card-watch">View full size ↗</span>
+              </div>
+            </div>
+          </article>
+
+          <!-- 09. IN-GAME NOTIFICATION & SERVER ALERT MODAL -->
+          <article class="card fade-in" data-ui-cat="stud">
+            <div class="ui-card-view" onclick="openLightbox('/images/ui-notifications.webp', 'Roblox In-Game Notification & Server Alert Modal');" role="button" tabindex="0" aria-label="Open Alert Modal in full size">
+              <picture>
+                <source srcset="/images/ui-notifications.webp" type="image/webp">
+                <img src="/images/ui-notifications.png" alt="Roblox In-Game Notification & Server Alert Modal" width="1024" height="517" loading="lazy" decoding="async">
+              </picture>
+              <div class="card-zoom-pill">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+                <span>Full size</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div class="card-header">
+                <span class="card-index">09</span>
+                <span class="card-tag">Stud Style</span>
+              </div>
+              <h3 class="card-title">In-Game Notification &amp; Server Alert Modal</h3>
+              <p class="card-desc">A high-visibility notification and alert window built for server-wide announcements, event notices, system warnings, and player prompt dialogs.</p>
+              <div class="card-chips-row">
+                <span class="chip">Stud Style</span>
+                <span class="chip">Notifications</span>
+                <span class="chip">System Alerts</span>
+                <span class="chip">Dialog Box</span>
               </div>
               <div class="card-footer">
                 <span class="card-watch">View full size ↗</span>
@@ -559,138 +718,6 @@
     }
 
     // 2. Other Parts Gallery Data (All Other Parts in 1 Thing)
-    const otherItems = [
-      {
-        part: 'Part 1',
-        title: 'In-Game Shop & Navigation HUD (Stud Style)',
-        tag: 'Stud Style',
-        desc: 'A full in-game store window and HUD built in the iconic Roblox Stud Style with classic plastic studs, category tabs, Robux bundles, and currency counter.',
-        webp: '/images/ui-shop.webp',
-        png: '/images/ui-shop.jpg',
-        alt: 'Roblox Stud Style In-Game Store and HUD UI',
-        caption: 'Roblox Stud Style In-Game Store & HUD Suite',
-        chips: ['Stud Style', 'In-Game Store', 'HUD Design', 'Roblox Studs']
-      },
-      {
-        part: 'Part 2',
-        title: '7-Day Daily Rewards Streak System',
-        tag: 'Cartoony Style',
-        desc: 'A vibrant cartoon retention and streak modal built for daily player progression with sunburst cards, gift box illustrations, and Day 7 jackpot.',
-        webp: '/images/ui-daily-rewards.webp?v=1',
-        png: '/images/ui-daily-rewards.png?v=1',
-        alt: 'Roblox Cartoony Daily Rewards UI',
-        caption: 'Roblox Cartoony Daily Rewards UI',
-        chips: ['Cartoony Style', 'Daily Rewards', 'Retention System', 'Streak Progression']
-      },
-      {
-        part: 'Part 3',
-        title: 'Playtime Free Gifts Reward System',
-        tag: 'Cartoony & Stud Style',
-        desc: 'A vibrant playtime retention modal that rewards session length with timed gift unlocks, stud-textured header, and scaling reward tiers.',
-        webp: '/images/ui-free-gifts.webp',
-        png: '/images/ui-free-gifts.png',
-        alt: 'Roblox Playtime Free Gifts Reward Modal',
-        caption: 'Roblox Playtime Free Gifts Reward Modal',
-        chips: ['Cartoony Style', 'Free Gifts', 'Playtime Rewards', 'Retention']
-      },
-      {
-        part: 'Part 4',
-        title: 'Trivia Game Loading Screen & Progress Bar',
-        tag: 'Cartoony Style',
-        desc: 'A clean, high-energy cartoon loading screen designed for trivia and party games with 3D comic branding, avatar badge, and loading progress bar.',
-        webp: '/images/ui-loading-screen.webp?v=1',
-        png: '/images/ui-loading-screen.png?v=1',
-        alt: 'Roblox Cartoony Trivia Loading Screen UI',
-        caption: 'Roblox Cartoony Trivia Loading Screen UI',
-        chips: ['Cartoony Style', 'Loading Screen', 'Trivia Game', 'Content Streaming']
-      },
-      {
-        part: 'Part 5',
-        title: 'Playtime Gift Countdown HUD Widget',
-        tag: 'Stud Style',
-        desc: 'A compact HUD launcher widget displaying real-time countdown timers for the player next playtime gift in the classic plastic stud aesthetic.',
-        webp: '/images/ui-gift-timer.webp',
-        png: '/images/ui-gift-timer.png',
-        alt: 'Roblox Playtime Gift Countdown HUD Widget',
-        caption: 'Roblox Playtime Gift Countdown HUD Widget',
-        chips: ['Stud Style', 'HUD Widget', 'Gift Timer', 'UI Component']
-      },
-      {
-        part: 'Part 6',
-        title: 'Trivia Lifelines & Power-Up Action Buttons',
-        tag: 'Stud Style',
-        desc: 'Tactile, stud-patterned gameplay action buttons designed for live trivia rounds, vote modifiers, and player abilities with high-contrast colors.',
-        webp: '/images/ui-action-buttons.webp',
-        png: '/images/ui-action-buttons.png',
-        alt: 'Roblox Trivia Lifelines & Action Buttons',
-        caption: 'Roblox Trivia Lifelines & Action Buttons',
-        chips: ['Stud Style', 'Action Buttons', 'Trivia Lifelines', 'Power-Ups']
-      },
-      {
-        part: 'Part 7',
-        title: 'In-Game Notification & Server Alert Modal',
-        tag: 'Stud Style',
-        desc: 'A high-visibility notification and alert window built for server-wide announcements, event notices, system warnings, and player prompt dialogs.',
-        webp: '/images/ui-notifications.webp',
-        png: '/images/ui-notifications.png',
-        alt: 'Roblox In-Game Notification & Server Alert Modal',
-        caption: 'Roblox In-Game Notification & Server Alert Modal',
-        chips: ['Stud Style', 'Notifications', 'System Alerts', 'Dialog Box']
-      }
-    ];
-
-    let currentOtherIndex = 0;
-    const otherCardWebp = document.getElementById('otherCardWebp');
-    const otherCardImg = document.getElementById('otherCardImg');
-    const otherCardTag = document.getElementById('otherCardTag');
-    const otherCardTitle = document.getElementById('otherCardTitle');
-    const otherCardDesc = document.getElementById('otherCardDesc');
-    const otherCardChips = document.getElementById('otherCardChips');
-    const otherThumbs = document.querySelectorAll('#otherThumbGallery .video-thumb');
-
-    function setOtherPart(index, scrollThumb = true) {
-      if (index < 0 || index >= otherItems.length) return;
-      currentOtherIndex = index;
-      const item = otherItems[index];
-
-      if (otherCardWebp) otherCardWebp.srcset = item.webp;
-      if (otherCardImg) {
-        otherCardImg.src = item.png;
-        otherCardImg.alt = item.alt;
-      }
-      if (otherCardTag) otherCardTag.textContent = item.tag;
-      if (otherCardTitle) otherCardTitle.textContent = item.title;
-      if (otherCardDesc) otherCardDesc.textContent = item.desc;
-
-      if (otherCardChips) {
-        otherCardChips.replaceChildren();
-        item.chips.forEach(chipText => {
-          const span = document.createElement('span');
-          span.className = 'chip';
-          span.textContent = chipText;
-          otherCardChips.appendChild(span);
-        });
-      }
-
-      otherThumbs.forEach((th, idx) => {
-        const isActive = idx === index;
-        th.classList.toggle('active', isActive);
-        th.setAttribute('aria-selected', String(isActive));
-        if (isActive && scrollThumb) {
-          th.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-        }
-      });
-    }
-
-    otherThumbs.forEach((thumb, idx) => {
-      thumb.addEventListener('click', () => setOtherPart(idx, true));
-    });
-
-    function openActiveOtherLightbox() {
-      const item = otherItems[currentOtherIndex];
-      if (item) openLightbox(item.webp, item.caption);
-    }
-
     // Category Filter Buttons (matching scripting page)
     const filterButtons = document.querySelectorAll('.project-filter');
     const uiCards = document.querySelectorAll('.projects-grid > .card');
@@ -706,7 +733,8 @@
 
         const filter = btn.dataset.uiFilter;
         uiCards.forEach(card => {
-          if (filter === 'all' || card.dataset.uiCat === filter) {
+          const cats = (card.dataset.uiCat || '').split(' ');
+          if (filter === 'all' || cats.includes(filter)) {
             card.hidden = false;
           } else {
             card.hidden = true;
@@ -750,7 +778,6 @@
     });
 
     setTradePart(0);
-    setOtherPart(0, false);
   </script>
 </body>
 </html>
