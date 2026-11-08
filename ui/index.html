@@ -26,7 +26,7 @@
   <meta name="twitter:image:alt" content="Roblox Cartoony Simulator Pet and Item Inventory UI Design">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
-  <link rel="stylesheet" href="/style.css?v=20261109-6">
+  <link rel="stylesheet" href="/style.css?v=20261109-7">
   <link rel="icon" type="image/png" href="/ib_logo.png?v=20260831-1">
   <link rel="apple-touch-icon" href="/ib_logo.png?v=20260831-1">
   <script type="application/ld+json">
@@ -141,59 +141,49 @@
           <h2>Roblox UI Designs</h2>
           <p class="section-intro">Custom cartoony and stud style Roblox game interfaces. Click any design to inspect in full resolution.</p>
         </div>
-
         <div class="projects-grid">
 
-          <!-- 01. PLAYER TRADING SUITE (Part 1 Counter Offer & Part 2 Accepted State) -->
-          <article class="card fade-in" data-ui-cat="trade" onclick="openTradeSlider()" style="cursor: pointer;">
-            <div class="ui-card-view" id="tradeCardMedia" onclick="openTradeSlider()" role="button" tabindex="0" aria-label="Open Trade UI in full size slider">
-              <picture id="tradeCardPicture">
-                <source id="tradeCardWebp" srcset="/images/ui-trade-counter.webp" type="image/webp">
-                <img id="tradeCardImg" src="/images/ui-trade-counter.png" alt="Roblox Player Trading Counter Offer System UI" width="1024" height="454" loading="lazy" decoding="async">
+          <!-- 01. PLAYER TRADING SUITE -->
+          <a href="trading-ui.html" class="card fade-in">
+            <div class="ui-card-view">
+              <picture>
+                <source srcset="/images/ui-trade-counter.webp" type="image/webp">
+                <img src="/images/ui-trade-counter.png" alt="Roblox Player Trading Counter Offer System UI" width="1024" height="454" loading="lazy" decoding="async">
               </picture>
               <div class="card-zoom-pill">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                <span>Full size</span>
+                <span>View project ↗</span>
               </div>
             </div>
-
-            <div class="card-part-switcher" aria-label="Trade UI views" onclick="event.stopPropagation()">
-              <button type="button" class="card-part-tab is-active" data-trade-index="0" aria-selected="true">Part 1 · Counter</button>
-              <button type="button" class="card-part-tab" data-trade-index="1" aria-selected="false">Part 2 · Accepted</button>
-            </div>
-
             <div class="card-body">
               <div class="card-header">
                 <span class="card-index">01</span>
-                <span class="card-tag" id="tradeCardTag">Dark Style</span>
+                <span class="card-tag">Dark Style</span>
               </div>
-              <h3 class="card-title" id="tradeCardTitle">Player Trading: Counter-Offer Negotiation</h3>
-              <p class="card-desc" id="tradeCardDesc">A clean Roblox trading interface designed for player item exchanges with side-by-side OLD vs NEW counter offers, live RAP and Value metrics, and modular 4-slot grids.</p>
-              <div class="card-chips-row" id="tradeCardChips">
+              <h3 class="card-title">Player Trading: Counter-Offer Negotiation</h3>
+              <p class="card-desc">A clean Roblox trading interface designed for player item exchanges with side-by-side OLD vs NEW counter offers, live RAP and Value metrics, and modular 4-slot grids.</p>
+              <div class="card-chips-row">
                 <span class="chip">Dark Style</span>
                 <span class="chip">Trading System</span>
                 <span class="chip">Counter Offer</span>
                 <span class="chip">RAP / Value</span>
               </div>
               <div class="card-footer">
-                <span class="card-watch">View full size ↗</span>
+                <span class="card-watch">View project ↗</span>
               </div>
             </div>
-          </article>
+          </a>
 
           <!-- 02. PET / ITEM INVENTORY SYSTEM -->
-          <article class="card fade-in" data-ui-cat="inventory" onclick="openInventorySlider()" style="cursor: pointer;">
-            <div class="ui-card-view" onclick="openInventorySlider()" role="button" tabindex="0" aria-label="Open Inventory UI in full size">
+          <a href="inventory-ui.html" class="card fade-in">
+            <div class="ui-card-view">
               <picture>
                 <source srcset="/images/ui-inventory.webp?v=3" type="image/webp">
                 <img src="/images/ui-inventory.png?v=3" alt="Roblox Cartoony Simulator Pet and Item Inventory UI" width="656" height="464" loading="lazy" decoding="async">
               </picture>
               <div class="card-zoom-pill">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                <span>Full size</span>
+                <span>View project ↗</span>
               </div>
             </div>
-
             <div class="card-body">
               <div class="card-header">
                 <span class="card-index">02</span>
@@ -208,28 +198,26 @@
                 <span class="chip">Vector Art</span>
               </div>
               <div class="card-footer">
-                <span class="card-watch">View full size ↗</span>
+                <span class="card-watch">View project ↗</span>
               </div>
             </div>
-          </article>
+          </a>
 
-          <!-- 03. IN-GAME SHOP & NAVIGATION HUD (CLICK OPENS 7-SLIDE GALLERY) -->
-          <article class="card fade-in" data-ui-cat="gallery" onclick="openGallerySlider(0)" style="cursor: pointer;">
-            <div class="ui-card-view" onclick="openGallerySlider(0)" role="button" tabindex="0" aria-label="Open In-Game Store and UI Gallery in full size slider">
+          <!-- 03. IN-GAME SHOP & NAVIGATION HUD -->
+          <a href="shop-ui.html" class="card fade-in">
+            <div class="ui-card-view">
               <picture>
                 <source srcset="/images/ui-shop.webp" type="image/webp">
                 <img src="/images/ui-shop.jpg" alt="Roblox Stud Style In-Game Store and HUD UI" width="879" height="625" loading="lazy" decoding="async">
               </picture>
               <div class="card-zoom-pill">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                <span>Full size</span>
+                <span>View project ↗</span>
               </div>
             </div>
-
             <div class="card-body">
               <div class="card-header">
                 <span class="card-index">03</span>
-                <span class="card-tag">Stud Style</span>
+                <span class="card-tag">Stud &amp; Cartoony</span>
               </div>
               <h3 class="card-title">In-Game Shop &amp; Navigation HUD</h3>
               <p class="card-desc">A full in-game store window and HUD built in the iconic Roblox Stud Style with classic plastic studs, category tabs, Robux bundles, and currency counter.</p>
@@ -240,13 +228,12 @@
                 <span class="chip">Roblox Studs</span>
               </div>
               <div class="card-footer">
-                <span class="card-watch">View full size ↗</span>
+                <span class="card-watch">View project ↗</span>
               </div>
             </div>
-          </article>
+          </a>
 
-        </div>
-      </div>
+        </div></div>
     </section>
 
     <!-- ABOUT UI & APPROACH -->
@@ -424,31 +411,6 @@
     </section>
 
   </main>
-
-  <!-- LIGHTBOX SLIDER MODAL -->
-  <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Full screen image preview">
-    <div class="lightbox-wrap">
-      <div class="lightbox-topbar">
-        <div class="lightbox-meta">
-          <span class="lightbox-counter" id="lightboxCounter">1 / 7</span>
-          <span class="lightbox-tag" id="lightboxTag">Stud Style</span>
-        </div>
-        <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close preview">✕</button>
-      </div>
-
-      <div class="lightbox-stage" id="lightboxStage">
-        <button type="button" class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous slide">‹</button>
-        <img src="" alt="" class="lightbox-img" id="lightboxImg">
-        <button type="button" class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next slide">›</button>
-      </div>
-
-      <div class="lightbox-info">
-        <h4 class="lightbox-title" id="lightboxTitle"></h4>
-        <p class="lightbox-caption" id="lightboxCaption"></p>
-      </div>
-
-      <div class="lightbox-gallery-strip" id="lightboxGalleryStrip" role="tablist" aria-label="Other parts preview"></div>
-    </div>
   </div>
     </div>
   </div>
@@ -460,292 +422,5 @@
 
   <script defer src="/script.js?v=20261109-1"></script>
   <script defer src="/reviews.js?v=20261109-1"></script>
-
-  <script>
-    // 1. Trade UI Data
-    const tradeItems = [
-      {
-        part: 'Part 1',
-        title: 'Player Trading: Counter-Offer Negotiation',
-        tag: 'Dark Style',
-        desc: 'A clean Roblox trading interface designed for player item exchanges with side-by-side OLD vs NEW counter offers, live RAP and Value metrics, and modular 4-slot grids.',
-        webp: '/images/ui-trade-counter.webp',
-        png: '/images/ui-trade-counter.png',
-        alt: 'Roblox Player Trading Counter Offer System UI',
-        chips: ['Dark Style', 'Trading System', 'Counter Offer', 'RAP / Value']
-      },
-      {
-        part: 'Part 2',
-        title: 'Player Trading: Trade Accepted Confirmation',
-        tag: 'Dark Style',
-        desc: 'The trade completion confirmation banner. Displays locked-in trade states with high-visibility neon green accents, dual-party RAP/Value summaries, and player branding.',
-        webp: '/images/ui-trade-accepted.webp',
-        png: '/images/ui-trade-accepted.png',
-        alt: 'Roblox Player Trading Trade Accepted Confirmation UI',
-        chips: ['Dark Style', 'Trading System', 'Accepted State', 'Feedback Banner']
-      }
-    ];
-
-    let currentTradeIndex = 0;
-    const tradeCardWebp = document.getElementById('tradeCardWebp');
-    const tradeCardImg = document.getElementById('tradeCardImg');
-    const tradeCardTag = document.getElementById('tradeCardTag');
-    const tradeCardTitle = document.getElementById('tradeCardTitle');
-    const tradeCardDesc = document.getElementById('tradeCardDesc');
-    const tradeCardChips = document.getElementById('tradeCardChips');
-    const tradeTabs = document.querySelectorAll('.card-part-tab');
-
-    function setTradePart(index) {
-      if (index < 0 || index >= tradeItems.length) return;
-      currentTradeIndex = index;
-      const item = tradeItems[index];
-
-      if (tradeCardWebp) tradeCardWebp.srcset = item.webp;
-      if (tradeCardImg) {
-        tradeCardImg.src = item.png;
-        tradeCardImg.alt = item.alt;
-      }
-      if (tradeCardTag) tradeCardTag.textContent = item.tag;
-      if (tradeCardTitle) tradeCardTitle.textContent = item.title;
-      if (tradeCardDesc) tradeCardDesc.textContent = item.desc;
-
-      if (tradeCardChips) {
-        tradeCardChips.replaceChildren();
-        item.chips.forEach(chipText => {
-          const span = document.createElement('span');
-          span.className = 'chip';
-          span.textContent = chipText;
-          tradeCardChips.appendChild(span);
-        });
-      }
-
-      tradeTabs.forEach((tab, idx) => {
-        const isActive = idx === index;
-        tab.classList.toggle('is-active', isActive);
-        tab.setAttribute('aria-selected', String(isActive));
-      });
-    }
-
-    tradeTabs.forEach((tab, idx) => {
-      tab.addEventListener('click', () => setTradePart(idx));
-    });
-
-    // 2. Inventory Item Data
-    const inventoryItem = {
-      title: 'Pet / Item Inventory System',
-      tag: 'Cartoony Style',
-      desc: 'Vibrant cartoon simulator inventory modal built for high-retention pet collecting with custom comic header, action pill toolbar, 10-slot responsive item grid, and rarity cards.',
-      webp: '/images/ui-inventory.webp?v=3',
-      alt: 'Roblox Cartoony Simulator Pet and Item Inventory UI'
-    };
-
-    // 3. Gameplay UI Gallery Slider Data (7 parts slidable when opening Card 03)
-    const galleryItems = [
-      {
-        title: 'In-Game Shop & Navigation HUD',
-        tag: 'Stud Style',
-        desc: 'A full in-game store window and HUD built in the iconic Roblox Stud Style with classic plastic studs, category tabs, Robux bundles, and currency counter.',
-        webp: '/images/ui-shop.webp',
-        alt: 'Roblox Stud Style In-Game Store and HUD UI'
-      },
-      {
-        title: '7-Day Daily Rewards Streak System',
-        tag: 'Cartoony Style',
-        desc: 'Engaging daily streak claim modal featuring a 7-day progression track, highlighted day-7 grand prize gold chest, pop-up comic typography, and responsive claim buttons.',
-        webp: '/images/ui-daily-rewards.webp?v=1',
-        alt: 'Roblox Cartoony 7-Day Daily Rewards Streak System UI'
-      },
-      {
-        title: 'Playtime Free Gifts Reward System',
-        tag: 'Cartoony & Stud Style',
-        desc: 'Timed reward modal encouraging session retention with 6 progressive gift tiers, real-time unlock timers, vibrant reward colors, and plastic stud framing.',
-        webp: '/images/ui-free-gifts.webp',
-        alt: 'Roblox Playtime Free Gifts Reward System UI'
-      },
-      {
-        title: 'Trivia Game Loading Screen & Progress Bar',
-        tag: 'Cartoony Style',
-        desc: 'Clean, high-energy cartoon loading screen designed for trivia and party games with 3D comic branding, avatar badge, and loading progress bar.',
-        webp: '/images/ui-loading-screen.webp?v=1',
-        alt: 'Roblox Cartoony Trivia Loading Screen UI'
-      },
-      {
-        title: 'Playtime Gift Countdown HUD Widget',
-        tag: 'Stud Style',
-        desc: 'Compact HUD launcher widget displaying real-time countdown timers for the player next playtime gift in the classic plastic stud aesthetic.',
-        webp: '/images/ui-gift-timer.webp',
-        alt: 'Roblox Playtime Gift Countdown HUD Widget'
-      },
-      {
-        title: 'Trivia Lifelines & Power-Up Action Buttons',
-        tag: 'Stud Style',
-        desc: 'Tactile, stud-patterned gameplay action buttons designed for live trivia rounds, vote modifiers, and player abilities with high-contrast colors.',
-        webp: '/images/ui-action-buttons.webp',
-        alt: 'Roblox Trivia Lifelines & Action Buttons'
-      },
-      {
-        title: 'In-Game Notification & Server Alert Modal',
-        tag: 'Stud Style',
-        desc: 'High-visibility notification and alert window built for server-wide announcements, event notices, system warnings, and player prompt dialogs.',
-        webp: '/images/ui-notifications.webp',
-        alt: 'Roblox In-Game Notification & Server Alert Modal'
-      }
-    ];
-
-    // 4. Lightbox Slider Controls
-    const modal = document.getElementById('lightboxModal');
-    const modalImg = document.getElementById('lightboxImg');
-    const modalTitle = document.getElementById('lightboxTitle');
-    const modalCaption = document.getElementById('lightboxCaption');
-    const modalTag = document.getElementById('lightboxTag');
-    const modalCounter = document.getElementById('lightboxCounter');
-    const modalClose = document.getElementById('lightboxClose');
-    const btnPrev = document.getElementById('lightboxPrev');
-    const btnNext = document.getElementById('lightboxNext');
-    const galleryStrip = document.getElementById('lightboxGalleryStrip');
-    const stage = document.getElementById('lightboxStage');
-
-    let currentSliderItems = [];
-    let currentSlideIndex = 0;
-
-    function openSlider(items, startIndex = 0) {
-      if (!items || items.length === 0) return;
-      currentSliderItems = items;
-      currentSlideIndex = Math.max(0, Math.min(startIndex, items.length - 1));
-
-      galleryStrip.replaceChildren();
-
-      if (items.length > 1) {
-        galleryStrip.hidden = false;
-        btnPrev.hidden = false;
-        btnNext.hidden = false;
-        modalCounter.hidden = false;
-
-        items.forEach((item, idx) => {
-          const btn = document.createElement('button');
-          btn.type = 'button';
-          btn.className = 'lightbox-gallery-thumb' + (idx === currentSlideIndex ? ' is-active' : '');
-          btn.setAttribute('role', 'tab');
-          btn.setAttribute('aria-label', `${item.part || 'Part ' + (idx + 1)}: ${item.title}`);
-          btn.setAttribute('aria-selected', String(idx === currentSlideIndex));
-
-          const img = document.createElement('img');
-          img.src = item.webp;
-          img.alt = item.alt || item.title;
-          img.loading = 'lazy';
-          btn.appendChild(img);
-
-          const span = document.createElement('span');
-          span.textContent = item.part || `Part ${idx + 1}`;
-          btn.appendChild(span);
-
-          btn.addEventListener('click', () => showSlide(idx));
-          galleryStrip.appendChild(btn);
-        });
-      } else {
-        galleryStrip.hidden = true;
-        btnPrev.hidden = true;
-        btnNext.hidden = true;
-        modalCounter.hidden = true;
-      }
-
-      showSlide(currentSlideIndex);
-      modal.classList.add('is-active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function showSlide(index) {
-      if (index < 0 || index >= currentSliderItems.length) return;
-      currentSlideIndex = index;
-      const item = currentSliderItems[index];
-
-      modalImg.src = item.webp;
-      modalImg.alt = item.alt || item.title;
-      if (modalTitle) modalTitle.textContent = item.title;
-      if (modalCaption) modalCaption.textContent = item.desc || '';
-      if (modalTag) modalTag.textContent = item.tag || '';
-      if (modalCounter) modalCounter.textContent = `${index + 1} / ${currentSliderItems.length}`;
-
-      const thumbs = galleryStrip.querySelectorAll('.lightbox-gallery-thumb');
-      thumbs.forEach((th, idx) => {
-        const active = idx === index;
-        th.classList.toggle('is-active', active);
-        th.setAttribute('aria-selected', String(active));
-        if (active) {
-          th.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-        }
-      });
-    }
-
-    function nextSlide() {
-      if (currentSliderItems.length <= 1) return;
-      showSlide((currentSlideIndex + 1) % currentSliderItems.length);
-    }
-
-    function prevSlide() {
-      if (currentSliderItems.length <= 1) return;
-      showSlide((currentSlideIndex - 1 + currentSliderItems.length) % currentSliderItems.length);
-    }
-
-    function closeLightbox() {
-      if (!modal) return;
-      modal.classList.remove('is-active');
-      document.body.style.overflow = '';
-      if (modalImg) modalImg.src = '';
-    }
-
-    function openTradeSlider() {
-      openSlider(tradeItems, currentTradeIndex);
-    }
-
-    function openInventorySlider() {
-      openSlider([inventoryItem], 0);
-    }
-
-    function openGallerySlider(startIndex = 0) {
-      openSlider(galleryItems, startIndex);
-    }
-
-    if (btnPrev) btnPrev.addEventListener('click', prevSlide);
-    if (btnNext) btnNext.addEventListener('click', nextSlide);
-    if (modalClose) modalClose.addEventListener('click', closeLightbox);
-    if (modal) {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeLightbox();
-      });
-    }
-
-    // Touch Swipe Navigation for mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-    if (stage) {
-      stage.addEventListener('touchstart', (e) => {
-        if (e.changedTouches && e.changedTouches.length) {
-          touchStartX = e.changedTouches[0].screenX;
-        }
-      }, { passive: true });
-
-      stage.addEventListener('touchend', (e) => {
-        if (e.changedTouches && e.changedTouches.length) {
-          touchEndX = e.changedTouches[0].screenX;
-          const diff = touchEndX - touchStartX;
-          if (Math.abs(diff) > 40) {
-            if (diff < 0) nextSlide();
-            else prevSlide();
-          }
-        }
-      }, { passive: true });
-    }
-
-    // Keyboard Navigation
-    document.addEventListener('keydown', (e) => {
-      if (!modal || !modal.classList.contains('is-active')) return;
-      if (e.key === 'Escape') closeLightbox();
-      else if (e.key === 'ArrowRight') nextSlide();
-      else if (e.key === 'ArrowLeft') prevSlide();
-    });
-
-    setTradePart(0);
-  </script>
 </body>
 </html>

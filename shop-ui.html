@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>In-Game Shop & Gameplay UI Suite | Portfolio</title>
+  <meta name="description" content="Complete Roblox game UI suite including in-game shop, daily rewards, free gifts, trivia loading screen, HUD gift countdown timer, and alert modal.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="inbo">
+  <meta name="application-name" content="Portfolio">
+  <meta name="theme-color" content="#08090b">
+  <link rel="canonical" href="https://inbodev.com/shop-ui.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Portfolio">
+  <meta property="og:title" content="In-Game Shop & Gameplay UI Suite | Portfolio">
+  <meta property="og:description" content="Complete Roblox game UI suite including in-game shop, daily rewards, free gifts, trivia loading screen, HUD countdown, and alert modal.">
+  <meta property="og:image" content="https://inbodev.com/images/ui-shop.webp">
+  <meta property="og:url" content="https://inbodev.com/shop-ui.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="In-Game Shop & Gameplay UI Suite | Portfolio">
+  <meta name="twitter:description" content="Complete Roblox game UI suite in classic stud and cartoony styles.">
+  <meta name="twitter:image" content="https://inbodev.com/images/ui-shop.webp">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
+  <link rel="stylesheet" href="style.css?v=20261109-7">
+  <link rel="icon" type="image/png" href="./ib_logo.png?v=20260831-1">
+  <link rel="apple-touch-icon" href="./ib_logo.png?v=20260831-1">
+</head>
+<body data-project-id="shop-ui">
+  <nav class="navbar scrolled" id="navbar" aria-label="Primary navigation">
+    <a href="index.html" class="nav-logo">inbodev<span class="nav-logo-dot">.com</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Scripting</a>
+      <a href="/ui" style="color: var(--accent);">UI Design</a>
+      <a href="/ui#about-ui">About</a>
+      <a href="/ui#testimonials">Reviews</a>
+      <a href="/ui#contact">Contact</a>
+      <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire me ↗</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+
+  <main>
+    <div class="container project-page-header">
+      <article class="project-header fade-in">
+        <nav class="project-breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Portfolio</a></li>
+            <li><a href="/ui">UI Design</a></li>
+            <li aria-current="page">In-Game Shop &amp; Gameplay UI Suite</li>
+          </ol>
+        </nav>
+
+        <a href="/ui" class="project-back-nav">← Back to UI showcase</a>
+        <span class="project-eyebrow" id="shopEyebrow">// ui design / stud style</span>
+        <h1 class="project-title" id="shopTitle">In-Game Shop &amp; Navigation HUD</h1>
+        <div class="project-meta" id="shopMeta">
+          <span class="chip">Stud Style</span>
+          <span class="chip">In-Game Store</span>
+          <span class="chip">HUD Design</span>
+          <span class="chip">Roblox Studs</span>
+          <span class="chip">Monetization UI</span>
+        </div>
+
+        <div class="project-image-wrap" style="aspect-ratio: auto; min-height: 420px; display: flex; align-items: center; justify-content: center; background: #060608; padding: 24px;">
+          <img id="shopMainImg" src="/images/ui-shop.webp" alt="In-Game Store and HUD UI" style="max-height: 560px; width: auto; object-fit: contain;">
+        </div>
+
+        <div class="video-gallery" id="shopGallery" role="tablist" aria-label="Gameplay UI parts">
+          <button class="video-thumb active" type="button" data-index="0" role="tab" aria-selected="true" aria-label="Part 1: In-Game Store and HUD">
+            <img src="/images/ui-shop.webp" alt="Part 1: In-Game Store and HUD" loading="lazy" decoding="async">
+            <span>Part 1</span>
+          </button>
+          <button class="video-thumb" type="button" data-index="1" role="tab" aria-selected="false" aria-label="Part 2: Daily Rewards Streak">
+            <img src="/images/ui-daily-rewards.webp?v=1" alt="Part 2: Daily Rewards Streak" loading="lazy" decoding="async">
+            <span>Part 2</span>
+          </button>
+          <button class="video-thumb" type="button" data-index="2" role="tab" aria-selected="false" aria-label="Part 3: Playtime Free Gifts">
+            <img src="/images/ui-free-gifts.webp" alt="Part 3: Playtime Free Gifts" loading="lazy" decoding="async">
+            <span>Part 3</span>
+          </button>
+          <button class="video-thumb" type="button" data-index="3" role="tab" aria-selected="false" aria-label="Part 4: Trivia Loading Screen">
+            <img src="/images/ui-loading-screen.webp?v=1" alt="Part 4: Trivia Loading Screen" loading="lazy" decoding="async">
+            <span>Part 4</span>
+          </button>
+          <button class="video-thumb" type="button" data-index="4" role="tab" aria-selected="false" aria-label="Part 5: Gift Countdown Timer HUD">
+            <img src="/images/ui-gift-timer.webp" alt="Part 5: Gift Countdown Timer HUD" loading="lazy" decoding="async">
+            <span>Part 5</span>
+          </button>
+          <button class="video-thumb" type="button" data-index="5" role="tab" aria-selected="false" aria-label="Part 6: Trivia Lifelines Action Buttons">
+            <img src="/images/ui-action-buttons.webp" alt="Part 6: Trivia Action Buttons" loading="lazy" decoding="async">
+            <span>Part 6</span>
+          </button>
+          <button class="video-thumb" type="button" data-index="6" role="tab" aria-selected="false" aria-label="Part 7: Server Alert Modal">
+            <img src="/images/ui-notifications.webp" alt="Part 7: Server Alert Modal" loading="lazy" decoding="async">
+            <span>Part 7</span>
+          </button>
+        </div>
+
+        <div class="project-body">
+          <div class="project-desc-text">
+            <p id="shopActiveDesc">A full in-game store window and HUD built in the iconic Roblox Stud Style with classic plastic studs, category tabs, Robux bundles, and currency counter.</p>
+
+            <h2>Suite systems included</h2>
+            <ul>
+              <li><strong>Part 1 · In-Game Shop &amp; HUD:</strong> Classic Roblox plastic studs, category tabs, Robux bundles, quick navigation icons, and cash counter</li>
+              <li><strong>Part 2 · Daily Rewards:</strong> 7-day retention streak modal with progressive claim cards and highlighted Day-7 jackpot</li>
+              <li><strong>Part 3 · Free Gifts:</strong> Timed session reward modal encouraging playtime retention across 6 progressive reward tiers</li>
+              <li><strong>Part 4 · Loading Screen:</strong> Clean, high-energy party game loading screen with 3D comic branding and progress bar</li>
+              <li><strong>Part 5 · Gift Timer HUD:</strong> Compact real-time countdown launcher widget for upcoming player rewards</li>
+              <li><strong>Part 6 · Action Buttons:</strong> Tactile stud-patterned lifelines and ability action buttons with high-contrast colors</li>
+              <li><strong>Part 7 · Server Alert Modal:</strong> High-visibility dialog box built for system notices, alerts, and player prompt confirmations</li>
+            </ul>
+
+            <h2>Technical highlights</h2>
+            <ul>
+              <li>Classic plastic stud textures seamlessly integrated into borders and button surfaces</li>
+              <li>Full 9-slice slice scaling ensuring studs maintain exact pixel dimensions without stretching</li>
+              <li>Built by an experienced Luau scripter with TweenService animation hierarchies ready for immediate game integration</li>
+            </ul>
+          </div>
+
+          <aside class="project-sidebar" aria-label="Project details">
+            <div class="sidebar-card">
+              <h2>Technologies</h2>
+              <div class="sidebar-tag-list" id="shopSidebarTags">
+                <span class="chip">Stud Style</span>
+                <span class="chip">Cartoony Style</span>
+                <span class="chip">Shop System</span>
+                <span class="chip">HUD Design</span>
+                <span class="chip">Roblox Studs</span>
+                <span class="chip">Retention Systems</span>
+              </div>
+              <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="sidebar-cta">Hire me for UI work ↗</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2022 to <span data-current-year>2026</span> inbo · Roblox development &amp; UI design</p>
+  </footer>
+
+  <script>
+    const shopParts = [
+      {
+        eyebrow: '// ui design / stud style',
+        title: 'In-Game Shop & Navigation HUD',
+        img: '/images/ui-shop.webp',
+        alt: 'Roblox Stud Style In-Game Store and HUD UI',
+        desc: 'A full in-game store window and HUD built in the iconic Roblox Stud Style with classic plastic studs, category tabs, Robux bundles, and currency counter.'
+      },
+      {
+        eyebrow: '// ui design / cartoony style',
+        title: '7-Day Daily Rewards Streak System',
+        img: '/images/ui-daily-rewards.webp?v=1',
+        alt: 'Roblox Cartoony 7-Day Daily Rewards Streak System UI',
+        desc: 'Engaging daily streak claim modal featuring a 7-day progression track, highlighted day-7 grand prize gold chest, pop-up comic typography, and responsive claim buttons.'
+      },
+      {
+        eyebrow: '// ui design / cartoony & stud style',
+        title: 'Playtime Free Gifts Reward System',
+        img: '/images/ui-free-gifts.webp',
+        alt: 'Roblox Playtime Free Gifts Reward System UI',
+        desc: 'Timed reward modal encouraging session retention with 6 progressive gift tiers, real-time unlock timers, vibrant reward colors, and plastic stud framing.'
+      },
+      {
+        eyebrow: '// ui design / cartoony style',
+        title: 'Trivia Game Loading Screen & Progress Bar',
+        img: '/images/ui-loading-screen.webp?v=1',
+        alt: 'Roblox Cartoony Trivia Loading Screen UI',
+        desc: 'Clean, high-energy cartoon loading screen designed for trivia and party games with 3D comic branding, avatar badge, and loading progress bar.'
+      },
+      {
+        eyebrow: '// ui design / stud style',
+        title: 'Playtime Gift Countdown HUD Widget',
+        img: '/images/ui-gift-timer.webp',
+        alt: 'Roblox Playtime Gift Countdown HUD Widget',
+        desc: 'Compact HUD launcher widget displaying real-time countdown timers for the player next playtime gift in the classic plastic stud aesthetic.'
+      },
+      {
+        eyebrow: '// ui design / stud style',
+        title: 'Trivia Lifelines & Power-Up Action Buttons',
+        img: '/images/ui-action-buttons.webp',
+        alt: 'Roblox Trivia Lifelines & Action Buttons',
+        desc: 'Tactile, stud-patterned gameplay action buttons designed for live trivia rounds, vote modifiers, and player abilities with high-contrast colors.'
+      },
+      {
+        eyebrow: '// ui design / stud style',
+        title: 'In-Game Notification & Server Alert Modal',
+        img: '/images/ui-notifications.webp',
+        alt: 'Roblox In-Game Notification & Server Alert Modal',
+        desc: 'High-visibility notification and alert window built for server-wide announcements, event notices, system warnings, and player prompt dialogs.'
+      }
+    ];
+
+    const mainImg = document.getElementById('shopMainImg');
+    const eyebrowEl = document.getElementById('shopEyebrow');
+    const titleEl = document.getElementById('shopTitle');
+    const descEl = document.getElementById('shopActiveDesc');
+    const thumbs = document.querySelectorAll('#shopGallery .video-thumb');
+
+    thumbs.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        thumbs.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const part = shopParts[idx];
+        mainImg.src = part.img;
+        mainImg.alt = part.alt;
+        eyebrowEl.textContent = part.eyebrow;
+        titleEl.textContent = part.title;
+        descEl.textContent = part.desc;
+      });
+    });
+  </script>
+</body>
+</html>

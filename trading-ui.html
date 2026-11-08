@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Player Trading & Counter-Offer Suite | Portfolio</title>
+  <meta name="description" content="Roblox dark-style player trading interface with side-by-side OLD vs NEW counter offers, RAP and Value metrics, and acceptance confirmation states.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="author" content="inbo">
+  <meta name="application-name" content="Portfolio">
+  <meta name="theme-color" content="#08090b">
+  <link rel="canonical" href="https://inbodev.com/trading-ui.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Portfolio">
+  <meta property="og:title" content="Player Trading & Counter-Offer Suite | Portfolio">
+  <meta property="og:description" content="Roblox dark-style player trading interface with side-by-side OLD vs NEW counter offers, RAP and Value metrics, and acceptance confirmation states.">
+  <meta property="og:image" content="https://inbodev.com/images/ui-trade-counter.webp">
+  <meta property="og:url" content="https://inbodev.com/trading-ui.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Player Trading & Counter-Offer Suite | Portfolio">
+  <meta name="twitter:description" content="Roblox dark-style player trading interface with side-by-side OLD vs NEW counter offers, RAP and Value metrics.">
+  <meta name="twitter:image" content="https://inbodev.com/images/ui-trade-counter.webp">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
+  <link rel="stylesheet" href="style.css?v=20261109-7">
+  <link rel="icon" type="image/png" href="./ib_logo.png?v=20260831-1">
+  <link rel="apple-touch-icon" href="./ib_logo.png?v=20260831-1">
+</head>
+<body data-project-id="trading-ui">
+  <nav class="navbar scrolled" id="navbar" aria-label="Primary navigation">
+    <a href="index.html" class="nav-logo">inbodev<span class="nav-logo-dot">.com</span></a>
+    <div class="nav-links" id="navLinks">
+      <a href="index.html">Scripting</a>
+      <a href="/ui" style="color: var(--accent);">UI Design</a>
+      <a href="/ui#about-ui">About</a>
+      <a href="/ui#testimonials">Reviews</a>
+      <a href="/ui#contact">Contact</a>
+      <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire me ↗</a>
+    </div>
+    <button class="menu-toggle" id="menuToggle" type="button" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+        <line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/>
+      </svg>
+    </button>
+  </nav>
+
+  <main>
+    <div class="container project-page-header">
+      <article class="project-header fade-in">
+        <nav class="project-breadcrumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="index.html">Portfolio</a></li>
+            <li><a href="/ui">UI Design</a></li>
+            <li aria-current="page">Player Trading Suite</li>
+          </ol>
+        </nav>
+
+        <a href="/ui" class="project-back-nav">← Back to UI showcase</a>
+        <span class="project-eyebrow">// ui design / dark style</span>
+        <h1 class="project-title" id="tradeTitle">Player Trading: Counter-Offer Negotiation</h1>
+        <div class="project-meta">
+          <span class="chip">Dark Style</span>
+          <span class="chip">Trading System</span>
+          <span class="chip">Counter Offer</span>
+          <span class="chip">RAP / Value</span>
+          <span class="chip">Modular Grids</span>
+        </div>
+
+        <div class="project-image-wrap" style="aspect-ratio: auto; min-height: 360px; display: flex; align-items: center; justify-content: center; background: #060608; padding: 24px;">
+          <img id="tradeMainImg" src="/images/ui-trade-counter.webp" alt="Roblox Player Trading Counter Offer System UI" style="max-height: 520px; width: auto; object-fit: contain;">
+        </div>
+
+        <div class="video-gallery" id="tradeGallery" role="tablist" aria-label="Trading UI parts">
+          <button class="video-thumb active" type="button" data-index="0" role="tab" aria-selected="true" aria-label="Part 1: Counter Offer Negotiation">
+            <img src="/images/ui-trade-counter.webp" alt="Part 1: Counter Offer" loading="lazy" decoding="async">
+            <span>Part 1</span>
+          </button>
+          <button class="video-thumb" type="button" data-index="1" role="tab" aria-selected="false" aria-label="Part 2: Trade Accepted Confirmation">
+            <img src="/images/ui-trade-accepted.webp" alt="Part 2: Accepted State" loading="lazy" decoding="async">
+            <span>Part 2</span>
+          </button>
+        </div>
+
+        <div class="project-body">
+          <div class="project-desc-text" id="tradeDesc">
+            <p id="tradeActiveDesc">A clean Roblox trading interface designed for high-value player exchanges. Features side-by-side OLD vs NEW negotiation states so players can clearly compare counter offers with live Value and RAP metrics.</p>
+
+            <h2>Design highlights</h2>
+            <ul>
+              <li>Dual tier comparison: side-by-side OLD and NEW trade slots so players immediately spot incoming counter-offer edits</li>
+              <li>Live RAP and Value header metrics calculated and displayed for both sides of the trade</li>
+              <li>Modular 4-slot grid layout optimized for simulators and high-tier item economies</li>
+              <li>Status feedback banner with high-contrast neon green accepted state to prevent trade confusion</li>
+              <li>High contrast dark theme built with 9-slice rounded corners, subtle slot transparencies, and clean framing</li>
+            </ul>
+
+            <h2>Luau implementation ready</h2>
+            <ul>
+              <li>Built with UIAspectRatioConstraint and AnchorPoint 0.5/0.5 for perfect scaling across PC, tablet, and mobile</li>
+              <li>Modular item slot frames designed for automated script templating and inventory binding</li>
+              <li>Optimized CanvasGroup hierarchy for clean spring pop-in and dismissal animations via TweenService</li>
+            </ul>
+          </div>
+
+          <aside class="project-sidebar" aria-label="Project details">
+            <div class="sidebar-card">
+              <h2>Technologies</h2>
+              <div class="sidebar-tag-list">
+                <span class="chip">Dark Style</span>
+                <span class="chip">Trading System</span>
+                <span class="chip">Roblox Studio</span>
+                <span class="chip">Figma</span>
+                <span class="chip">TweenService</span>
+                <span class="chip">9-Slice Scaling</span>
+              </div>
+              <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="sidebar-cta">Hire me for UI work ↗</a>
+            </div>
+          </aside>
+        </div>
+      </article>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>© 2022 to <span data-current-year>2026</span> inbo · Roblox development &amp; UI design</p>
+  </footer>
+
+  <script>
+    const tradeParts = [
+      {
+        title: 'Player Trading: Counter-Offer Negotiation',
+        img: '/images/ui-trade-counter.webp',
+        alt: 'Roblox Player Trading Counter Offer System UI',
+        desc: 'A clean Roblox trading interface designed for high-value player exchanges. Features side-by-side OLD vs NEW negotiation states so players can clearly compare counter offers with live Value and RAP metrics.'
+      },
+      {
+        title: 'Player Trading: Trade Accepted Confirmation',
+        img: '/images/ui-trade-accepted.webp',
+        alt: 'Roblox Player Trading Trade Accepted Confirmation UI Banner',
+        desc: 'The confirmed transaction state modal. Highlights locked-in trade parameters with vibrant neon green accents, dual-party RAP/Value summaries, and player branding.'
+      }
+    ];
+
+    const mainImg = document.getElementById('tradeMainImg');
+    const titleEl = document.getElementById('tradeTitle');
+    const descEl = document.getElementById('tradeActiveDesc');
+    const thumbs = document.querySelectorAll('#tradeGallery .video-thumb');
+
+    thumbs.forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        thumbs.forEach(b => {
+          b.classList.remove('active');
+          b.setAttribute('aria-selected', 'false');
+        });
+        btn.classList.add('active');
+        btn.setAttribute('aria-selected', 'true');
+
+        const part = tradeParts[idx];
+        mainImg.src = part.img;
+        mainImg.alt = part.alt;
+        titleEl.textContent = part.title;
+        descEl.textContent = part.desc;
+      });
+    });
+  </script>
+</body>
+</html>
