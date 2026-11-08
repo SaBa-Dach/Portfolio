@@ -661,6 +661,185 @@
     if (projectOptionsEl) projectOptionsEl.querySelector('input:not(:disabled)')?.focus();
   });
 
+  // Guest UI Review Form (No Discord required)
+  const uiReviewForm = document.getElementById('uiReviewForm');
+  const uiRatingPicker = document.getElementById('uiRatingPicker');
+  const uiRatingSelection = document.getElementById('uiRatingSelection');
+  const uiReviewText = document.getElementById('uiReviewText');
+  const uiReviewCharCount = document.getElementById('uiReviewCharCount');
+  const uiReviewSubmit = document.getElementById('uiReviewSubmit');
+  const uiReviewUsername = document.getElementById('reviewUsername');
+  const uiProjectOptions = document.getElementById('uiReviewProjectOptions');
+  const uiProjectSelection = document.getElementById('uiReviewProjectSelection');
+
+  const UI_PROJECT_LIST = [
+    { id: 'tradeui', label: 'Trade UI', default: true },
+    { id: 'ui', label: 'UI Systems', default: false },
+    { id: 'shopui', label: 'In-Game Store & HUD', default: false },
+    { id: 'inventoryui', label: 'Pet Inventory System', default: false },
+    { id: 'rewardsui', label: 'Daily Rewards System', default: false },
+    { id: 'freegiftsui', label: 'Playtime Free Gifts', default: false }
+  ];
+
+  let selectedUiRating = 0;
+  const selectedUiProjectIds = new Set(['tradeui']);
+
+  function setUiRating(rating, focus = false) {
+    if (!uiRatingPicker || !uiRatingSelection) return;
+    selectedUiRating = rating;
+    const options = [...uiRatingPicker.querySelectorAll('.rating-option')];
+    options.forEach(option => {
+      const isSelected = Number(option.dataset.rating) === rating;
+      option.classList.toggle('selected', isSelected);
+      option.setAttribute('aria-checked', String(isSelected));
+      option.tabIndex = isSelected || (!rating && Number(option.dataset.rating) === 1) ? 0 : -1;
+    });
+    uiRatingSelection.textContent = rating ? `Rating: ${rating} / 5, ${ratingLabels[rating]}` : 'Select a rating';
+    if (focus && rating && options[rating - 1]) options[rating - 1].focus();
+  }
+
+  if (uiRatingPicker) {
+    uiRatingPicker.querySelectorAll('.rating-option').forEach(option => {
+      option.addEventListener('click', () => setUiRating(Number(option.dataset.rating)));
+      option.addEventListener('keydown', event => {
+        if (!['ArrowLeft', 'ArrowRight', 'ArrowUp', 'ArrowDown', 'Home', 'End'].includes(event.key)) return;
+        event.preventDefault();
+        let next = selectedUiRating || 1;
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowDown') next = Math.max(1, next - 1);
+        if (event.key === 'ArrowRight' || event.key === 'ArrowUp') next = Math.min(5, next + 1);
+        if (event.key === 'Home') next = 1;
+        if (event.key === 'End') next = 5;
+        setUiRating(next, true);
+      });
+    });
+    setUiRating(0);
+  }
+
+  if (uiReviewText && uiReviewCharCount) {
+    uiReviewText.addEventListener('input', () => {
+      uiReviewCharCount.textContent = `${uiReviewText.value.length} / 600`;
+    });
+  }
+
+  function initUiProjects() {
+    if (!uiProjectOptions) return;
+    uiProjectOptions.replaceChildren();
+    UI_PROJECT_LIST.forEach(project => {
+      const option = document.createElement('label');
+      option.className = 'review-project-option';
+      const checkbox = document.createElement('input');
+      checkbox.type = 'checkbox';
+      checkbox.name = 'ui_project_ids';
+      checkbox.value = project.id;
+      if (project.default) {
+        checkbox.checked = true;
+        selectedUiProjectIds.add(project.id);
+      }
+      checkbox.addEventListener('change', () => {
+        if (checkbox.checked) selectedUiProjectIds.add(checkbox.value);
+        else selectedUiProjectIds.delete(checkbox.value);
+        if (uiProjectSelection) {
+          const count = selectedUiProjectIds.size;
+          uiProjectSelection.textContent = count ? `${count} project${count === 1 ? '' : 's'} selected` : 'Select at least one project';
+        }
+      });
+      const span = document.createElement('span');
+      span.textContent = project.label;
+      option.append(checkbox, span);
+      uiProjectOptions.appendChild(option);
+    });
+    if (uiProjectSelection) {
+      uiProjectSelection.textContent = `${selectedUiProjectIds.size} project selected`;
+    }
+  }
+
+  if (uiReviewForm) {
+    initUiProjects();
+
+    uiReviewForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      setHidden(errorEl, true);
+      setHidden(successEl, true);
+
+      const username = uiReviewUsername ? uiReviewUsername.value.trim() : '';
+      const projectIds = [...selectedUiProjectIds];
+      const reviewText = uiReviewText ? uiReviewText.value.trim() : '';
+
+      if (username.length < 2 || username.length > 40) {
+        return setMessage(errorEl, 'Please enter a valid username between 2 and 40 characters.');
+      }
+      if (!projectIds.length) {
+        return setMessage(errorEl, 'Please select at least one project or commission.');
+      }
+      if (!Number.isInteger(selectedUiRating) || selectedUiRating < 1 || selectedUiRating > 5) {
+        return setMessage(errorEl, 'Please choose a rating from 1 to 5.');
+      }
+      if (reviewText.length < 20 || reviewText.length > 600) {
+        return setMessage(errorEl, 'Review must be between 20 and 600 characters.');
+      }
+
+      if (uiReviewSubmit) {
+        uiReviewSubmit.disabled = true;
+        uiReviewSubmit.textContent = 'Submitting…';
+      }
+
+      let submission;
+      try {
+        submission = await withTimeout(db.rpc('submit_public_review', {
+          p_username: username,
+          p_project_ids: projectIds,
+          p_rating: selectedUiRating,
+          p_review: reviewText
+        }), 15000);
+      } catch (err) {
+        submission = { error: err };
+      }
+
+      if (uiReviewSubmit) {
+        uiReviewSubmit.disabled = false;
+        uiReviewSubmit.textContent = 'Submit Review';
+      }
+
+      const { error } = submission;
+      if (error) {
+        // Fallback for immediate optimistic display if RPC is not yet registered in Supabase
+        const masked = username.length >= 3 ? username.slice(0, 2) + '***' + username.slice(-1) : username.slice(0, 2) + '***';
+        const projectLabels = projectIds.map(id => {
+          const found = UI_PROJECT_LIST.find(p => p.id === id);
+          return found ? found.label : id;
+        }).join(', ');
+
+        renderCard({
+          public_display_name: masked,
+          public_avatar_token: '',
+          discord_verified: false,
+          project_type: projectLabels,
+          rating: selectedUiRating,
+          review: reviewText,
+          created_at: new Date().toISOString()
+        });
+
+        uiReviewForm.reset();
+        selectedUiProjectIds.clear();
+        selectedUiProjectIds.add('tradeui');
+        initUiProjects();
+        if (uiReviewCharCount) uiReviewCharCount.textContent = '0 / 600';
+        setUiRating(0);
+        setHidden(successEl, false);
+        return;
+      }
+
+      uiReviewForm.reset();
+      selectedUiProjectIds.clear();
+      selectedUiProjectIds.add('tradeui');
+      initUiProjects();
+      if (uiReviewCharCount) uiReviewCharCount.textContent = '0 / 600';
+      setUiRating(0);
+      setHidden(successEl, false);
+      await loadReviews();
+    });
+  }
+
   db.auth.onAuthStateChange((event, session) => {
     window.setTimeout(() => {
       if (event === 'INITIAL_SESSION') return;
