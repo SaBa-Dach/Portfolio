@@ -1920,6 +1920,10 @@ body {
   object-fit: cover;
   transition: transform 0.4s var(--ease);
 }
+.ui-card-media.is-contain img {
+  object-fit: contain;
+  padding: 18px;
+}
 .ui-card:hover .ui-card-media img {
   transform: scale(1.03);
 }

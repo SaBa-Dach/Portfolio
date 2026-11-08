@@ -117,6 +117,7 @@
     sprint: 'sprint-dash.html',
     staff: 'staff-player-display.html',
     ui: 'ui-systems.html',
+    tradeui: 'ui.html',
   };
 
   const projectData = {
@@ -376,6 +377,23 @@ Players join tables and compete in a series of "Higher or Lower?" style question
 • Clean input handling
 • Animations driven by TweenService
 • Modular structure for easy reuse across projects`,
+    },
+
+    tradeui: {
+      title: 'Trade UI',
+      category: 'UI Design',
+      poster: 'images/ui-trade-suite.webp',
+      externalUrl: 'https://inbodev.com/ui',
+      externalLabel: 'View on UI Portfolio',
+      tags: ['UI Design', 'Trading System', 'Counter Offer', 'Dark Style', 'RAP / Value'],
+      desc: `A complete Roblox trading system interface designed for player item exchanges and value-based negotiations.
+
+<h3>Interface features</h3>
+• Dual-window counter offer negotiation layout comparing previous and updated offers
+• Live RAP (Recent Average Price) and total item Value calculation headers for both players
+• High-contrast neon acceptance banner for confirmed trade agreements
+• 4-slot modular inventory exchange grids with responsive touch targets
+• Dark aesthetic with clean borders and high-visibility status indicators`,
     },
   };
 
