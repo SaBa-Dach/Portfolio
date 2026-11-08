@@ -145,16 +145,16 @@
         <!-- Category Filters -->
         <div class="project-filters fade-in" aria-label="UI Categories">
           <button class="project-filter is-active" type="button" data-ui-filter="all" aria-pressed="true">All designs</button>
-          <button class="project-filter" type="button" data-ui-filter="cartoony" aria-pressed="false">Cartoony Style</button>
-          <button class="project-filter" type="button" data-ui-filter="stud" aria-pressed="false">Stud Style</button>
-          <button class="project-filter" type="button" data-ui-filter="dark" aria-pressed="false">Dark Style</button>
+          <button class="project-filter" type="button" data-ui-filter="trade" aria-pressed="false">Trading Suite</button>
+          <button class="project-filter" type="button" data-ui-filter="inventory" aria-pressed="false">Inventory</button>
+          <button class="project-filter" type="button" data-ui-filter="gallery" aria-pressed="false">Game UI Gallery</button>
         </div>
 
         <div class="projects-grid">
 
           <!-- 01. PLAYER TRADING SUITE (Part 1 Counter Offer & Part 2 Accepted State) -->
-          <article class="card card-featured fade-in" data-ui-cat="dark">
-            <div class="ui-card-view" id="tradeCardMedia" onclick="openActiveTradeLightbox()" role="button" tabindex="0" aria-label="Open Trade UI in full size">
+          <article class="card card-featured fade-in" data-ui-cat="trade">
+            <div class="ui-card-view" id="tradeCardMedia" onclick="openTradeSlider()" role="button" tabindex="0" aria-label="Open Trade UI in full size slider">
               <picture id="tradeCardPicture">
                 <source id="tradeCardWebp" srcset="/images/ui-trade-counter.webp" type="image/webp">
                 <img id="tradeCardImg" src="/images/ui-trade-counter.png" alt="Roblox Player Trading Counter Offer System UI" width="1024" height="454" loading="lazy" decoding="async">
@@ -190,8 +190,8 @@
           </article>
 
           <!-- 02. PET / ITEM INVENTORY SYSTEM -->
-          <article class="card fade-in" data-ui-cat="cartoony">
-            <div class="ui-card-view" onclick="openLightbox('/images/ui-inventory.webp?v=3', 'Roblox Cartoony Simulator Pet and Item Inventory UI');" role="button" tabindex="0" aria-label="Open Inventory UI in full size">
+          <article class="card fade-in" data-ui-cat="inventory">
+            <div class="ui-card-view" onclick="openInventorySlider()" role="button" tabindex="0" aria-label="Open Inventory UI in full size">
               <picture>
                 <source srcset="/images/ui-inventory.webp?v=3" type="image/webp">
                 <img src="/images/ui-inventory.png?v=3" alt="Roblox Cartoony Simulator Pet and Item Inventory UI" width="656" height="464" loading="lazy" decoding="async">
@@ -221,9 +221,9 @@
             </div>
           </article>
 
-          <!-- 03. IN-GAME SHOP & NAVIGATION HUD -->
-          <article class="card fade-in" data-ui-cat="stud">
-            <div class="ui-card-view" onclick="openLightbox('/images/ui-shop.webp', 'Roblox Stud Style In-Game Store and HUD UI');" role="button" tabindex="0" aria-label="Open In-Game Store UI in full size">
+          <!-- 03. IN-GAME SHOP & NAVIGATION HUD (CLICK OPENS 7-SLIDE GALLERY) -->
+          <article class="card fade-in" data-ui-cat="gallery">
+            <div class="ui-card-view" onclick="openGallerySlider(0)" role="button" tabindex="0" aria-label="Open In-Game Store and UI Gallery in full size slider">
               <picture>
                 <source srcset="/images/ui-shop.webp" type="image/webp">
                 <img src="/images/ui-shop.jpg" alt="Roblox Stud Style In-Game Store and HUD UI" width="879" height="625" loading="lazy" decoding="async">
@@ -246,198 +246,6 @@
                 <span class="chip">In-Game Store</span>
                 <span class="chip">HUD Design</span>
                 <span class="chip">Roblox Studs</span>
-              </div>
-              <div class="card-footer">
-                <span class="card-watch">View full size ↗</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- 04. 7-DAY DAILY REWARDS STREAK SYSTEM -->
-          <article class="card fade-in" data-ui-cat="cartoony">
-            <div class="ui-card-view" onclick="openLightbox('/images/ui-daily-rewards.webp?v=1', 'Roblox Cartoony 7-Day Daily Rewards Streak System UI');" role="button" tabindex="0" aria-label="Open Daily Rewards UI in full size">
-              <picture>
-                <source srcset="/images/ui-daily-rewards.webp?v=1" type="image/webp">
-                <img src="/images/ui-daily-rewards.png" alt="Roblox Cartoony 7-Day Daily Rewards Streak System UI" width="702" height="472" loading="lazy" decoding="async">
-              </picture>
-              <div class="card-zoom-pill">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                <span>Full size</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <div class="card-header">
-                <span class="card-index">04</span>
-                <span class="card-tag">Cartoony Style</span>
-              </div>
-              <h3 class="card-title">7-Day Daily Rewards Streak System</h3>
-              <p class="card-desc">Engaging daily streak claim modal featuring a 7-day progression track, highlighted day-7 grand prize gold chest, pop-up comic typography, and responsive claim buttons.</p>
-              <div class="card-chips-row">
-                <span class="chip">Cartoony Style</span>
-                <span class="chip">Daily Rewards</span>
-                <span class="chip">Retention System</span>
-                <span class="chip">Streak Bonus</span>
-              </div>
-              <div class="card-footer">
-                <span class="card-watch">View full size ↗</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- 05. PLAYTIME FREE GIFTS REWARD SYSTEM -->
-          <article class="card fade-in" data-ui-cat="cartoony stud">
-            <div class="ui-card-view" onclick="openLightbox('/images/ui-free-gifts.webp', 'Roblox Playtime Free Gifts Reward System UI');" role="button" tabindex="0" aria-label="Open Free Gifts UI in full size">
-              <picture>
-                <source srcset="/images/ui-free-gifts.webp" type="image/webp">
-                <img src="/images/ui-free-gifts.png" alt="Roblox Playtime Free Gifts Reward System UI" width="1024" height="563" loading="lazy" decoding="async">
-              </picture>
-              <div class="card-zoom-pill">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                <span>Full size</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <div class="card-header">
-                <span class="card-index">05</span>
-                <span class="card-tag">Cartoony &amp; Stud Style</span>
-              </div>
-              <h3 class="card-title">Playtime Free Gifts Reward System</h3>
-              <p class="card-desc">Timed reward modal encouraging session retention with 6 progressive gift tiers, real-time unlock timers, vibrant reward colors, and plastic stud framing.</p>
-              <div class="card-chips-row">
-                <span class="chip">Cartoony Style</span>
-                <span class="chip">Stud Style</span>
-                <span class="chip">Playtime Rewards</span>
-                <span class="chip">Retention System</span>
-              </div>
-              <div class="card-footer">
-                <span class="card-watch">View full size ↗</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- 06. TRIVIA GAME LOADING SCREEN & PROGRESS BAR -->
-          <article class="card fade-in" data-ui-cat="cartoony">
-            <div class="ui-card-view" onclick="openLightbox('/images/ui-loading-screen.webp?v=1', 'Roblox Cartoony Trivia Loading Screen UI');" role="button" tabindex="0" aria-label="Open Trivia Loading Screen UI in full size">
-              <picture>
-                <source srcset="/images/ui-loading-screen.webp?v=1" type="image/webp">
-                <img src="/images/ui-loading-screen.png" alt="Roblox Cartoony Trivia Loading Screen UI" width="1008" height="532" loading="lazy" decoding="async">
-              </picture>
-              <div class="card-zoom-pill">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                <span>Full size</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <div class="card-header">
-                <span class="card-index">06</span>
-                <span class="card-tag">Cartoony Style</span>
-              </div>
-              <h3 class="card-title">Trivia Game Loading Screen &amp; Progress Bar</h3>
-              <p class="card-desc">A clean, high-energy cartoon loading screen designed for trivia and party games with 3D comic branding, avatar badge, and loading progress bar.</p>
-              <div class="card-chips-row">
-                <span class="chip">Cartoony Style</span>
-                <span class="chip">Loading Screen</span>
-                <span class="chip">Trivia Game</span>
-                <span class="chip">Content Streaming</span>
-              </div>
-              <div class="card-footer">
-                <span class="card-watch">View full size ↗</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- 07. PLAYTIME GIFT COUNTDOWN HUD WIDGET -->
-          <article class="card fade-in" data-ui-cat="stud">
-            <div class="ui-card-view" onclick="openLightbox('/images/ui-gift-timer.webp', 'Roblox Playtime Gift Countdown HUD Widget');" role="button" tabindex="0" aria-label="Open Gift Countdown HUD Widget in full size">
-              <picture>
-                <source srcset="/images/ui-gift-timer.webp" type="image/webp">
-                <img src="/images/ui-gift-timer.png" alt="Roblox Playtime Gift Countdown HUD Widget" width="1024" height="238" loading="lazy" decoding="async">
-              </picture>
-              <div class="card-zoom-pill">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                <span>Full size</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <div class="card-header">
-                <span class="card-index">07</span>
-                <span class="card-tag">Stud Style</span>
-              </div>
-              <h3 class="card-title">Playtime Gift Countdown HUD Widget</h3>
-              <p class="card-desc">A compact HUD launcher widget displaying real-time countdown timers for the player next playtime gift in the classic plastic stud aesthetic.</p>
-              <div class="card-chips-row">
-                <span class="chip">Stud Style</span>
-                <span class="chip">HUD Widget</span>
-                <span class="chip">Gift Timer</span>
-                <span class="chip">UI Component</span>
-              </div>
-              <div class="card-footer">
-                <span class="card-watch">View full size ↗</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- 08. TRIVIA LIFELINES & POWER-UP ACTION BUTTONS -->
-          <article class="card fade-in" data-ui-cat="stud">
-            <div class="ui-card-view" onclick="openLightbox('/images/ui-action-buttons.webp', 'Roblox Trivia Lifelines & Power-Up Action Buttons');" role="button" tabindex="0" aria-label="Open Trivia Action Buttons in full size">
-              <picture>
-                <source srcset="/images/ui-action-buttons.webp" type="image/webp">
-                <img src="/images/ui-action-buttons.png" alt="Roblox Trivia Lifelines & Action Buttons" width="636" height="1024" loading="lazy" decoding="async">
-              </picture>
-              <div class="card-zoom-pill">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                <span>Full size</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <div class="card-header">
-                <span class="card-index">08</span>
-                <span class="card-tag">Stud Style</span>
-              </div>
-              <h3 class="card-title">Trivia Lifelines &amp; Power-Up Action Buttons</h3>
-              <p class="card-desc">Tactile, stud-patterned gameplay action buttons designed for live trivia rounds, vote modifiers, and player abilities with high-contrast colors.</p>
-              <div class="card-chips-row">
-                <span class="chip">Stud Style</span>
-                <span class="chip">Action Buttons</span>
-                <span class="chip">Trivia Lifelines</span>
-                <span class="chip">Power-Ups</span>
-              </div>
-              <div class="card-footer">
-                <span class="card-watch">View full size ↗</span>
-              </div>
-            </div>
-          </article>
-
-          <!-- 09. IN-GAME NOTIFICATION & SERVER ALERT MODAL -->
-          <article class="card fade-in" data-ui-cat="stud">
-            <div class="ui-card-view" onclick="openLightbox('/images/ui-notifications.webp', 'Roblox In-Game Notification & Server Alert Modal');" role="button" tabindex="0" aria-label="Open Alert Modal in full size">
-              <picture>
-                <source srcset="/images/ui-notifications.webp" type="image/webp">
-                <img src="/images/ui-notifications.png" alt="Roblox In-Game Notification & Server Alert Modal" width="1024" height="517" loading="lazy" decoding="async">
-              </picture>
-              <div class="card-zoom-pill">
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
-                <span>Full size</span>
-              </div>
-            </div>
-
-            <div class="card-body">
-              <div class="card-header">
-                <span class="card-index">09</span>
-                <span class="card-tag">Stud Style</span>
-              </div>
-              <h3 class="card-title">In-Game Notification &amp; Server Alert Modal</h3>
-              <p class="card-desc">A high-visibility notification and alert window built for server-wide announcements, event notices, system warnings, and player prompt dialogs.</p>
-              <div class="card-chips-row">
-                <span class="chip">Stud Style</span>
-                <span class="chip">Notifications</span>
-                <span class="chip">System Alerts</span>
-                <span class="chip">Dialog Box</span>
               </div>
               <div class="card-footer">
                 <span class="card-watch">View full size ↗</span>
@@ -625,12 +433,29 @@
 
   </main>
 
-  <!-- LIGHTBOX MODAL -->
+  <!-- LIGHTBOX SLIDER MODAL -->
   <div class="lightbox-modal" id="lightboxModal" role="dialog" aria-modal="true" aria-label="Image preview">
     <div class="lightbox-wrap">
-      <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close preview">✕</button>
-      <img src="" alt="" class="lightbox-img" id="lightboxImg">
-      <p class="lightbox-caption" id="lightboxCaption"></p>
+      <div class="lightbox-topbar">
+        <div class="lightbox-meta">
+          <span class="lightbox-counter" id="lightboxCounter">1 / 7</span>
+          <span class="lightbox-tag" id="lightboxTag">Stud Style</span>
+        </div>
+        <button type="button" class="lightbox-close" id="lightboxClose" aria-label="Close preview">✕</button>
+      </div>
+
+      <div class="lightbox-stage" id="lightboxStage">
+        <button type="button" class="lightbox-nav-btn lightbox-prev" id="lightboxPrev" aria-label="Previous slide">‹</button>
+        <img src="" alt="" class="lightbox-img" id="lightboxImg">
+        <button type="button" class="lightbox-nav-btn lightbox-next" id="lightboxNext" aria-label="Next slide">›</button>
+      </div>
+
+      <div class="lightbox-info">
+        <h4 class="lightbox-title" id="lightboxTitle"></h4>
+        <p class="lightbox-caption" id="lightboxCaption"></p>
+      </div>
+
+      <div class="lightbox-thumbs" id="lightboxThumbs"></div>
     </div>
   </div>
 
@@ -642,7 +467,7 @@
   <script defer src="/reviews.js?v=20261109-1"></script>
 
   <script>
-    // 1. Trade Gallery Data (Part 1 and Part 2 Together)
+    // 1. Trade UI Data
     const tradeItems = [
       {
         part: 'Part 1',
@@ -652,7 +477,6 @@
         webp: '/images/ui-trade-counter.webp',
         png: '/images/ui-trade-counter.png',
         alt: 'Roblox Player Trading Counter Offer System UI',
-        caption: 'Roblox Player Trading Counter-Offer Negotiation UI',
         chips: ['Dark Style', 'Trading System', 'Counter Offer', 'RAP / Value']
       },
       {
@@ -663,7 +487,6 @@
         webp: '/images/ui-trade-accepted.webp',
         png: '/images/ui-trade-accepted.png',
         alt: 'Roblox Player Trading Trade Accepted Confirmation UI',
-        caption: 'Roblox Player Trading Trade Accepted Confirmation UI Banner',
         chips: ['Dark Style', 'Trading System', 'Accepted State', 'Feedback Banner']
       }
     ];
@@ -712,13 +535,213 @@
       tab.addEventListener('click', () => setTradePart(idx));
     });
 
-    function openActiveTradeLightbox() {
-      const item = tradeItems[currentTradeIndex];
-      if (item) openLightbox(item.webp, item.caption);
+    // 2. Inventory Item Data
+    const inventoryItem = {
+      title: 'Pet / Item Inventory System',
+      tag: 'Cartoony Style',
+      desc: 'Vibrant cartoon simulator inventory modal built for high-retention pet collecting with custom comic header, action pill toolbar, 10-slot responsive item grid, and rarity cards.',
+      webp: '/images/ui-inventory.webp?v=3',
+      alt: 'Roblox Cartoony Simulator Pet and Item Inventory UI'
+    };
+
+    // 3. Gameplay UI Gallery Slider Data (7 parts slidable when opening Card 03)
+    const galleryItems = [
+      {
+        title: 'In-Game Shop & Navigation HUD',
+        tag: 'Stud Style',
+        desc: 'A full in-game store window and HUD built in the iconic Roblox Stud Style with classic plastic studs, category tabs, Robux bundles, and currency counter.',
+        webp: '/images/ui-shop.webp',
+        alt: 'Roblox Stud Style In-Game Store and HUD UI'
+      },
+      {
+        title: '7-Day Daily Rewards Streak System',
+        tag: 'Cartoony Style',
+        desc: 'Engaging daily streak claim modal featuring a 7-day progression track, highlighted day-7 grand prize gold chest, pop-up comic typography, and responsive claim buttons.',
+        webp: '/images/ui-daily-rewards.webp?v=1',
+        alt: 'Roblox Cartoony 7-Day Daily Rewards Streak System UI'
+      },
+      {
+        title: 'Playtime Free Gifts Reward System',
+        tag: 'Cartoony & Stud Style',
+        desc: 'Timed reward modal encouraging session retention with 6 progressive gift tiers, real-time unlock timers, vibrant reward colors, and plastic stud framing.',
+        webp: '/images/ui-free-gifts.webp',
+        alt: 'Roblox Playtime Free Gifts Reward System UI'
+      },
+      {
+        title: 'Trivia Game Loading Screen & Progress Bar',
+        tag: 'Cartoony Style',
+        desc: 'Clean, high-energy cartoon loading screen designed for trivia and party games with 3D comic branding, avatar badge, and loading progress bar.',
+        webp: '/images/ui-loading-screen.webp?v=1',
+        alt: 'Roblox Cartoony Trivia Loading Screen UI'
+      },
+      {
+        title: 'Playtime Gift Countdown HUD Widget',
+        tag: 'Stud Style',
+        desc: 'Compact HUD launcher widget displaying real-time countdown timers for the player next playtime gift in the classic plastic stud aesthetic.',
+        webp: '/images/ui-gift-timer.webp',
+        alt: 'Roblox Playtime Gift Countdown HUD Widget'
+      },
+      {
+        title: 'Trivia Lifelines & Power-Up Action Buttons',
+        tag: 'Stud Style',
+        desc: 'Tactile, stud-patterned gameplay action buttons designed for live trivia rounds, vote modifiers, and player abilities with high-contrast colors.',
+        webp: '/images/ui-action-buttons.webp',
+        alt: 'Roblox Trivia Lifelines & Action Buttons'
+      },
+      {
+        title: 'In-Game Notification & Server Alert Modal',
+        tag: 'Stud Style',
+        desc: 'High-visibility notification and alert window built for server-wide announcements, event notices, system warnings, and player prompt dialogs.',
+        webp: '/images/ui-notifications.webp',
+        alt: 'Roblox In-Game Notification & Server Alert Modal'
+      }
+    ];
+
+    // 4. Lightbox Slider Controls
+    const modal = document.getElementById('lightboxModal');
+    const modalImg = document.getElementById('lightboxImg');
+    const modalTitle = document.getElementById('lightboxTitle');
+    const modalCaption = document.getElementById('lightboxCaption');
+    const modalTag = document.getElementById('lightboxTag');
+    const modalCounter = document.getElementById('lightboxCounter');
+    const modalClose = document.getElementById('lightboxClose');
+    const btnPrev = document.getElementById('lightboxPrev');
+    const btnNext = document.getElementById('lightboxNext');
+    const thumbsContainer = document.getElementById('lightboxThumbs');
+    const stage = document.getElementById('lightboxStage');
+
+    let currentSliderItems = [];
+    let currentSlideIndex = 0;
+
+    function openSlider(items, startIndex = 0) {
+      if (!items || items.length === 0) return;
+      currentSliderItems = items;
+      currentSlideIndex = Math.max(0, Math.min(startIndex, items.length - 1));
+
+      thumbsContainer.replaceChildren();
+
+      if (items.length > 1) {
+        thumbsContainer.hidden = false;
+        btnPrev.hidden = false;
+        btnNext.hidden = false;
+        modalCounter.hidden = false;
+
+        items.forEach((item, idx) => {
+          const btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'lightbox-thumb' + (idx === currentSlideIndex ? ' is-active' : '');
+          btn.setAttribute('aria-label', `Slide ${idx + 1}: ${item.title}`);
+          const img = document.createElement('img');
+          img.src = item.webp;
+          img.alt = item.alt || item.title;
+          img.loading = 'lazy';
+          btn.appendChild(img);
+          btn.addEventListener('click', () => showSlide(idx));
+          thumbsContainer.appendChild(btn);
+        });
+      } else {
+        thumbsContainer.hidden = true;
+        btnPrev.hidden = true;
+        btnNext.hidden = true;
+        modalCounter.hidden = true;
+      }
+
+      showSlide(currentSlideIndex);
+      modal.classList.add('is-active');
+      document.body.style.overflow = 'hidden';
     }
 
-    // 2. Other Parts Gallery Data (All Other Parts in 1 Thing)
-    // Category Filter Buttons (matching scripting page)
+    function showSlide(index) {
+      if (index < 0 || index >= currentSliderItems.length) return;
+      currentSlideIndex = index;
+      const item = currentSliderItems[index];
+
+      modalImg.src = item.webp;
+      modalImg.alt = item.alt || item.title;
+      if (modalTitle) modalTitle.textContent = item.title;
+      if (modalCaption) modalCaption.textContent = item.desc || '';
+      if (modalTag) modalTag.textContent = item.tag || '';
+      if (modalCounter) modalCounter.textContent = `${index + 1} / ${currentSliderItems.length}`;
+
+      const thumbs = thumbsContainer.querySelectorAll('.lightbox-thumb');
+      thumbs.forEach((th, idx) => {
+        const active = idx === index;
+        th.classList.toggle('is-active', active);
+        if (active) {
+          th.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+        }
+      });
+    }
+
+    function nextSlide() {
+      if (currentSliderItems.length <= 1) return;
+      showSlide((currentSlideIndex + 1) % currentSliderItems.length);
+    }
+
+    function prevSlide() {
+      if (currentSliderItems.length <= 1) return;
+      showSlide((currentSlideIndex - 1 + currentSliderItems.length) % currentSliderItems.length);
+    }
+
+    function closeLightbox() {
+      if (!modal) return;
+      modal.classList.remove('is-active');
+      document.body.style.overflow = '';
+      if (modalImg) modalImg.src = '';
+    }
+
+    function openTradeSlider() {
+      openSlider(tradeItems, currentTradeIndex);
+    }
+
+    function openInventorySlider() {
+      openSlider([inventoryItem], 0);
+    }
+
+    function openGallerySlider(startIndex = 0) {
+      openSlider(galleryItems, startIndex);
+    }
+
+    if (btnPrev) btnPrev.addEventListener('click', prevSlide);
+    if (btnNext) btnNext.addEventListener('click', nextSlide);
+    if (modalClose) modalClose.addEventListener('click', closeLightbox);
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeLightbox();
+      });
+    }
+
+    // Touch Swipe Navigation for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    if (stage) {
+      stage.addEventListener('touchstart', (e) => {
+        if (e.changedTouches && e.changedTouches.length) {
+          touchStartX = e.changedTouches[0].screenX;
+        }
+      }, { passive: true });
+
+      stage.addEventListener('touchend', (e) => {
+        if (e.changedTouches && e.changedTouches.length) {
+          touchEndX = e.changedTouches[0].screenX;
+          const diff = touchEndX - touchStartX;
+          if (Math.abs(diff) > 40) {
+            if (diff < 0) nextSlide();
+            else prevSlide();
+          }
+        }
+      }, { passive: true });
+    }
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+      if (!modal || !modal.classList.contains('is-active')) return;
+      if (e.key === 'Escape') closeLightbox();
+      else if (e.key === 'ArrowRight') nextSlide();
+      else if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+    // 5. Category Filter Buttons
     const filterButtons = document.querySelectorAll('.project-filter');
     const uiCards = document.querySelectorAll('.projects-grid > .card');
 
@@ -741,40 +764,6 @@
           }
         });
       });
-    });
-
-    // Lightbox Modal Functions
-    const modal = document.getElementById('lightboxModal');
-    const modalImg = document.getElementById('lightboxImg');
-    const modalCaption = document.getElementById('lightboxCaption');
-    const modalClose = document.getElementById('lightboxClose');
-
-    function openLightbox(src, caption) {
-      if (!modal || !modalImg) return;
-      modalImg.src = src;
-      modalImg.alt = caption;
-      if (modalCaption) modalCaption.textContent = caption;
-      modal.classList.add('is-active');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-      if (!modal) return;
-      modal.classList.remove('is-active');
-      document.body.style.overflow = '';
-      if (modalImg) modalImg.src = '';
-    }
-
-    if (modalClose) modalClose.addEventListener('click', closeLightbox);
-    if (modal) {
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeLightbox();
-      });
-    }
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && modal && modal.classList.contains('is-active')) {
-        closeLightbox();
-      }
     });
 
     setTradePart(0);
