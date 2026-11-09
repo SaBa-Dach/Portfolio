@@ -22,17 +22,31 @@
   <meta name="twitter:image" content="https://inbodev.com/images/ui-shop.webp">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/syne@5.1.0/latin.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/fira-code@5.1.0/latin.css">
-  <link rel="stylesheet" href="style.css?v=20261109-7">
+  <link rel="stylesheet" href="style.css?v=20261109-8">
   <link rel="icon" type="image/png" href="./ib_logo.png?v=20260831-1">
   <link rel="apple-touch-icon" href="./ib_logo.png?v=20260831-1">
 </head>
 <body data-project-id="shop-ui">
   <nav class="navbar scrolled" id="navbar" aria-label="Primary navigation">
     <a href="index.html" class="nav-logo">inbodev<span class="nav-logo-dot">.com</span></a>
+
+    <!-- Role Switcher -->
+    <div class="nav-switch" aria-label="Portfolio Switcher">
+      <a href="/script" class="nav-switch-tab" title="View Luau Scripting Portfolio">Scripting</a>
+      <a href="/ui" class="nav-switch-tab is-active" title="Viewing UI Design Portfolio">UI Design</a>
+    </div>
+
     <div class="nav-links" id="navLinks">
-      <a href="index.html">Scripting</a>
-      <a href="/ui" style="color: var(--accent);">UI Design</a>
-      <a href="/ui#about-ui">About</a>
+      <div class="mobile-nav-switch">
+        <div class="nav-switch">
+          <a href="/script" class="nav-switch-tab">Scripting</a>
+          <a href="/ui" class="nav-switch-tab is-active">UI Design</a>
+        </div>
+      </div>
+      <a href="/ui#about">About</a>
+      <a href="/ui#projects">Projects</a>
+      <a href="/ui#approach">Approach</a>
+      <a href="/ui#pricing">Pricing</a>
       <a href="/ui#testimonials">Reviews</a>
       <a href="/ui#contact">Contact</a>
       <a href="https://discord.com/users/1481990642174263462" target="_blank" rel="noopener noreferrer" class="nav-cta">Hire me ↗</a>
@@ -46,7 +60,7 @@
 
   <main>
     <div class="container project-page-header">
-      <article class="project-header fade-in">
+      <article class="project-header">
         <nav class="project-breadcrumbs" aria-label="Breadcrumb">
           <ol>
             <li><a href="index.html">Portfolio</a></li>
@@ -147,7 +161,7 @@
     <p>© 2022 to <span data-current-year>2026</span> inbo · Roblox development &amp; UI design</p>
   </footer>
 
-  <script defer src="/script.js?v=20261109-1"></script>
+  <script defer src="script.js?v=20261109-8"></script>
   <script>
     const shopParts = [
       {

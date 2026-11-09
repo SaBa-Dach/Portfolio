@@ -984,6 +984,12 @@ button { cursor: pointer; font-family: inherit; }
 .project-breadcrumbs a:hover, .project-breadcrumbs a:focus-visible { color: var(--accent); }
 .project-breadcrumbs [aria-current="page"] { color: var(--text); }
 .project-page-header { padding-top: calc(var(--nav-h) + 32px); padding-bottom: 0; }
+/* Project Detail Page Header (Always visible safeguard) */
+.project-header {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 .project-eyebrow {
   font-size: 10px; text-transform: uppercase; letter-spacing: 2px;
   color: var(--accent); margin-bottom: 12px; display: block;
