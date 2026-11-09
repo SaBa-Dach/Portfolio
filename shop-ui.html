@@ -101,7 +101,7 @@
             <span>Part 3</span>
           </button>
           <button class="video-thumb" type="button" data-index="3" role="tab" aria-selected="false" aria-label="Part 4: Trivia Loading Screen">
-            <img src="/images/ui-loading-screen.webp?v=1" alt="Part 4: Trivia Loading Screen" loading="lazy" decoding="async">
+            <img src="/images/ui-loading-screen.webp?v=20261109-10" alt="Part 4: Trivia Loading Screen" loading="lazy" decoding="async">
             <span>Part 4</span>
           </button>
           <button class="video-thumb" type="button" data-index="4" role="tab" aria-selected="false" aria-label="Part 5: Gift Countdown Timer HUD">
@@ -191,56 +191,4 @@
       {
         eyebrow: '// ui design / cartoony style',
         title: 'Trivia Game Loading Screen & Progress Bar',
-        img: '/images/ui-loading-screen.webp?v=1',
-        alt: 'Roblox Cartoony Trivia Loading Screen UI',
-        desc: 'Clean, high-energy cartoon loading screen designed for trivia and party games with 3D comic branding, avatar badge, and loading progress bar.'
-      },
-      {
-        eyebrow: '// ui design / stud style',
-        title: 'Playtime Gift Countdown HUD Widget',
-        img: '/images/ui-gift-timer.webp',
-        alt: 'Roblox Playtime Gift Countdown HUD Widget',
-        desc: 'Compact HUD launcher widget displaying real-time countdown timers for the player next playtime gift in the classic plastic stud aesthetic.'
-      },
-      {
-        eyebrow: '// ui design / stud style',
-        title: 'Trivia Lifelines & Power-Up Action Buttons',
-        img: '/images/ui-action-buttons.webp',
-        alt: 'Roblox Trivia Lifelines & Action Buttons',
-        desc: 'Tactile, stud-patterned gameplay action buttons designed for live trivia rounds, vote modifiers, and player abilities with high-contrast colors.'
-      },
-      {
-        eyebrow: '// ui design / stud style',
-        title: 'In-Game Notification & Server Alert Modal',
-        img: '/images/ui-notifications.webp',
-        alt: 'Roblox In-Game Notification & Server Alert Modal',
-        desc: 'High-visibility notification and alert window built for server-wide announcements, event notices, system warnings, and player prompt dialogs.'
-      }
-    ];
-
-    const mainImg = document.getElementById('shopMainImg');
-    const eyebrowEl = document.getElementById('shopEyebrow');
-    const titleEl = document.getElementById('shopTitle');
-    const descEl = document.getElementById('shopActiveDesc');
-    const thumbs = document.querySelectorAll('#shopGallery .video-thumb');
-
-    thumbs.forEach((btn, idx) => {
-      btn.addEventListener('click', () => {
-        thumbs.forEach(b => {
-          b.classList.remove('active');
-          b.setAttribute('aria-selected', 'false');
-        });
-        btn.classList.add('active');
-        btn.setAttribute('aria-selected', 'true');
-
-        const part = shopParts[idx];
-        mainImg.src = part.img;
-        mainImg.alt = part.alt;
-        eyebrowEl.textContent = part.eyebrow;
-        titleEl.textContent = part.title;
-        descEl.textContent = part.desc;
-      });
-    });
-  </script>
-</body>
-</html>
+        img: '/images/ui-loading-screen.webp?v=20261109-10
