@@ -802,31 +802,8 @@
 
       const { error } = submission;
       if (error) {
-        // Fallback for immediate optimistic display if RPC is not yet registered in Supabase
-        const masked = username.length >= 3 ? username.slice(0, 2) + '***' + username.slice(-1) : username.slice(0, 2) + '***';
-        const projectLabels = projectIds.map(id => {
-          const found = UI_PROJECT_LIST.find(p => p.id === id);
-          return found ? found.label : id;
-        }).join(', ');
-
-        renderCard({
-          public_display_name: masked,
-          public_avatar_token: '',
-          discord_verified: false,
-          project_type: projectLabels,
-          rating: selectedUiRating,
-          review: reviewText,
-          created_at: new Date().toISOString()
-        });
-
-        uiReviewForm.reset();
-        selectedUiProjectIds.clear();
-        selectedUiProjectIds.add('tradeui');
-        initUiProjects();
-        if (uiReviewCharCount) uiReviewCharCount.textContent = '0 / 600';
-        setUiRating(0);
-        setHidden(successEl, false);
-        return;
+        console.error('Failed to submit review:', error);
+        return setMessage(errorEl, 'Could not save review to database. Please make sure the Supabase database migration has been executed in the Supabase SQL Editor.');
       }
 
       uiReviewForm.reset();
